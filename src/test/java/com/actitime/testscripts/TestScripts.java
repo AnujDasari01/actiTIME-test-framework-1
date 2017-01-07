@@ -35,13 +35,13 @@ public class TestScripts extends SuperReference {
 	}
 
 	@Test
-	public void TC05_CreateAUser() throws InterruptedException {
+	public void TC05_CreateAUser() {
 		FileUtility.retrieveData("TC05_CreateAUser");
 		dashBoardPO.createUser();
 	}
 
 	@Test
-	public void TC06_VerifyExistingUser() throws InterruptedException {
+	public void TC06_VerifyExistingUser() {
 		FileUtility.retrieveData("TC06_VerifyExistingUser");
 		dashBoardPO.checkExistingUser();
 	}

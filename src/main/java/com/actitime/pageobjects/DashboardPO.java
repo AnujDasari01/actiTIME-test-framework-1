@@ -110,7 +110,7 @@ public class DashboardPO {
 	}
 
 	/* Method to create a user */
-	public void createUser() throws InterruptedException {
+	public void createUser() {
 		addUserBtn.click();
 		firstNameTextField.sendKeys(FileUtility.testData.get("First_Name"));
 		lastNameTextField.sendKeys(FileUtility.testData.get("Last_Name"));
@@ -120,6 +120,11 @@ public class DashboardPO {
 		retypePasswordTextField.sendKeys(FileUtility.testData.get("Password"));
 		Helper.scrollTo(confirmUserAddBtn, driver);
 		confirmUserAddBtn.click();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		Helper.scrollTo(confirmUserAdd, driver);
 		String actualName = confirmUserAdd.getText();
 		String expectedName = FileUtility.testData.get("Last_Name") + ", "
@@ -130,7 +135,7 @@ public class DashboardPO {
 		// modalWindowClose.click();
 	}
 
-	public void checkExistingUser() throws InterruptedException {
+	public void checkExistingUser() {
 		String checkUser = FileUtility.testData.get("Full_Name");
 		System.out.println("Check for user: " + checkUser);
 		int count = 0;
@@ -142,7 +147,7 @@ public class DashboardPO {
 				if (checkUser.equalsIgnoreCase(availableUsers)) {
 					WebElement we = addedUsersList.get(i);
 					Helper.scrollTo(we, driver);
-					Report.captureScreenshot(driver, "checkExistingUser");
+					Report.captureScreenshot(driver, "CheckExistingUser");
 					break;
 				} else if (!(checkUser.equalsIgnoreCase(availableUsers))
 						&& count < 10) {
