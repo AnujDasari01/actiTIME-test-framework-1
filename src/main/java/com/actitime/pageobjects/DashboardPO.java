@@ -183,8 +183,6 @@ public class DashboardPO {
 
 				}
 				
-				
-				
 			}
 
 			/* If no matching items are found */
@@ -192,32 +190,6 @@ public class DashboardPO {
 				Assert.fail("No Such User Found!");
 				break;
 			}
-
-			// else if (count < 10) {
-			// for (int i = 0; i < addedUsersList.size(); i++) {
-			// availableUsers = addedUsersList.get(i).getText();
-			// if (!(checkUser.equalsIgnoreCase(availableUsers))) {
-			// //WebElement we = addedUsersList.get(0);
-			// //Helper.scrollTo(we, driver);
-			// //Report.captureScreenshot(driver, "checkExistingUser");
-			// Assert.fail("No Such User Found!");
-			// break;
-			// }
-			//
-			// // else {
-			// // Assert.fail("No Such User Found!");
-			// // break;
-			// // }
-			//
-			// }
-			// break;
-			// }
-			//
-			// // else {
-			// // Assert.fail("No Such User Found!");
-			// // break;
-			// // }
-
 		}
 	}
 
