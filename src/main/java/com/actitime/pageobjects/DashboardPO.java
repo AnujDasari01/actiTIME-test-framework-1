@@ -2,6 +2,7 @@ package com.actitime.pageobjects;
 
 import java.util.List;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -133,13 +134,13 @@ public class DashboardPO {
 		String checkUser = FileUtility.testData.get("Full_Name");
 		System.out.println("Check for user: " + checkUser);
 		int count = 0;
-
+		String availableUsers;
 		while (count < 10) {
 			Helper.scrollTo(usersTitle, driver);
 			for (int i = 0; i < addedUsersList.size(); i++) {
-				String availableUsers = addedUsersList.get(i).getText();
+				availableUsers = addedUsersList.get(i).getText();
 				if (checkUser.equalsIgnoreCase(availableUsers)) {
-					WebElement we = addedUsersList.get(0);
+					WebElement we = addedUsersList.get(i);
 					Helper.scrollTo(we, driver);
 					Report.captureScreenshot(driver, "checkExistingUser");
 					break;
@@ -150,26 +151,78 @@ public class DashboardPO {
 				}
 			}
 
+			/* If all items in one page are checked, click on next page */
 			if (count == 10) {
 				count = 0;
 				Helper.scrollTo(nextBtn, driver);
-				// Thread.sleep(3000);
 				nextBtn.click();
 				continue;
-			} else if (count < 10) {
-				break;
 			}
 
+			
+			/*Verify for an user on all pages*/
+			else if (count < 10) {
+				try {
+					if (nextBtn.isEnabled()) {
+						break;
+					}
+				} catch (NoSuchElementException e) {
+					for (int i = 0; i < addedUsersList.size(); i++) {
+						availableUsers = addedUsersList.get(i).getText();
+						if (checkUser.equalsIgnoreCase(availableUsers)) {
+							break;
+						} else if (!(checkUser.equalsIgnoreCase(availableUsers))
+								&& count < addedUsersList.size()) {
+							continue;
+						} else {
+							Assert.fail("No Such User Found!");
+							break;
+						}
+					}
+					break;
+
+				}
+				
+				
+				
+			}
+
+			/* If no matching items are found */
 			else {
 				Assert.fail("No Such User Found!");
 				break;
 			}
 
+			// else if (count < 10) {
+			// for (int i = 0; i < addedUsersList.size(); i++) {
+			// availableUsers = addedUsersList.get(i).getText();
+			// if (!(checkUser.equalsIgnoreCase(availableUsers))) {
+			// //WebElement we = addedUsersList.get(0);
+			// //Helper.scrollTo(we, driver);
+			// //Report.captureScreenshot(driver, "checkExistingUser");
+			// Assert.fail("No Such User Found!");
+			// break;
+			// }
+			//
+			// // else {
+			// // Assert.fail("No Such User Found!");
+			// // break;
+			// // }
+			//
+			// }
+			// break;
+			// }
+			//
+			// // else {
+			// // Assert.fail("No Such User Found!");
+			// // break;
+			// // }
+
 		}
 	}
-	
+
 	public void deleteUser() {
-		
+
 	}
 
 	/* Method to Log out of Actitime Application */
