@@ -45,11 +45,16 @@ public class TestScripts extends SuperReference {
 		FileUtility.retrieveData("TC06_VerifyExistingUser");
 		dashBoardPO.checkExistingUser();
 	}
+	
+	@Test
+	public void TC07_DeleteUser() {
+		FileUtility.retrieveData("TC07_DeleteUser");
+		dashBoardPO.deleteUser();
+	}
 
 	@Test
-	public void TC07_SignOutOfApplication() {
+	public void TC08_SignOutOfApplication() {
 		dashBoardPO.logout();
-
 	}
 
 }

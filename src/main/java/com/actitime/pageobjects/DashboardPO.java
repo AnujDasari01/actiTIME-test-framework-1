@@ -2,6 +2,7 @@ package com.actitime.pageobjects;
 
 import java.util.List;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -72,6 +73,9 @@ public class DashboardPO {
 
 	@FindBy(xpath = "//div[@class='name']/span[@class='userNameSpan']")
 	private List<WebElement> addedUsersList;
+
+	@FindBy(xpath = "//button[contains(text(),'Delete User')]")
+	private WebElement deleteUserBtn;
 
 	@FindBy(css = "img.closeButton")
 	private WebElement modalWindowClose;
@@ -164,8 +168,7 @@ public class DashboardPO {
 				continue;
 			}
 
-			
-			/*Verify for an user on all pages*/
+			/* Verify for an user on all pages */
 			else if (count < 10) {
 				try {
 					if (nextBtn.isEnabled()) {
@@ -187,13 +190,80 @@ public class DashboardPO {
 					break;
 
 				}
-				
+
 			}
 		}
 	}
 
 	public void deleteUser() {
+		String deleteUser = FileUtility.testData.get("Full_Name");
+		int count = 0;
+		String availableUsers;
+		while (count < 10) {
+			Helper.scrollTo(usersTitle, driver);
+			for (int i = 0; i < addedUsersList.size(); i++) {
+				availableUsers = addedUsersList.get(i).getText();
+				if (deleteUser.equalsIgnoreCase(availableUsers)) {
+					WebElement we = addedUsersList.get(i);
+					Helper.scrollTo(we, driver);
+					we.click();
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					deleteUserBtn.click();
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					Alert alert = driver.switchTo().alert();
+					alert.accept();
+					Report.captureScreenshot(driver, "DeleteExistingUser");
 
+					break;
+				} else if (!(deleteUser.equalsIgnoreCase(availableUsers))
+						&& count < 10) {
+					count++;
+					continue;
+				}
+			}
+
+			/* If all items in one page are checked, click on next page */
+			if (count == 10) {
+				count = 0;
+				Helper.scrollTo(nextBtn, driver);
+				nextBtn.click();
+				continue;
+			}
+
+			/* Verify for an user on all pages */
+			else if (count < 10) {
+				try {
+					if (nextBtn.isEnabled()) {
+						break;
+					}
+				} catch (NoSuchElementException e) {
+					for (int i = 0; i < addedUsersList.size(); i++) {
+						availableUsers = addedUsersList.get(i).getText();
+						if (deleteUser.equalsIgnoreCase(availableUsers)) {
+							break;
+						} else if (!(deleteUser
+								.equalsIgnoreCase(availableUsers))
+								&& count < addedUsersList.size()) {
+							continue;
+						} else {
+							Assert.fail("No Such User Found!");
+							break;
+						}
+					}
+					break;
+
+				}
+
+			}
+		}
 	}
 
 	/* Method to Log out of Actitime Application */
