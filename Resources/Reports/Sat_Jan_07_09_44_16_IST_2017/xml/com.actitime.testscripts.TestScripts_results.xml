@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="actiTIME - Sanity"
+           tests="6"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="45.900">
+  <properties />
+  
+  
+            <testcase name="TC03_NavigateToReports" time="8.459" classname="com.actitime.testscripts.TestScripts" />
+                <testcase name="TC02_NavigateToTasks" time="8.068" classname="com.actitime.testscripts.TestScripts" />
+                <testcase name="TC01_SignIntoApplication" time="8.981" classname="com.actitime.testscripts.TestScripts" />
+                <testcase name="TC04_NavigateToUsers" time="10.009" classname="com.actitime.testscripts.TestScripts" />
+                <testcase name="TC06_VerifyExistingUser" time="2.623" classname="com.actitime.testscripts.TestScripts" />
+                <testcase name="TC07_SignOutOfApplication" time="7.760" classname="com.actitime.testscripts.TestScripts" />
+      
+</testsuite>
