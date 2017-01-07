@@ -1,18 +1,23 @@
 package com.actitime.genericlibrary;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Properties;
+
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+/*
+ * Updated on 1/7/2017
+ */
+
+/*
+ * Class to read data from external test data sheets
+ */
 
 public class FileUtility {
 	public static HashMap<String, String> testData = new HashMap<String, String>();
@@ -147,29 +152,6 @@ public class FileUtility {
 			System.out.println("Exception with respect to Input/Output file");
 		}
 		return sheetNames;
-	}
-
-	public static String getPropertyValue(
-			String filepath/* FileInputStream env */, String key) {
-		String value = null;
-		ClassLoader classLoader = Thread.currentThread()
-				.getContextClassLoader();
-		InputStream input = classLoader.getResourceAsStream(filepath);
-
-		try {
-			Properties prop = new Properties();
-			prop.load(input);
-			value = prop.getProperty(key);
-		}
-
-		catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-		}
-		return value;
 	}
 
 }

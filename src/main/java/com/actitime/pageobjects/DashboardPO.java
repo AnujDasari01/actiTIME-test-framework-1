@@ -184,12 +184,6 @@ public class DashboardPO {
 				}
 				
 			}
-
-			/* If no matching items are found */
-			else {
-				Assert.fail("No Such User Found!");
-				break;
-			}
 		}
 	}
 

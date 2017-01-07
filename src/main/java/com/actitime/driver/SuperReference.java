@@ -25,10 +25,8 @@ import org.testng.annotations.BeforeSuite;
 import com.actitime.pageobjects.DashboardPO;
 import com.actitime.pageobjects.LoginPO;
 
-//import com.actitime.genericlibrary.Constants;
-
 /*
- * Updated on 23/12/2016
+ * Updated on 1/7/2017
  */
 
 /*
@@ -61,6 +59,8 @@ public class SuperReference {
 							new File(
 									"C:/Program Files (x86)/Appium/node_modules/appium/bin/appium.js")));
 
+	
+	/*Read properties from properties file*/
 	public void getProperties() throws IOException {
 
 		EnvPropFilePath = "Env.properties";
@@ -103,18 +103,7 @@ public class SuperReference {
 			} else
 				continue;
 		}
-
-		// System.out.println(browserName);
-		// System.out.println(type);
-		// System.out.println(url);
-		// System.out.println(platformName);
-		// System.out.println(platformVersion);
-		// System.out.println(automationName);
-		// System.out.println(deviceName);
-		// System.out.println(noReset);
-		// System.out.println(fullReset);
-		// System.out.println(app);
-		// System.out.println(device);
+		
 	}
 
 	/* Before Suite */

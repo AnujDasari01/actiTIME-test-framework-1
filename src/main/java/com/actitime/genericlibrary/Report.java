@@ -20,7 +20,13 @@ import org.testng.Reporter;
 import org.testng.TestListenerAdapter;
 
 import com.actitime.driver.Driver;
+/*
+* Updated on 1/7/2017
+*/
 
+/*
+* Report class to generate reports with screenshot
+*/
 public class Report extends TestListenerAdapter {
 	private static String dirPath = null;
 

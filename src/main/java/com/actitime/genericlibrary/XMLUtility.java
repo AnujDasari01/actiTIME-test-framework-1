@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -12,7 +11,6 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
 import org.testng.TestNG;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.DOMImplementation;
@@ -20,6 +18,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.DocumentType;
 import org.w3c.dom.Element;
 
+/*
+* Updated on 1/7/2017
+*/
+
+/*
+* XMLUtility class which creates and runs testng xml dynamically
+*/
 public class XMLUtility {
 	/**
 	 * This method creates the XML suite file dynamically
