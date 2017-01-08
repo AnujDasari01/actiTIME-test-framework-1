@@ -52,7 +52,8 @@ public class Report extends TestListenerAdapter {
 		String strDateStamp2 = strStartDate2.replace(" ", "_");
 
 		try {
-			Thread.sleep(7000);
+			//Thread.sleep(7000);
+			Helper.normalWait(driver, 7);
 			TakesScreenshot ts = (TakesScreenshot) driver;
 			File source = ts.getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(source, new File(dirPath + "/ " + screenshotName

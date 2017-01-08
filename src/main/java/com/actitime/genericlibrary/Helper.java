@@ -18,6 +18,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public class Helper {
 
+	/*Method to make the driver sleep for specific seconds*/
+	public static void normalWait(WebDriver driver, long seconds) {
+		try {
+			Thread.sleep(seconds*1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
 	/* Method to make the driver wait implicitly */
 	public static void implicitWait(WebDriver driver) {
 		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);

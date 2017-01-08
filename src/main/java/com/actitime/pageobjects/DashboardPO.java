@@ -124,11 +124,7 @@ public class DashboardPO {
 		retypePasswordTextField.sendKeys(FileUtility.testData.get("Password"));
 		Helper.scrollTo(confirmUserAddBtn, driver);
 		confirmUserAddBtn.click();
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		Helper.normalWait(driver, 1);
 		Helper.scrollTo(confirmUserAdd, driver);
 		String actualName = confirmUserAdd.getText();
 		String expectedName = FileUtility.testData.get("Last_Name") + ", "
@@ -207,17 +203,9 @@ public class DashboardPO {
 					WebElement we = addedUsersList.get(i);
 					Helper.scrollTo(we, driver);
 					we.click();
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+					Helper.normalWait(driver, 1);
 					deleteUserBtn.click();
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+					Helper.normalWait(driver, 1);
 					Alert alert = driver.switchTo().alert();
 					alert.accept();
 					Report.captureScreenshot(driver, "DeleteExistingUser");
