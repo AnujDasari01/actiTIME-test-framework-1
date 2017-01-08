@@ -37,19 +37,19 @@ public class TestScripts extends SuperReference {
 	@Test
 	public void TC05_CreateAUser() {
 		FileUtility.retrieveData("TC05_CreateAUser");
-		dashBoardPO.createUser();
+		usersPO.createUser();
 	}
 
 	@Test
 	public void TC06_VerifyExistingUser() {
 		FileUtility.retrieveData("TC06_VerifyExistingUser");
-		dashBoardPO.checkExistingUser();
+		usersPO.checkExistingUser();
 	}
 	
 	@Test
 	public void TC07_DeleteUser() {
 		FileUtility.retrieveData("TC07_DeleteUser");
-		dashBoardPO.deleteUser();
+		usersPO.deleteUser();
 	}
 
 	@Test

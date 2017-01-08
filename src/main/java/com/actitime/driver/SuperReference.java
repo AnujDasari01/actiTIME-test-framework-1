@@ -24,6 +24,7 @@ import org.testng.annotations.BeforeSuite;
 
 import com.actitime.pageobjects.DashboardPO;
 import com.actitime.pageobjects.LoginPO;
+import com.actitime.pageobjects.UsersPO;
 
 /*
  * Updated on 1/7/2017
@@ -35,8 +36,6 @@ import com.actitime.pageobjects.LoginPO;
 public class SuperReference {
 
 	private static WebDriver driver;
-	public static LoginPO loginPO;
-	public static DashboardPO dashBoardPO;
 	public static String EnvPropFilePath;
 	public static String app;
 	public static String browserName;
@@ -49,6 +48,10 @@ public class SuperReference {
 	public static String url;
 	public static String type;
 	public static String device;
+	
+	public static LoginPO loginPO;
+	public static DashboardPO dashBoardPO;
+	public static UsersPO usersPO;
 
 	/* Starting Appium from Console */
 	AppiumDriverLocalService service = AppiumDriverLocalService
@@ -146,6 +149,7 @@ public class SuperReference {
 				capabilities);
 		loginPO = new LoginPO(driver);
 		dashBoardPO = new DashboardPO(driver);
+		usersPO = new UsersPO(driver);
 	}
 
 	/* For Device Only - STOP APPIUM SERVER */
@@ -191,6 +195,7 @@ public class SuperReference {
 		}
 		loginPO = new LoginPO(driver);
 		dashBoardPO = new DashboardPO(driver);
+		usersPO = new UsersPO(driver);
 
 	}
 
