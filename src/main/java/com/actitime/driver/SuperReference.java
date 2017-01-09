@@ -22,9 +22,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
-import com.actitime.pageobjects.DashboardPO;
-import com.actitime.pageobjects.LoginPO;
-import com.actitime.pageobjects.UsersPO;
+import com.actitime.webpageobjects.DashboardPO;
+import com.actitime.webpageobjects.LoginPO;
+import com.actitime.webpageobjects.UsersPO;
 
 /*
  * Updated on 1/7/2017
