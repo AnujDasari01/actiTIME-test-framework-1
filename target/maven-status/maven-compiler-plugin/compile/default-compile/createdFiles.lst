@@ -2,7 +2,7 @@ com\actitime\driver\SuperReference.class
 com\actitime\pageobjects\UsersPO.class
 com\actitime\genericlibrary\Helper.class
 com\actitime\pageobjects\LoginPO.class
-com\actitime\testscripts\TestScripts.class
+com\actitime\testscripts\TestScriptsWeb.class
 com\actitime\genericlibrary\Report.class
 com\actitime\genericlibrary\XMLUtility.class
 com\actitime\pageobjects\DashboardPO.class

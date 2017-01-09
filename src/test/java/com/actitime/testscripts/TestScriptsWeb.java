@@ -12,7 +12,7 @@ import com.actitime.genericlibrary.FileUtility;
 /*
  * ActiTime Application Test Scripts
  */
-public class TestScripts extends SuperReference {
+public class TestScriptsWeb extends SuperReference {
 	@Test
 	public void TC01_SignIntoApplication() {
 		FileUtility.retrieveData("TC01_SignIntoApplication");
