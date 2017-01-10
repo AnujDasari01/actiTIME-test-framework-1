@@ -5,14 +5,9 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Iterator;
-import java.util.Properties;
-import java.util.Set;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -36,19 +31,6 @@ import com.actitime.webpageobjects.UsersPO;
 public class SuperReference {
 
 	private static WebDriver driver;
-	public static String EnvPropFilePath;
-	public static String app;
-	public static String browserName;
-	public static String automationName;
-	public static String deviceName;
-	public static String platformName;
-	public static String platformVersion;
-	public static String noReset;
-	public static String fullReset;
-	public static String url;
-	public static String type;
-	public static String device;
-	
 	public static LoginPO loginPO;
 	public static DashboardPO dashBoardPO;
 	public static UsersPO usersPO;
@@ -62,63 +44,18 @@ public class SuperReference {
 							new File(
 									"C:/Program Files (x86)/Appium/node_modules/appium/bin/appium.js")));
 
-	
-	/*Read properties from properties file*/
-	public void getProperties() throws IOException {
-
-		EnvPropFilePath = "Env.properties";
-
-		Properties prop = new Properties();
-
-		InputStream input = new FileInputStream("Env.properties");
-
-		prop.load(input);
-
-		Set<Object> set = prop.keySet();
-		Iterator<Object> it = set.iterator();
-
-		for (int i = 0; i < set.size(); i++) {
-			String key = (String) it.next();
-			// String value = prop.getProperty(key);
-
-			if (key.equalsIgnoreCase("browserName")) {
-				browserName = prop.getProperty(key);
-			} else if (key.equalsIgnoreCase("platformType")) {
-				type = prop.getProperty(key);
-			} else if (key.equalsIgnoreCase("url")) {
-				url = prop.getProperty(key);
-			} else if (key.equalsIgnoreCase("platformName")) {
-				platformName = prop.getProperty(key);
-			} else if (key.equalsIgnoreCase("platformVersion")) {
-				platformVersion = prop.getProperty(key);
-			} else if (key.equalsIgnoreCase("automationName")) {
-				automationName = prop.getProperty(key);
-			} else if (key.equalsIgnoreCase("deviceName")) {
-				deviceName = prop.getProperty(key);
-			} else if (key.equalsIgnoreCase("noReset")) {
-				noReset = prop.getProperty(key);
-			} else if (key.equalsIgnoreCase("fullReset")) {
-				fullReset = prop.getProperty(key);
-			} else if (key.equalsIgnoreCase("app")) {
-				app = prop.getProperty(key);
-			} else if (key.equalsIgnoreCase("device")) {
-				device = prop.getProperty("device");
-			} else
-				continue;
-		}
-		
-	}
-
 	/* Before Suite */
 	@BeforeSuite
 	public void beforeSuite() throws Exception {
 		// System.out.println("In BeforeSuite ...........");
-		getProperties();
+		Driver.getProperties();
+		
+		System.out.println(Driver.url);
 
-		if (SuperReference.type.equalsIgnoreCase("Device")) {
+		if (Driver.type.equalsIgnoreCase("Device")) {
 			appiumStart();
 			setup();
-		} else if (SuperReference.type.equalsIgnoreCase("Desktop")) {
+		} else if (Driver.type.equalsIgnoreCase("Desktop")) {
 			invokeBrowser();
 		}
 	}
@@ -138,13 +75,13 @@ public class SuperReference {
 	public void setup() throws MalformedURLException, InterruptedException {
 		DesiredCapabilities capabilities = DesiredCapabilities.android();
 		capabilities.setCapability("automationName",
-				SuperReference.automationName);
-		capabilities.setCapability("deviceName", SuperReference.deviceName);
+				Driver.automationName);
+		capabilities.setCapability("deviceName", Driver.deviceName);
 		capabilities.setCapability("platformVersion",
-				SuperReference.platformVersion);
-		capabilities.setCapability("platformName", SuperReference.platformName);
-		capabilities.setCapability("app", SuperReference.app);
-		capabilities.setCapability("device", SuperReference.device);
+				Driver.platformVersion);
+		capabilities.setCapability("platformName", Driver.platformName);
+		capabilities.setCapability("app", Driver.app);
+		capabilities.setCapability("device", Driver.device);
 		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),
 				capabilities);
 		loginPO = new LoginPO(driver);
@@ -160,7 +97,7 @@ public class SuperReference {
 
 	/* Method to invoke a browser */
 	public void invokeBrowser() {
-		if (SuperReference.browserName.equalsIgnoreCase("firefox")) {
+		if (Driver.browserName.equalsIgnoreCase("firefox")) {
 			System.setProperty("webdriver.gecko.driver",
 					"./src/main/resources/GeckoDriver/geckodriver.exe");
 
@@ -168,21 +105,21 @@ public class SuperReference {
 			driver.manage().window().maximize();
 		}
 
-		else if (SuperReference.browserName.equalsIgnoreCase("chrome")) {
+		else if (Driver.browserName.equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver",
 					"./src/main/resources/ChromeDriver/chromedriver.exe");
 			driver = new ChromeDriver();
 			driver.manage().window().maximize();
 		}
 
-		else if (SuperReference.browserName.equalsIgnoreCase("ie")) {
+		else if (Driver.browserName.equalsIgnoreCase("ie")) {
 			System.setProperty("webdriver.ie.driver",
 					"./src/main/resources/IEDriver/IEDriverServer.exe");
 			DesiredCapabilities capabilities = DesiredCapabilities
 					.internetExplorer();
 			capabilities.setCapability("ensureCleanSession", true);
 			capabilities.setCapability("browserName",
-					SuperReference.browserName.equalsIgnoreCase("ie"));
+					Driver.browserName.equalsIgnoreCase("ie"));
 			driver = new InternetExplorerDriver();
 			driver.manage().window().maximize();
 		}
@@ -202,9 +139,9 @@ public class SuperReference {
 	/* After Suite */
 	@AfterSuite
 	public void afterSuite() throws IOException, InterruptedException {
-		if (SuperReference.type.equalsIgnoreCase("Device")) {
+		if (Driver.type.equalsIgnoreCase("Device")) {
 			appiumStop();
-		} else if (SuperReference.type.equalsIgnoreCase("Desktop")) {
+		} else if (Driver.type.equalsIgnoreCase("Desktop")) {
 			closeBrowser();
 		}
 	}

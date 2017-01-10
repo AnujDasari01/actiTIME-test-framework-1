@@ -95,7 +95,7 @@ public class UsersPO {
 	/* Method to check an existing user */
 	public void checkExistingUser() {
 		String checkUser = FileUtility.testData.get("Full_Name");
-		System.out.println("Check for user: " + checkUser);
+		//System.out.println("Check for user: " + checkUser);
 		int count = 0;
 		String availableUsers;
 		while (count < 10) {

@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -11,12 +12,15 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import org.testng.TestNG;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.DocumentType;
 import org.w3c.dom.Element;
+
+import com.actitime.driver.Driver;
 
 /*
 * Updated on 1/7/2017
@@ -107,21 +111,21 @@ public class XMLUtility {
 				rootElementtest.setAttribute("name",
 						"actiTIME - Sanity");
 				
-//				if (SuperReference.type.equalsIgnoreCase("Desktop")) {
-//					rootElementsuite.setAttribute("name", "actiTIME Browser");
-//					rootElementsuite.setAttribute("preserve-order", "true");
-//					rootElementtest.setAttribute("name",
-//							"actiTIME - Desktop Sanity");
-//
-//				}
-//
-//				else if (SuperReference.type.equalsIgnoreCase("Device")) {
-//					rootElementsuite.setAttribute("name",
-//							"actiTIME Android Device");
-//					rootElementsuite.setAttribute("preserve-order", "true");
-//					rootElementtest.setAttribute("name",
-//							"actiTIME - Device Sanity");
-//				}
+				if (Driver.type.equalsIgnoreCase("Desktop")) {
+					rootElementsuite.setAttribute("name", "actiTIME Browser");
+					rootElementsuite.setAttribute("preserve-order", "true");
+					rootElementtest.setAttribute("name",
+							"actiTIME - Desktop Sanity");
+
+				}
+
+				else if (Driver.type.equalsIgnoreCase("Device")) {
+					rootElementsuite.setAttribute("name",
+							"actiTIME Android Device");
+					rootElementsuite.setAttribute("preserve-order", "true");
+					rootElementtest.setAttribute("name",
+							"actiTIME - Device Sanity");
+				}
 
 				rootElementClass.appendChild(childelementClass);
 				childelementClass.appendChild(rootElementgroups);

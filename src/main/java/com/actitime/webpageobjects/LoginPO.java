@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-import com.actitime.driver.SuperReference;
+import com.actitime.driver.Driver;
 //import com.actitime.genericlibrary.Constants;
 import com.actitime.genericlibrary.FileUtility;
 import com.actitime.genericlibrary.Helper;
@@ -44,7 +44,7 @@ public class LoginPO {
 	/* Method to Login to actiTIME Application */
 	public void login() {
 		try {
-			driver.get(SuperReference.url);
+			driver.get(Driver.url);
 			Helper.implicitWait(driver);
 			userName.sendKeys(FileUtility.testData.get("UserID"));
 			passWord.sendKeys(FileUtility.testData.get("Pwd"));
