@@ -15,6 +15,8 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
  * Updated on 1/7/2017
  */
 
+import com.actitime.driver.Driver;
+
 /*
  * Class to read data from external test data sheets
  */
@@ -25,12 +27,16 @@ public class FileUtility {
 
 	public static void retrieveData(String TestCaseDataId) {
 		try {
-			//System.out.println("Retrieving data from test data sheet");
 			FileInputStream fis = new FileInputStream(
 					"./src/test/resources/ExcelLib/TestData.xls");
 			Workbook wb = WorkbookFactory.create(fis);
 			Sheet sh;
-			sh = wb.getSheet("TestData");
+			String env = Driver.type;
+			if(env.equalsIgnoreCase("Desktop")) {
+				sh = wb.getSheet("Desktop");
+			}else {
+				sh = wb.getSheet("Device");
+			}
 			Row rheader = sh.getRow(0);
 			Row rValues = null;
 			int i = 0;
