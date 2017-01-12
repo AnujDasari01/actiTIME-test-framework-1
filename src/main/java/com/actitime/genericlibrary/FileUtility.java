@@ -30,11 +30,22 @@ public class FileUtility {
 			FileInputStream fis = new FileInputStream(
 					"./src/test/resources/ExcelLib/TestData.xls");
 			Workbook wb = WorkbookFactory.create(fis);
+			
+//			FileInputStream fis = new FileInputStream(
+//					"TestData.xls");
+//			Workbook wb = WorkbookFactory.create(fis);
+
+//			String filepath = "TestData.xls";
+//			ClassLoader classLoader = Thread.currentThread()
+//					.getContextClassLoader();
+//			InputStream input = classLoader.getResourceAsStream(filepath);
+//			Workbook wb = WorkbookFactory.create(input);
+
 			Sheet sh;
 			String env = Driver.type;
-			if(env.equalsIgnoreCase("Desktop")) {
+			if (env.equalsIgnoreCase("Desktop")) {
 				sh = wb.getSheet("Desktop");
-			}else {
+			} else {
 				sh = wb.getSheet("Device");
 			}
 			Row rheader = sh.getRow(0);
@@ -72,9 +83,19 @@ public class FileUtility {
 	public static ArrayList<String> getFlaggedMethods(String sheetname) {
 		ArrayList<String> testCaseToExecute = new ArrayList<>();
 		try {
-			FileInputStream fis = new FileInputStream(
-					"./src/test/resources/ExcelLib/XMLFlag.xls");
-			Workbook wb = WorkbookFactory.create(fis);
+			 FileInputStream fis = new FileInputStream(
+			 "./src/test/resources/ExcelLib/XMLFlag.xls");
+			 Workbook wb = WorkbookFactory.create(fis);
+			
+//			 FileInputStream fis = new FileInputStream(
+//					 "XMLFlag.xls");
+//					 Workbook wb = WorkbookFactory.create(fis);
+
+//			ClassLoader classLoader = Thread.currentThread()
+//					.getContextClassLoader();
+//			InputStream input = classLoader.getResourceAsStream("XMLFlag.xls");
+//			Workbook wb = WorkbookFactory.create(input);
+
 			Sheet sh = wb.getSheet(sheetname);
 			int i = 0;
 			int RowCount = sh.getLastRowNum() + 1;
@@ -103,9 +124,19 @@ public class FileUtility {
 		ArrayList<String> testCaseNotToExecute = new ArrayList<>();
 		try {
 
-			FileInputStream fis = new FileInputStream(
-					"./src/test/resources/ExcelLib/XMLFlag.xls");
-			Workbook wb = WorkbookFactory.create(fis);
+			 FileInputStream fis = new FileInputStream(
+			 "./src/test/resources/ExcelLib/XMLFlag.xls");
+			 Workbook wb = WorkbookFactory.create(fis);
+			
+//			 FileInputStream fis = new FileInputStream(
+//					 "XMLFlag.xls");
+//					 Workbook wb = WorkbookFactory.create(fis);
+
+//			ClassLoader classLoader = Thread.currentThread()
+//					.getContextClassLoader();
+//			InputStream input = classLoader.getResourceAsStream("XMLFlag.xls");
+//			Workbook wb = WorkbookFactory.create(input);
+
 			Sheet sh = wb.getSheet(sheetname);
 			int i = 0;
 			int RowCount = sh.getLastRowNum() + 1;
@@ -136,16 +167,15 @@ public class FileUtility {
 			FileInputStream fis = new FileInputStream(
 					"./src/test/resources/ExcelLib/XMLFlag.xls");
 			Workbook wb = WorkbookFactory.create(fis);
+			
+//			FileInputStream fis = new FileInputStream(
+//					 "XMLFlag.xls");
+//					 Workbook wb = WorkbookFactory.create(fis);
 
-			// ClassLoader classLoader = Thread.currentThread()
-			// .getContextClassLoader();
-			// InputStream input =
-			// classLoader.getResourceAsStream("XMLFlag.xls");
-			// Workbook wb = WorkbookFactory.create(input);
-
-			// Workbook wb = WorkbookFactory.create(Driver.XMLFlagSheet);
-			// System.out.println("Get Sheet name methods Method: "+Driver.XMLFlagSheet
-			// );
+//			ClassLoader classLoader = Thread.currentThread()
+//					.getContextClassLoader();
+//			InputStream input = classLoader.getResourceAsStream("XMLFlag.xls");
+//			Workbook wb = WorkbookFactory.create(input);
 
 			for (int i = 0; i < wb.getNumberOfSheets(); i++) {
 				sheetNames.add(wb.getSheetName(i));

@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
 
 /*
  * Updated on 1/7/2017
@@ -52,6 +53,32 @@ public class Helper {
 		JavascriptExecutor je = (JavascriptExecutor) driver;
 		je.executeScript("arguments[0].scrollIntoView(true);", wb);
 		return wb.isDisplayed();
+	}
+	
+	public static void checkPartialText(WebElement el, String st) {
+		try {
+			st = st.trim().toLowerCase();
+			if (el.getText().contains(st)) {
+				Reporter.log(st + " is present in" + el.getText() + "<br>");
+			} else {
+				Reporter.log(st + " is not present" + "<br>");
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
+	public static void checkText(WebElement el, String st) {
+		try {
+			st = st.trim();
+			if (el.getText().equalsIgnoreCase(st)) {
+				Reporter.log(st + " is present" + "<br>");
+			} else {
+				Reporter.log(st + " is not present" + "<br>");
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 
 }
