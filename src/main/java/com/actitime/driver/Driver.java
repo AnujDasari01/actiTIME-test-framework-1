@@ -41,8 +41,6 @@ public class Driver {
 
 		getProperties();
 
-		System.out.println(url);
-
 		XMLUtility.createXml();
 
 		XMLUtility.autoRunXml();

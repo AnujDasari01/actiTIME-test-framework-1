@@ -36,8 +36,6 @@ public class XMLUtility {
 	public static void createXml() throws Exception {
 
 		try {
-			// System.out.println("Entered createXML method");
-			// Initialization of drivers
 			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory
 					.newInstance();
 			DocumentBuilder documentBuilder = documentBuilderFactory
@@ -46,6 +44,7 @@ public class XMLUtility {
 
 			// Get the number of parameter to be created in XML
 			int totalnoofsheets = FileUtility.getSheetNameMethods().size();
+			//System.out.println("Number of sheets in XMLFlag.xls is: " +totalnoofsheets);
 
 			// Type the suite tag element in the XML file
 			Element rootElementsuite = document.createElement("suite");
@@ -81,6 +80,9 @@ public class XMLUtility {
 
 			ArrayList<String> flagElementY = FileUtility.getSheetNameMethods();
 			ArrayList<String> flagElementN = FileUtility.getSheetNameMethods();
+			
+			//System.out.println("FlagElementY elements: " +flagElementY );
+			//System.out.println("FlagElementN elements: " +flagElementN );
 
 			for (int elementcounter = 0; elementcounter < totalnoofsheets; elementcounter++) {
 
@@ -89,11 +91,13 @@ public class XMLUtility {
 						.getFlaggedMethods(flagElementY.get(elementcounter))
 						.size();
 
+				//System.out.println("totalnoofelementsflaggedtorun: "+totalnoofelementsflaggedtorun);
 				// Get the number of parameter to be created in XML
 				int totalnoofelementsflaggednottorun = FileUtility
 						.getNotFlaggedMethods(flagElementN.get(elementcounter))
 						.size();
 
+				//System.out.println("totalnoofelementsflaggednottorun: " + totalnoofelementsflaggednottorun);
 				// Type the parameter set of lines in the XML file
 				Element childelementClass = document.createElement("class");
 
