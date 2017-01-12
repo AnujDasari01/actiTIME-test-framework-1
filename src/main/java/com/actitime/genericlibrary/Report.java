@@ -64,7 +64,7 @@ public class Report extends TestListenerAdapter {
 			System.setProperty(ESCAPE_PROPERTY, "false");
 			URL path = new File(dirPath + "/ " + screenshotName + "_"
 					+ strDateStamp2 + ".png").toURI().toURL();
-			String test = "<a href=" + path +"> : click to open screenshot of "
+			String test = "<a href=" + path +"> click to open screenshot of "
 					+ screenshotName + "</a>";
 			Reporter.log(screenshotName + test + "<br>");
 		}

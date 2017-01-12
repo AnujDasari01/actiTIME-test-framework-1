@@ -55,6 +55,10 @@ public class SuperReference {
 		} else if (Driver.type.equalsIgnoreCase("Desktop")) {
 			invokeBrowser();
 		}
+		else if (Driver.type.equalsIgnoreCase("App")) {
+			appiumStart();
+			setupApp();
+		}
 	}
 
 	/* For Device Only - START APPIUM SERVER */
@@ -79,6 +83,29 @@ public class SuperReference {
 		capabilities.setCapability("platformName", Driver.platformName);
 		capabilities.setCapability("app", Driver.app);
 		capabilities.setCapability("device", Driver.device);
+		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),
+				capabilities);
+		loginPO = new LoginPO(driver);
+		dashBoardPO = new DashboardPO(driver);
+		usersPO = new UsersPO(driver);
+	}
+	
+	/* Method to run test scripts on app in device  */
+	@SuppressWarnings("rawtypes")
+	public void setupApp() throws MalformedURLException, InterruptedException {
+		File app = new File("./src/test/resources/Apk/whatsapp.apk");
+		DesiredCapabilities capabilities = DesiredCapabilities.android();
+		capabilities.setCapability("automationName",
+				Driver.automationName);
+		capabilities.setCapability("deviceName", Driver.deviceName);
+		capabilities.setCapability("platformVersion",
+				Driver.platformVersion);
+		capabilities.setCapability("platformName", Driver.platformName);
+		capabilities.setCapability("device", Driver.device);
+		capabilities.setCapability("app", app.getAbsolutePath());
+		capabilities.setCapability("appActivity", "com.whatsapp.Main");
+		capabilities.setCapability("noReset", false);
+		capabilities.setCapability("fullReset", false);
 		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),
 				capabilities);
 		loginPO = new LoginPO(driver);

@@ -19,10 +19,10 @@ import org.testng.Reporter;
  */
 public class Helper {
 
-	/*Method to make the driver sleep for specific seconds*/
+	/* Method to make the driver sleep for specific seconds */
 	public static void normalWait(WebDriver driver, long seconds) {
 		try {
-			Thread.sleep(seconds*1000);
+			Thread.sleep(seconds * 1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -50,11 +50,19 @@ public class Helper {
 	 * Method to make the driver scroll down to the WebElement ele
 	 */
 	public static boolean scrollTo(WebElement wb, WebDriver driver) {
-		JavascriptExecutor je = (JavascriptExecutor) driver;
-		je.executeScript("arguments[0].scrollIntoView(true);", wb);
+		try {
+			JavascriptExecutor je = (JavascriptExecutor) driver;
+			je.executeScript("arguments[0].scrollIntoView(true);", wb);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return wb.isDisplayed();
 	}
-	
+
+	/*
+	 * Method to check for Partial text
+	 */
 	public static void checkPartialText(WebElement el, String st) {
 		try {
 			st = st.trim().toLowerCase();
@@ -68,6 +76,9 @@ public class Helper {
 		}
 	}
 
+	/*
+	 * Method to check for a text
+	 */
 	public static void checkText(WebElement el, String st) {
 		try {
 			st = st.trim();
