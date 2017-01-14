@@ -163,7 +163,7 @@ public class FileUtility {
 
 	public static ArrayList<String> getSheetNameMethods() {
 		try {
-
+			sheetNames.clear();
 			FileInputStream fis = new FileInputStream(
 					"./src/test/resources/ExcelLib/XMLFlag.xls");
 			Workbook wb = WorkbookFactory.create(fis);

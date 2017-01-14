@@ -137,7 +137,7 @@ public class UsersPO {
 								&& count < addedUsersList.size()) {
 							continue;
 						} else {
-							Assert.fail("No Such User Found!");
+							Assert.fail(checkUser + " : No Such User Found!");
 							break;
 						}
 					}
@@ -165,7 +165,7 @@ public class UsersPO {
 					Helper.normalWait(driver, 1);
 					deleteUserBtn.click();
 					Helper.normalWait(driver, 1);
-					Report.captureScreenshot(driver, "DeleteExistingUserConfirmation");
+					//Report.captureScreenshot(driver, "DeleteExistingUserConfirmation");
 					Alert alert = driver.switchTo().alert();
 					alert.accept();
 					Report.captureScreenshot(driver, "DeleteExistingUser");

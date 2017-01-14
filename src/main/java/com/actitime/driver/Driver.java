@@ -35,25 +35,23 @@ public class Driver {
 		return relativePath;
 	}
 
+	/*Main method*/
 	public static void main(String args[]) throws Exception {
 
 		relativePath = System.getProperty("user.dir");
 
 		getProperties();
-
-		XMLUtility.createXml();
-
+		
+		callValidXmlSheet();
+		
 		XMLUtility.autoRunXml();
 
 	}
 
-	/* Read properties from properties file */
+	/* This method reads properties from properties file */
 	public static void getProperties() throws IOException {
 
 		EnvPropFilePath = "Env.properties";
-
-		// String[] args = null;
-		// EnvPropFilePath = new FileInputStream(args[0]);
 
 		Properties prop = new Properties();
 
@@ -62,11 +60,11 @@ public class Driver {
 		prop.load(input);
 
 		Set<Object> set = prop.keySet();
+		
 		Iterator<Object> it = set.iterator();
 
 		for (int i = 0; i < set.size(); i++) {
 			String key = (String) it.next();
-			// String value = prop.getProperty(key);
 
 			if (key.equalsIgnoreCase("browserName")) {
 				browserName = prop.getProperty(key);
@@ -94,5 +92,23 @@ public class Driver {
 				continue;
 		}
 
+	}
+	
+	/**
+	 * This method selects the sheet based on platform type
+	 **/
+	public static void callValidXmlSheet() throws Exception {
+		if(type.equalsIgnoreCase("Desktop")) {
+			XMLUtility.createXml("TestScriptsWeb");
+		}
+		
+		
+		if(type.equalsIgnoreCase("Device")) {
+			XMLUtility.createXml("TestScriptsDevice");
+		}
+		
+		if(type.equalsIgnoreCase("App")) {
+			XMLUtility.createXml("TestScriptsApp");
+		}
 	}
 }
