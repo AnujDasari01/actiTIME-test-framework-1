@@ -47,7 +47,8 @@ public class SuperReference {
 	/* Before Suite */
 	@BeforeSuite
 	public void beforeSuite() throws Exception {
-		// System.out.println("In BeforeSuite ...........");
+		
+		System.out.println("In BeforeSuite ...........");
 		Driver.getProperties();
 		if (Driver.type.equalsIgnoreCase("Device")) {
 			appiumStart();

@@ -18,7 +18,7 @@ import com.actitime.genericlibrary.XMLUtility;
  */
 public class Driver {
 	private static String relativePath;
-	public static String EnvPropFilePath;
+	public static String envPropFilePath;
 	public static String app;
 	public static String browserName;
 	public static String automationName;
@@ -30,7 +30,8 @@ public class Driver {
 	public static String url;
 	public static String type;
 	public static String device;
-
+	
+	
 	public static String getRelativePath() {
 		return relativePath;
 	}
@@ -51,12 +52,17 @@ public class Driver {
 	/* This method reads properties from properties file */
 	public static void getProperties() throws IOException {
 
-		EnvPropFilePath = "Env.properties";
+		envPropFilePath = "Env.properties";
+		
+		//String[] args = null;
+		//envPropFilePath = new FileInputStream(args [0]);
 
 		Properties prop = new Properties();
 
-		InputStream input = new FileInputStream(EnvPropFilePath);
+		InputStream input = new FileInputStream(envPropFilePath);
 
+		//prop.load(envPropFilePath);
+		
 		prop.load(input);
 
 		Set<Object> set = prop.keySet();

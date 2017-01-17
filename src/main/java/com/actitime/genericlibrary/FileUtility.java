@@ -28,17 +28,17 @@ public class FileUtility {
 	public static void retrieveData(String TestCaseDataId) {
 		try {
 			FileInputStream fis = new FileInputStream(
-					"./src/test/resources/ExcelLib/TestData.xls");
+					/*"./src/test/resources/ExcelLib/TestData.xls"*/"./src/main/resources/TestData.xls");
 			Workbook wb = WorkbookFactory.create(fis);
 			
 //			FileInputStream fis = new FileInputStream(
 //					"TestData.xls");
 //			Workbook wb = WorkbookFactory.create(fis);
 
-//			String filepath = "TestData.xls";
+			//String filepath = "TestData.xls";
 //			ClassLoader classLoader = Thread.currentThread()
 //					.getContextClassLoader();
-//			InputStream input = classLoader.getResourceAsStream(filepath);
+//			InputStream input = classLoader.getResourceAsStream("TestData.xls");
 //			Workbook wb = WorkbookFactory.create(input);
 
 			Sheet sh;
@@ -84,7 +84,7 @@ public class FileUtility {
 		ArrayList<String> testCaseToExecute = new ArrayList<>();
 		try {
 			 FileInputStream fis = new FileInputStream(
-			 "./src/test/resources/ExcelLib/XMLFlag.xls");
+			 /*"./src/test/resources/ExcelLib/XMLFlag.xls"*/"./src/main/resources/XMLFlag.xls");
 			 Workbook wb = WorkbookFactory.create(fis);
 			
 //			 FileInputStream fis = new FileInputStream(
@@ -125,7 +125,7 @@ public class FileUtility {
 		try {
 
 			 FileInputStream fis = new FileInputStream(
-			 "./src/test/resources/ExcelLib/XMLFlag.xls");
+			 /*"./src/test/resources/ExcelLib/XMLFlag.xls"*/"./src/main/resources/XMLFlag.xls");
 			 Workbook wb = WorkbookFactory.create(fis);
 			
 //			 FileInputStream fis = new FileInputStream(
@@ -165,7 +165,7 @@ public class FileUtility {
 		try {
 			sheetNames.clear();
 			FileInputStream fis = new FileInputStream(
-					"./src/test/resources/ExcelLib/XMLFlag.xls");
+					/*"./src/test/resources/ExcelLib/XMLFlag.xls"*/"./src/main/resources/XMLFlag.xls");
 			Workbook wb = WorkbookFactory.create(fis);
 			
 //			FileInputStream fis = new FileInputStream(
