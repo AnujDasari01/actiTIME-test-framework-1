@@ -5,6 +5,9 @@ import org.testng.annotations.Test;
 import com.actitime.driver.SuperReference;
 import com.actitime.genericlibrary.FileUtility;
 
+/*
+ * ActiTime Application Test Scripts
+ */
 public class TestScriptsDevice extends SuperReference {
 	@Test
 	public void TC01_SignIntoApplication() {

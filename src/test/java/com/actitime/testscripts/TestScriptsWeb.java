@@ -45,7 +45,7 @@ public class TestScriptsWeb extends SuperReference {
 		FileUtility.retrieveData("TC06_VerifyExistingUser");
 		usersPO.checkExistingUser();
 	}
-	
+
 	@Test
 	public void TC07_DeleteUser() {
 		FileUtility.retrieveData("TC07_DeleteUser");

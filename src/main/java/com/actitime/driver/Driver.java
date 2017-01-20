@@ -13,9 +13,9 @@ import com.actitime.genericlibrary.XMLUtility;
  * Updated on 1/7/2017
  */
 
-/*
- * Driver class with main method
- */
+/**
+ * This is Driver class with main method
+ **/
 public class Driver {
 	private static String relativePath;
 	public static String envPropFilePath;
@@ -30,43 +30,46 @@ public class Driver {
 	public static String url;
 	public static String type;
 	public static String device;
-	
-	
+
 	public static String getRelativePath() {
 		return relativePath;
 	}
 
-	/*Main method*/
+	/**
+	 * This is the main method
+	 **/
 	public static void main(String args[]) throws Exception {
 
 		relativePath = System.getProperty("user.dir");
 
 		getProperties();
-		
+
 		callValidXmlSheet();
-		
+
 		XMLUtility.autoRunXml();
 
 	}
 
-	/* This method reads properties from properties file */
+	/**
+	 * This method reads properties from properties file
+	 **/
 	public static void getProperties() throws IOException {
 
 		envPropFilePath = "Env.properties";
-		
-		//String[] args = null;
-		//envPropFilePath = new FileInputStream(args [0]);
+
+		// String[] args = null;
+		// envPropFilePath = new FileInputStream(args [0]);
 
 		Properties prop = new Properties();
 
 		InputStream input = new FileInputStream(envPropFilePath);
 
-		//prop.load(envPropFilePath);
-		
+		// prop.load(envPropFilePath);
+
 		prop.load(input);
 
 		Set<Object> set = prop.keySet();
-		
+
 		Iterator<Object> it = set.iterator();
 
 		for (int i = 0; i < set.size(); i++) {
@@ -99,21 +102,20 @@ public class Driver {
 		}
 
 	}
-	
+
 	/**
 	 * This method selects the sheet based on platform type
 	 **/
 	public static void callValidXmlSheet() throws Exception {
-		if(type.equalsIgnoreCase("Desktop")) {
+		if (type.equalsIgnoreCase("Desktop")) {
 			XMLUtility.createXml("TestScriptsWeb");
 		}
-		
-		
-		if(type.equalsIgnoreCase("Device")) {
+
+		if (type.equalsIgnoreCase("Device")) {
 			XMLUtility.createXml("TestScriptsDevice");
 		}
-		
-		if(type.equalsIgnoreCase("App")) {
+
+		if (type.equalsIgnoreCase("App")) {
 			XMLUtility.createXml("TestScriptsApp");
 		}
 	}

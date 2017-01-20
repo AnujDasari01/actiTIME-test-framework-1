@@ -12,9 +12,9 @@ import com.actitime.genericlibrary.Report;
  * Updated on 1/7/2017
  */
 
-/*
- * ActiTime Dashboard Page Object
- */
+/**
+ * This is ActiTime Dashboard Page Object
+ **/
 
 public class DashboardPO {
 
@@ -46,28 +46,36 @@ public class DashboardPO {
 		PageFactory.initElements(driver, this);
 	}
 
-	/* Method to Navigate to Tasks */
+	/**
+	 * This methods Navigates driver to Tasks
+	 **/
 	public void navigateToTasks() {
 		tasksWidget.click();
 		Report.captureScreenshot(driver, "NavigateToTasks ");
 		Assert.assertEquals("actiTIME - Open Tasks", driver.getTitle());
 	}
 
-	/* Method to Navigate to Reports */
+	/**
+	 * This methods Navigates driver to Reports
+	 **/
 	public void navigateToReports() {
 		reportWidget.click();
 		Report.captureScreenshot(driver, "NavigateToReports ");
 		Assert.assertEquals("actiTIME - Reports Dashboard", driver.getTitle());
 	}
 
-	/* Method to Navigate to Users */
+	/**
+	 * This methods Navigates driver to Users
+	 **/
 	public void navigateToUsers() {
 		usersWidget.click();
 		Report.captureScreenshot(driver, "NavigateToUsers ");
 		Assert.assertEquals("actiTIME - User List", driver.getTitle());
 	}
 
-	/* Method to Log out of Actitime Application */
+	/**
+	 * This methods makes driver logout of application
+	 **/
 	public void logout() {
 		logOutBtn.click();
 		Report.captureScreenshot(driver, "SignOutOfApplication ");

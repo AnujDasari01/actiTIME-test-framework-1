@@ -13,13 +13,14 @@ import org.testng.Assert;
 import com.actitime.genericlibrary.FileUtility;
 import com.actitime.genericlibrary.Helper;
 import com.actitime.genericlibrary.Report;
+
 /*
  * Updated on 1/7/2017
  */
 
-/*
- * ActiTime Users Page Object
- */
+/**
+ * This is ActiTime Users Page Object
+ **/
 public class UsersPO {
 
 	private WebDriver driver;
@@ -62,6 +63,9 @@ public class UsersPO {
 	@FindBy(css = "img.closeButton")
 	private WebElement modalWindowClose;
 
+	@FindBy(xpath = "//a[@class='page' and contains(text(),'1')]")
+	private WebElement firstPageUserList;
+
 	@FindBy(css = "a.next")
 	private WebElement nextBtn;
 
@@ -70,7 +74,9 @@ public class UsersPO {
 		PageFactory.initElements(driver, this);
 	}
 
-	/* Method to create a user */
+	/**
+	 * This method is used to create a user
+	 **/
 	public void createUser() {
 		addUserBtn.click();
 		firstNameTextField.sendKeys(FileUtility.testData.get("First_Name"));
@@ -92,10 +98,13 @@ public class UsersPO {
 		// modalWindowClose.click();
 	}
 
-	/* Method to check an existing user */
+	/**
+	 * This method is used to check for an existing user
+	 **/
 	public void checkExistingUser() {
 		String checkUser = FileUtility.testData.get("Full_Name");
-		//System.out.println("Check for user: " + checkUser);
+		System.out.println("Check for user: " + checkUser);
+		driver.navigate().refresh();
 		int count = 0;
 		String availableUsers;
 		while (count < 10) {
@@ -149,9 +158,13 @@ public class UsersPO {
 		}
 	}
 
-	/* Method to delete a user */
+	/**
+	 * This method is used to delete an existing user
+	 **/
 	public void deleteUser() {
 		String deleteUser = FileUtility.testData.get("Full_Name");
+		System.out.println("Delete user :" + deleteUser);
+		driver.navigate().refresh();
 		int count = 0;
 		String availableUsers;
 		while (count < 10) {
@@ -163,14 +176,23 @@ public class UsersPO {
 					Helper.scrollTo(we, driver);
 					we.click();
 					Helper.normalWait(driver, 1);
-					deleteUserBtn.click();
-					Helper.normalWait(driver, 1);
-					//Report.captureScreenshot(driver, "DeleteExistingUserConfirmation");
-					Alert alert = driver.switchTo().alert();
-					alert.accept();
-					Report.captureScreenshot(driver, "DeleteExistingUser");
+					if (!deleteUserBtn.isEnabled()) {
+						modalWindowClose.click();
+						Assert.fail("Unable to delete user");
+					}
 
-					break;
+					else {
+						deleteUserBtn.click();
+						Helper.normalWait(driver, 1);
+						// Report.captureScreenshot(driver,
+						// "DeleteExistingUserConfirmation");
+						Alert alert = driver.switchTo().alert();
+						alert.accept();
+						Report.captureScreenshot(driver, "DeleteExistingUser");
+
+						break;
+
+					}
 				} else if (!(deleteUser.equalsIgnoreCase(availableUsers))
 						&& count < 10) {
 					count++;

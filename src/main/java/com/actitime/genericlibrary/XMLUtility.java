@@ -24,9 +24,9 @@ import org.w3c.dom.Element;
  * Updated on 1/7/2017
  */
 
-/*
- * XMLUtility class which creates and runs testng xml dynamically
- */
+/**
+ * This is XMLUtility class which creates and runs testng xml programmatically
+ **/
 public class XMLUtility {
 	/**
 	 * This method creates the XML suite file dynamically
@@ -296,14 +296,5 @@ public class XMLUtility {
 		tng.setTestSuites(files);
 		tng.run();
 
-	}
-
-	/**
-	 * This method sets up the XML suite file based on the platform type and
-	 * test script selection
-	 **/
-	
-	public static void designXML() {
-		
 	}
 }

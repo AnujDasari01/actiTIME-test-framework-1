@@ -25,9 +25,10 @@ import com.actitime.webpageobjects.UsersPO;
  * Updated on 1/7/2017
  */
 
-/*
- * Class to invoke and close a browser in Desktop and Device
- */
+/**
+ * This is SuperReference class which runs scripts in desktop and device
+ * browsers
+ **/
 public class SuperReference {
 
 	private static WebDriver driver;
@@ -47,7 +48,7 @@ public class SuperReference {
 	/* Before Suite */
 	@BeforeSuite
 	public void beforeSuite() throws Exception {
-		
+
 		System.out.println("In BeforeSuite ...........");
 		Driver.getProperties();
 		if (Driver.type.equalsIgnoreCase("Device")) {
@@ -55,8 +56,7 @@ public class SuperReference {
 			setup();
 		} else if (Driver.type.equalsIgnoreCase("Desktop")) {
 			invokeBrowser();
-		}
-		else if (Driver.type.equalsIgnoreCase("App")) {
+		} else if (Driver.type.equalsIgnoreCase("App")) {
 			appiumStart();
 			setupApp();
 		}
@@ -72,15 +72,15 @@ public class SuperReference {
 		}
 	}
 
-	/* Method to run test scripts in device browser */
+	/**
+	 * This method runs scripts in a device browser
+	 **/
 	@SuppressWarnings("rawtypes")
 	public void setup() throws MalformedURLException, InterruptedException {
 		DesiredCapabilities capabilities = DesiredCapabilities.android();
-		capabilities.setCapability("automationName",
-				Driver.automationName);
+		capabilities.setCapability("automationName", Driver.automationName);
 		capabilities.setCapability("deviceName", Driver.deviceName);
-		capabilities.setCapability("platformVersion",
-				Driver.platformVersion);
+		capabilities.setCapability("platformVersion", Driver.platformVersion);
 		capabilities.setCapability("platformName", Driver.platformName);
 		capabilities.setCapability("app", Driver.app);
 		capabilities.setCapability("device", Driver.device);
@@ -90,17 +90,17 @@ public class SuperReference {
 		dashBoardPO = new DashboardPO(driver);
 		usersPO = new UsersPO(driver);
 	}
-	
-	/* Method to run test scripts on app in device  */
+
+	/**
+	 * This method runs scripts in a mobile application
+	 **/
 	@SuppressWarnings("rawtypes")
 	public void setupApp() throws MalformedURLException, InterruptedException {
 		File app = new File("./src/test/resources/Apk/whatsapp.apk");
 		DesiredCapabilities capabilities = DesiredCapabilities.android();
-		capabilities.setCapability("automationName",
-				Driver.automationName);
+		capabilities.setCapability("automationName", Driver.automationName);
 		capabilities.setCapability("deviceName", Driver.deviceName);
-		capabilities.setCapability("platformVersion",
-				Driver.platformVersion);
+		capabilities.setCapability("platformVersion", Driver.platformVersion);
 		capabilities.setCapability("platformName", Driver.platformName);
 		capabilities.setCapability("device", Driver.device);
 		capabilities.setCapability("app", app.getAbsolutePath());
@@ -117,10 +117,12 @@ public class SuperReference {
 	/* For Device Only - STOP APPIUM SERVER */
 	public void appiumStop() throws IOException {
 		service.stop();
-		// Report.createShortcut();
+
 	}
 
-	/* Method to invoke a browser */
+	/**
+	 * This method invokes a browser
+	 **/
 	public void invokeBrowser() {
 		if (Driver.browserName.equalsIgnoreCase("firefox")) {
 			System.setProperty("webdriver.gecko.driver",
@@ -171,10 +173,11 @@ public class SuperReference {
 		}
 	}
 
-	/* Method to close a browser */
+	/**
+	 * This method closes the browser
+	 **/
 	public static void closeBrowser() throws IOException {
 		driver.quit();
-		// Report.createShortcut();
 	}
 
 }

@@ -17,9 +17,9 @@ import com.actitime.genericlibrary.Report;
  * Updated on 1/7/2017
  */
 
-/*
- * ActiTime Login Page Object
- */
+/**
+ * This is ActiTime Login Page Object
+ **/
 public class LoginPO {
 
 	private WebDriver driver;
@@ -41,7 +41,9 @@ public class LoginPO {
 		PageFactory.initElements(driver, this);
 	}
 
-	/* Method to Login to actiTIME Application */
+	/**
+	 * This method is used to login to ActiTime Aapplication
+	 **/
 	public void login() {
 		try {
 			driver.get(Driver.url);
