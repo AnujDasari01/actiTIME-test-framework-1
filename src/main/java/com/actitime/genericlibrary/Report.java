@@ -20,17 +20,16 @@ import org.testng.Reporter;
 import org.testng.TestListenerAdapter;
 
 import com.actitime.driver.Driver;
-/*
-* Updated on 1/7/2017
-*/
 
 /*
-* Report class to generate reports with screenshot
-*/
+ * Updated on 1/7/2017
+ */
+
+/**
+ * This is Report class with reporting and screenshot functionality
+ **/
 public class Report extends TestListenerAdapter {
 	private static String dirPath = null;
-
-	// private ExtentReports extent;
 
 	private static Date dtNow = new Date();
 
@@ -38,21 +37,27 @@ public class Report extends TestListenerAdapter {
 
 	private static String strDateStamp = strStartDate.replace(" ", "_");
 
+	/**
+	 * This method creates the execution report
+	 **/
 	public static String makDir() {
 
-		String s = Driver.getRelativePath() + "/Resources/Reports/" + strDateStamp;
+		String s = Driver.getRelativePath() + "/Resources/Reports/"
+				+ strDateStamp;
 		File srcDir = new File(s);
 		srcDir.mkdirs();
 		return dirPath = srcDir.getAbsolutePath();
 	}
 
+	/**
+	 * This method captures a screenshot
+	 **/
 	public static void captureScreenshot(WebDriver driver, String screenshotName) {
 		Date dtnow2 = new Date();
 		String strStartDate2 = dtnow2.toString().replace(":", "_");
 		String strDateStamp2 = strStartDate2.replace(" ", "_");
 
 		try {
-			//Thread.sleep(7000);
 			Helper.normalWait(driver, 7);
 			TakesScreenshot ts = (TakesScreenshot) driver;
 			File source = ts.getScreenshotAs(OutputType.FILE);
@@ -64,7 +69,7 @@ public class Report extends TestListenerAdapter {
 			System.setProperty(ESCAPE_PROPERTY, "false");
 			URL path = new File(dirPath + "/ " + screenshotName + "_"
 					+ strDateStamp2 + ".png").toURI().toURL();
-			String test = "<a href=" + path +"> : click to open screenshot of "
+			String test = "<a href=" + path + "> click to open screenshot of "
 					+ screenshotName + "</a>";
 			Reporter.log(screenshotName + test + "<br>");
 		}

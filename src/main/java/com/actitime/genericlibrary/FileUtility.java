@@ -15,9 +15,12 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
  * Updated on 1/7/2017
  */
 
-/*
- * Class to read data from external test data sheets
- */
+import com.actitime.driver.Driver;
+
+
+/**
+ * This is FileUtility class to read data from Test Data sheets 
+ **/
 
 public class FileUtility {
 	public static HashMap<String, String> testData = new HashMap<String, String>();
@@ -25,12 +28,16 @@ public class FileUtility {
 
 	public static void retrieveData(String TestCaseDataId) {
 		try {
-			//System.out.println("Retrieving data from test data sheet");
 			FileInputStream fis = new FileInputStream(
 					"./src/test/resources/ExcelLib/TestData.xls");
 			Workbook wb = WorkbookFactory.create(fis);
 			Sheet sh;
-			sh = wb.getSheet("TestData");
+			String env = Driver.type;
+			if (env.equalsIgnoreCase("Desktop")) {
+				sh = wb.getSheet("Desktop");
+			} else {
+				sh = wb.getSheet("Device");
+			}
 			Row rheader = sh.getRow(0);
 			Row rValues = null;
 			int i = 0;
@@ -126,21 +133,10 @@ public class FileUtility {
 
 	public static ArrayList<String> getSheetNameMethods() {
 		try {
-
+			sheetNames.clear();
 			FileInputStream fis = new FileInputStream(
 					"./src/test/resources/ExcelLib/XMLFlag.xls");
 			Workbook wb = WorkbookFactory.create(fis);
-
-			// ClassLoader classLoader = Thread.currentThread()
-			// .getContextClassLoader();
-			// InputStream input =
-			// classLoader.getResourceAsStream("XMLFlag.xls");
-			// Workbook wb = WorkbookFactory.create(input);
-
-			// Workbook wb = WorkbookFactory.create(Driver.XMLFlagSheet);
-			// System.out.println("Get Sheet name methods Method: "+Driver.XMLFlagSheet
-			// );
-
 			for (int i = 0; i < wb.getNumberOfSheets(); i++) {
 				sheetNames.add(wb.getSheetName(i));
 			}
