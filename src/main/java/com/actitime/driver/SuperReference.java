@@ -140,14 +140,19 @@ public class SuperReference {
 		}
 
 		else if (Driver.browserName.equalsIgnoreCase("ie")) {
-			System.setProperty("webdriver.ie.driver",
-					"./src/main/resources/IEDriver/IEDriverServer.exe");
 			DesiredCapabilities capabilities = DesiredCapabilities
 					.internetExplorer();
+			capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false);
+			capabilities.setCapability(InternetExplorerDriver.ENABLE_PERSISTENT_HOVERING, false);
+			capabilities.setCapability(InternetExplorerDriver.REQUIRE_WINDOW_FOCUS, false);
+			capabilities.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
+			capabilities.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
+			capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
 			capabilities.setCapability("ensureCleanSession", true);
-			capabilities.setCapability("browserName",
-					Driver.browserName.equalsIgnoreCase("ie"));
-			driver = new InternetExplorerDriver();
+			System.setProperty("webdriver.ie.driver",
+					"./src/main/resources/IEDriver/IEDriverServer.exe");
+			
+			driver = new InternetExplorerDriver(capabilities);
 			driver.manage().window().maximize();
 		}
 
