@@ -72,6 +72,7 @@ public class Report extends TestListenerAdapter {
 			String test = "<a href=" + path + "> click to open screenshot of "
 					+ screenshotName + "</a>";
 			Reporter.log(screenshotName + test + "<br>");
+			Reporter.log("<br>");
 		}
 
 		catch (Exception e) {

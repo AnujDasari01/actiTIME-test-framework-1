@@ -2,6 +2,7 @@ package com.actitime.genericlibrary;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -73,11 +74,11 @@ public class Helper {
 	/**
 	 * This method checks for partial text in a webelement 
 	 **/
-	public static void checkPartialText(WebElement el, String st) {
+	public static void checkPartialText(WebElement wb, String st) {
 		try {
 			st = st.trim().toLowerCase();
-			if (el.getText().contains(st)) {
-				Reporter.log(st + " is present in" + el.getText() + "<br>");
+			if (wb.getText().contains(st)) {
+				Reporter.log(st + " is present in" + wb.getText() + "<br>");
 			} else {
 				Reporter.log(st + " is not present" + "<br>");
 			}
@@ -90,10 +91,10 @@ public class Helper {
 	/**
 	 * This method checks for text in a webelement 
 	 **/
-	public static void checkText(WebElement el, String st) {
+	public static void checkText(WebElement wb, String st) {
 		try {
 			st = st.trim();
-			if (el.getText().equalsIgnoreCase(st)) {
+			if (wb.getText().equalsIgnoreCase(st)) {
 				Reporter.log(st + " is present" + "<br>");
 			} else {
 				Reporter.log(st + " is not present" + "<br>");
@@ -102,5 +103,20 @@ public class Helper {
 			System.out.println(e);
 		}
 	}
+	
+	/**
+	 * This method handles alert windows 
+	 **/
+	public static void handleAlert(String status, WebDriver driver) {
+		Alert alert = driver.switchTo().alert();
+		if(status.equalsIgnoreCase("Y")) {
+			alert.accept();
+		}
+		else if (status.equalsIgnoreCase("N")) {
+			alert.dismiss();
+		}
+	}
+	
+	
 
 }
