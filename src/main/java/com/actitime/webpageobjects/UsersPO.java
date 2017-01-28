@@ -86,16 +86,16 @@ public class UsersPO {
 		userNameTextField.sendKeys(FileUtility.testData.get("UserName"));
 		passwordTextField.sendKeys(FileUtility.testData.get("Password"));
 		retypePasswordTextField.sendKeys(FileUtility.testData.get("Password"));
-
+		System.out.println("Create user: "
+				+ FileUtility.testData.get("First_Name")
+				+ FileUtility.testData.get("Last_Name"));
 		if (duplicateUserError.isDisplayed()) {
 			Report.captureScreenshot(driver, "UserAddition");
 			modalWindowClose.click();
 			Helper.handleAlert("Y", driver);
 			Assert.fail("User having username: "
 					+ FileUtility.testData.get("UserName") + " already exists!");
-		}
-
-		else {
+		} else {
 			Helper.scrollTo(confirmUserAddBtn, driver);
 			confirmUserAddBtn.click();
 			Helper.normalWait(driver, 1);
@@ -160,7 +160,8 @@ public class UsersPO {
 								&& count < addedUsersList.size()) {
 							continue;
 						} else {
-							Report.captureScreenshot(driver, "CheckExistingUser");
+							Report.captureScreenshot(driver,
+									"CheckExistingUser");
 							Assert.fail(checkUser + " : No Such User Found!");
 							break;
 						}
@@ -236,7 +237,8 @@ public class UsersPO {
 								&& count < addedUsersList.size()) {
 							continue;
 						} else {
-							Report.captureScreenshot(driver, "DeleteExistingUser");
+							Report.captureScreenshot(driver,
+									"DeleteExistingUser");
 							Assert.fail(deleteUser + " : No Such User Found!");
 							break;
 						}
