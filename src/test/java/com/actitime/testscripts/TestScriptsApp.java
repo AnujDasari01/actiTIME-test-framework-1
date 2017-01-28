@@ -9,9 +9,8 @@ import com.actitime.driver.SuperReference;
  */
 public class TestScriptsApp extends SuperReference {
 	@Test
-	public void TC01_SignIntoApp() {
-		
+	public void TC01_FillFormDetails() throws InterruptedException {
+
 	}
 
-	
 }
