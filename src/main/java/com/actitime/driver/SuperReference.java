@@ -7,11 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-<<<<<<< HEAD
-
 import org.openqa.selenium.Platform;
-=======
->>>>>>> 08136a8f2d65fa354d7ddc13549824b4a9c34f3f
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
