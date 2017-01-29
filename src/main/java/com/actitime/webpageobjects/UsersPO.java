@@ -89,6 +89,7 @@ public class UsersPO {
 		System.out.println("Create user: "
 				+ FileUtility.testData.get("First_Name")
 				+ FileUtility.testData.get("Last_Name"));
+
 		if (duplicateUserError.isDisplayed()) {
 			Report.captureScreenshot(driver, "UserAddition");
 			modalWindowClose.click();

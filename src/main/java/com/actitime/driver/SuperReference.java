@@ -7,11 +7,11 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import com.actitime.webpageobjects.DashboardPO;
@@ -29,6 +29,7 @@ import com.actitime.webpageobjects.UsersPO;
 public class SuperReference {
 
 	private static WebDriver driver;
+	private String nodeURL;
 	public static LoginPO loginPO;
 	public static DashboardPO dashBoardPO;
 	public static UsersPO usersPO;
@@ -42,23 +43,6 @@ public class SuperReference {
 							new File(
 									"C:/Program Files (x86)/Appium/node_modules/appium/bin/appium.js")));
 
-	/* Before Suite */
-	@BeforeSuite
-	public void beforeSuite() throws Exception {
-
-		System.out.println("In BeforeSuite ...........");
-		Driver.getProperties();
-		if (Driver.type.equalsIgnoreCase("Device")) {
-			appiumStart();
-			setup();
-		} else if (Driver.type.equalsIgnoreCase("Desktop")) {
-			invokeBrowser();
-		} else if (Driver.type.equalsIgnoreCase("App")) {
-			appiumStart();
-			setupApp();
-		}
-	}
-
 	/* For Device Only - START APPIUM SERVER */
 	public void appiumStart() {
 		if (service.isRunning() == true) {
@@ -69,6 +53,95 @@ public class SuperReference {
 		}
 	}
 
+	/* For Device Only - STOP APPIUM SERVER */
+	public void appiumStop() throws IOException {
+		service.stop();
+	}
+	
+	
+	
+	
+	
+
+	/**
+	 * This method invokes a browser
+	 * 
+	 **/
+	public void invokeBrowser() throws MalformedURLException {
+		if (Driver.browserName.equalsIgnoreCase("firefox")) {
+			// System.setProperty("webdriver.gecko.driver",
+			// "./src/main/resources/GeckoDriver/geckodriver.exe");
+			//
+			// driver = new FirefoxDriver();
+			nodeURL = "http://192.168.0.29:5555/wd/hub";
+			DesiredCapabilities caps = DesiredCapabilities.firefox();
+			caps.setBrowserName("firefox");
+			caps.setPlatform(Platform.WINDOWS);
+			driver = new RemoteWebDriver(new URL(nodeURL), caps);
+			driver.manage().window().maximize();
+			driver.manage().window().maximize();
+		}
+
+		else if (Driver.browserName.equalsIgnoreCase("chrome")) {
+			// System.setProperty("webdriver.chrome.driver",
+			// "./src/main/resources/ChromeDriver/chromedriver.exe");
+			// driver = new ChromeDriver();
+			nodeURL = "http://192.168.0.13:5555/wd/hub";
+			DesiredCapabilities caps = DesiredCapabilities.chrome();
+			caps.setBrowserName("chrome");
+			caps.setPlatform(Platform.WINDOWS);
+			driver = new RemoteWebDriver(new URL(nodeURL), caps);
+			driver.manage().window().maximize();
+		}
+
+		else if (Driver.browserName.equalsIgnoreCase("ie")) {
+			nodeURL = "http://10.182.64.151:5555/wd/hub";
+			DesiredCapabilities capabilities = DesiredCapabilities
+					.internetExplorer();
+			// capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS,
+			// false);
+			// capabilities.setCapability(InternetExplorerDriver.ENABLE_PERSISTENT_HOVERING,
+			// false);
+			// capabilities.setCapability(InternetExplorerDriver.REQUIRE_WINDOW_FOCUS,
+			// false);
+			// capabilities.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION,
+			// true);
+			// capabilities.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING,
+			// true);
+			// capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
+			// true);
+			// System.setProperty("webdriver.ie.driver",
+			// "./src/main/resources/IEDriver/IEDriverServer.exe");
+			//
+			// driver = new InternetExplorerDriver(capabilities);
+			capabilities.setBrowserName("ie");
+			capabilities.setPlatform(Platform.WINDOWS);
+			driver = new RemoteWebDriver(new URL(nodeURL), capabilities);
+			driver.manage().window().maximize();
+		}
+
+		else {
+			System.setProperty("webdriver.gecko.driver",
+					"./src/main/resources/GeckoDriver/geckodriver.exe");
+			driver = new FirefoxDriver();
+			driver.manage().window().maximize();
+		}
+		loginPO = new LoginPO(driver);
+		dashBoardPO = new DashboardPO(driver);
+		usersPO = new UsersPO(driver);
+	}
+	
+	
+	
+	/**
+	 * This method closes the browser
+	 **/
+	public static void closeBrowser() throws IOException {
+		driver.quit();
+	}
+
+	
+	
 	/**
 	 * This method runs scripts in a device browser
 	 **/
@@ -88,6 +161,8 @@ public class SuperReference {
 		usersPO = new UsersPO(driver);
 	}
 
+
+	
 	/**
 	 * This method runs scripts in a mobile application
 	 **/
@@ -109,60 +184,27 @@ public class SuperReference {
 				capabilities);
 	}
 
-	/* For Device Only - STOP APPIUM SERVER */
-	public void appiumStop() throws IOException {
-		service.stop();
+	
+	
+	
+	/* Before Suite */
+	@BeforeSuite
+	public void beforeSuite() throws Exception {
 
+		System.out.println("In BeforeSuite ...........");
+		Driver.getProperties();
+		if (Driver.type.equalsIgnoreCase("Device")) {
+			appiumStart();
+			setup();
+		} else if (Driver.type.equalsIgnoreCase("Desktop")) {
+			invokeBrowser();
+		} else if (Driver.type.equalsIgnoreCase("App")) {
+			appiumStart();
+			setupApp();
+		}
 	}
 
-	/**
-	 * This method invokes a browser
-	 **/
-	public void invokeBrowser() {
-		if (Driver.browserName.equalsIgnoreCase("firefox")) {
-			System.setProperty("webdriver.gecko.driver",
-					"./src/main/resources/GeckoDriver/geckodriver.exe");
-
-			driver = new FirefoxDriver();
-			driver.manage().window().maximize();
-		}
-
-		else if (Driver.browserName.equalsIgnoreCase("chrome")) {
-			System.setProperty("webdriver.chrome.driver",
-					"./src/main/resources/ChromeDriver/chromedriver.exe");
-			driver = new ChromeDriver();
-			driver.manage().window().maximize();
-		}
-
-		else if (Driver.browserName.equalsIgnoreCase("ie")) {
-			DesiredCapabilities capabilities = DesiredCapabilities
-					.internetExplorer();
-			capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false);
-			capabilities.setCapability(InternetExplorerDriver.ENABLE_PERSISTENT_HOVERING, false);
-			capabilities.setCapability(InternetExplorerDriver.REQUIRE_WINDOW_FOCUS, false);
-			capabilities.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
-			capabilities.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
-			capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-			capabilities.setCapability("ensureCleanSession", true);
-			System.setProperty("webdriver.ie.driver",
-					"./src/main/resources/IEDriver/IEDriverServer.exe");
-			
-			driver = new InternetExplorerDriver(capabilities);
-			driver.manage().window().maximize();
-		}
-
-		else {
-			System.setProperty("webdriver.gecko.driver",
-					"./src/main/resources/GeckoDriver/geckodriver.exe");
-			driver = new FirefoxDriver();
-			driver.manage().window().maximize();
-		}
-		loginPO = new LoginPO(driver);
-		dashBoardPO = new DashboardPO(driver);
-		usersPO = new UsersPO(driver);
-
-	}
-
+	
 	/* After Suite */
 	@AfterSuite
 	public void afterSuite() throws IOException, InterruptedException {
@@ -172,12 +214,4 @@ public class SuperReference {
 			closeBrowser();
 		}
 	}
-
-	/**
-	 * This method closes the browser
-	 **/
-	public static void closeBrowser() throws IOException {
-		driver.quit();
-	}
-
 }

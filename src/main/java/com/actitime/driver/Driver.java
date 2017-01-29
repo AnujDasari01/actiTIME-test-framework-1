@@ -57,14 +57,9 @@ public class Driver {
 
 		envPropFilePath = "Env.properties";
 
-		// String[] args = null;
-		// envPropFilePath = new FileInputStream(args [0]);
-
 		Properties prop = new Properties();
 
 		InputStream input = new FileInputStream(envPropFilePath);
-
-		// prop.load(envPropFilePath);
 
 		prop.load(input);
 
