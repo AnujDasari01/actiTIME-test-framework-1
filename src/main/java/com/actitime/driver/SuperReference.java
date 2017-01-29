@@ -3,20 +3,21 @@ package com.actitime.driver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+<<<<<<< HEAD
 
 import org.openqa.selenium.Platform;
+=======
+>>>>>>> 08136a8f2d65fa354d7ddc13549824b4a9c34f3f
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-
 import com.actitime.webpageobjects.DashboardPO;
 import com.actitime.webpageobjects.LoginPO;
 import com.actitime.webpageobjects.UsersPO;
@@ -171,22 +172,20 @@ public class SuperReference {
 	 **/
 	@SuppressWarnings("rawtypes")
 	public void setupApp() throws MalformedURLException, InterruptedException {
-		File app = new File("./src/test/resources/Apk/whatsapp.apk");
+		File app = new File("./src/test/resources/Apk/FormApp.apk");
 		DesiredCapabilities capabilities = DesiredCapabilities.android();
+		capabilities.setCapability("appium-version", "1.4.16.1");
 		capabilities.setCapability("automationName", Driver.automationName);
 		capabilities.setCapability("deviceName", Driver.deviceName);
 		capabilities.setCapability("platformVersion", Driver.platformVersion);
 		capabilities.setCapability("platformName", Driver.platformName);
 		capabilities.setCapability("device", Driver.device);
 		capabilities.setCapability("app", app.getAbsolutePath());
-		capabilities.setCapability("appActivity", "com.whatsapp.Main");
-		capabilities.setCapability("noReset", false);
-		capabilities.setCapability("fullReset", false);
+		capabilities.setCapability("noReset", Driver.noReset);
+		capabilities.setCapability("fullReset", Driver.fullReset);
+		capabilities.setCapability("appActivity", "com.anuj.task1.FormLogin");
 		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),
 				capabilities);
-		loginPO = new LoginPO(driver);
-		dashBoardPO = new DashboardPO(driver);
-		usersPO = new UsersPO(driver);
 	}
 
 	

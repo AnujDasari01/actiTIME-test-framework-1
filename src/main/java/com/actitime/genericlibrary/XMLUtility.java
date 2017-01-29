@@ -131,14 +131,14 @@ public class XMLUtility {
 				int totalnoofelementsflaggedtorun = FileUtility
 						.getFlaggedMethods(sheetName).size();
 
-				System.out.println("totalnoofelementsflaggedtorun: "
-						+ totalnoofelementsflaggedtorun);
+//				System.out.println("totalnoofelementsflaggedtorun: "
+//						+ totalnoofelementsflaggedtorun);
 				// Get the number of parameter to be created in XML
 				int totalnoofelementsflaggednottorun = FileUtility
 						.getNotFlaggedMethods(sheetName).size();
 
-				System.out.println("totalnoofelementsflaggednottorun: "
-						+ totalnoofelementsflaggednottorun);
+//				System.out.println("totalnoofelementsflaggednottorun: "
+//						+ totalnoofelementsflaggednottorun);
 
 				// Type the parameter set of lines in the XML file
 				Element childelementClass = document.createElement("class");
@@ -194,14 +194,14 @@ public class XMLUtility {
 				int totalnoofelementsflaggedtorun = FileUtility
 						.getFlaggedMethods(sheetName).size();
 
-				System.out.println("totalnoofelementsflaggedtorun: "
-						+ totalnoofelementsflaggedtorun);
+//				System.out.println("totalnoofelementsflaggedtorun: "
+//						+ totalnoofelementsflaggedtorun);
 				// Get the number of parameter to be created in XML
 				int totalnoofelementsflaggednottorun = FileUtility
 						.getNotFlaggedMethods(sheetName).size();
 
-				System.out.println("totalnoofelementsflaggednottorun: "
-						+ totalnoofelementsflaggednottorun);
+//				System.out.println("totalnoofelementsflaggednottorun: "
+//						+ totalnoofelementsflaggednottorun);
 
 				// Type the parameter set of lines in the XML file
 				Element childelementClass = document.createElement("class");
