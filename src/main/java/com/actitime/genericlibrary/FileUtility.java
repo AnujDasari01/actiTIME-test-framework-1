@@ -17,14 +17,21 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 import com.actitime.driver.Driver;
 
-
 /**
- * This is FileUtility class to read data from Test Data sheets 
+ * This is FileUtility class to read data from Test Data sheets
  **/
 
 public class FileUtility {
-	public static HashMap<String, String> testData = new HashMap<String, String>();
-	public static ArrayList<String> sheetNames = new ArrayList<>();
+	private static HashMap<String, String> testData = new HashMap<String, String>();
+	private static ArrayList<String> sheetNames = new ArrayList<>();
+
+	public static HashMap<String, String> getTestData() {
+		return testData;
+	}
+
+	public static ArrayList<String> getSheetNames() {
+		return sheetNames;
+	}
 
 	public static void retrieveData(String TestCaseDataId) {
 		try {
@@ -32,7 +39,7 @@ public class FileUtility {
 					"./src/test/resources/ExcelLib/TestData.xls");
 			Workbook wb = WorkbookFactory.create(fis);
 			Sheet sh;
-			String env = Driver.type;
+			String env = Driver.getType();
 			if (env.equalsIgnoreCase("Desktop")) {
 				sh = wb.getSheet("Desktop");
 			} else {

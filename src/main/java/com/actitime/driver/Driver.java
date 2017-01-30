@@ -18,18 +18,66 @@ import com.actitime.genericlibrary.XMLUtility;
  **/
 public class Driver {
 	private static String relativePath;
-	public static String envPropFilePath;
-	public static String app;
-	public static String browserName;
-	public static String automationName;
-	public static String deviceName;
-	public static String platformName;
-	public static String platformVersion;
-	public static String noReset;
-	public static String fullReset;
-	public static String url;
-	public static String type;
-	public static String device;
+	private static String envPropFilePath;
+	private static String app;
+	private static String browserName;
+	private static String automationName;
+	private static String deviceName;
+	private static String platformName;
+	private static String platformVersion;
+	private static String noReset;
+	private static String fullReset;
+	private static String url;
+	private static String type;
+	private static String device;
+
+	public static String getEnvPropFilePath() {
+		return envPropFilePath;
+	}
+
+	public static String getApp() {
+		return app;
+	}
+
+	public static String getBrowserName() {
+		return browserName;
+	}
+
+	public static String getAutomationName() {
+		return automationName;
+	}
+
+	public static String getDeviceName() {
+		return deviceName;
+	}
+
+	public static String getPlatformName() {
+		return platformName;
+	}
+
+	public static String getPlatformVersion() {
+		return platformVersion;
+	}
+
+	public static String getNoReset() {
+		return noReset;
+	}
+
+	public static String getFullReset() {
+		return fullReset;
+	}
+
+	public static String getUrl() {
+		return url;
+	}
+
+	public static String getType() {
+		return type;
+	}
+
+	public static String getDevice() {
+		return device;
+	}
 
 	public static String getRelativePath() {
 		return relativePath;
@@ -44,7 +92,7 @@ public class Driver {
 
 		getProperties();
 
-		callValidXmlSheet();
+		readValidXmlSheet();
 
 		XMLUtility.autoRunXml();
 
@@ -101,7 +149,7 @@ public class Driver {
 	/**
 	 * This method selects the sheet based on platform type
 	 **/
-	public static void callValidXmlSheet() throws Exception {
+	public static void readValidXmlSheet() throws Exception {
 		if (type.equalsIgnoreCase("Desktop")) {
 			XMLUtility.createXml("TestScriptsWeb");
 		}

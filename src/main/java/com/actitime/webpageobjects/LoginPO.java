@@ -42,14 +42,14 @@ public class LoginPO {
 	}
 
 	/**
-	 * This method is used to login to ActiTime Aapplication
+	 * This method is used to login to ActiTime Application
 	 **/
 	public void login() {
 		try {
-			driver.get(Driver.url);
+			driver.get(Driver.getUrl());
 			Helper.implicitWait(driver);
-			userName.sendKeys(FileUtility.testData.get("UserID"));
-			passWord.sendKeys(FileUtility.testData.get("Pwd"));
+			userName.sendKeys(FileUtility.getTestData().get("UserID"));
+			passWord.sendKeys(FileUtility.getTestData().get("Pwd"));
 			passWord.sendKeys(Keys.TAB);
 			passWord.sendKeys(Keys.TAB);
 			passWord.sendKeys(Keys.ENTER);
