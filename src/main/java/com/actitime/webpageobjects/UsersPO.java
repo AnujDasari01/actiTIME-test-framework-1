@@ -80,30 +80,30 @@ public class UsersPO {
 	 **/
 	public void createUser() {
 		addUserBtn.click();
-		firstNameTextField.sendKeys(FileUtility.testData.get("First_Name"));
-		lastNameTextField.sendKeys(FileUtility.testData.get("Last_Name"));
-		emailTextField.sendKeys(FileUtility.testData.get("Email_Address"));
-		userNameTextField.sendKeys(FileUtility.testData.get("UserName"));
-		passwordTextField.sendKeys(FileUtility.testData.get("Password"));
-		retypePasswordTextField.sendKeys(FileUtility.testData.get("Password"));
+		firstNameTextField.sendKeys(FileUtility.getTestData().get("First_Name"));
+		lastNameTextField.sendKeys(FileUtility.getTestData().get("Last_Name"));
+		emailTextField.sendKeys(FileUtility.getTestData().get("Email_Address"));
+		userNameTextField.sendKeys(FileUtility.getTestData().get("UserName"));
+		passwordTextField.sendKeys(FileUtility.getTestData().get("Password"));
+		retypePasswordTextField.sendKeys(FileUtility.getTestData().get("Password"));
 		System.out.println("Create user: "
-				+ FileUtility.testData.get("First_Name")
-				+ FileUtility.testData.get("Last_Name"));
+				+ FileUtility.getTestData().get("First_Name") + " "
+				+ FileUtility.getTestData().get("Last_Name"));
 
 		if (duplicateUserError.isDisplayed()) {
 			Report.captureScreenshot(driver, "UserAddition");
 			modalWindowClose.click();
 			Helper.handleAlert("Y", driver);
 			Assert.fail("User having username: "
-					+ FileUtility.testData.get("UserName") + " already exists!");
+					+ FileUtility.getTestData().get("UserName") + " already exists!");
 		} else {
 			Helper.scrollTo(confirmUserAddBtn, driver);
 			confirmUserAddBtn.click();
 			Helper.normalWait(driver, 1);
 			Helper.scrollTo(confirmUserAdd, driver);
 			String actualName = confirmUserAdd.getText();
-			String expectedName = FileUtility.testData.get("Last_Name") + ", "
-					+ FileUtility.testData.get("First_Name");
+			String expectedName = FileUtility.getTestData().get("Last_Name") + ", "
+					+ FileUtility.getTestData().get("First_Name");
 			Assert.assertEquals(actualName, expectedName);
 			Helper.scrollTo(usersTitle, driver);
 			Report.captureScreenshot(driver, "UserAddition ");
@@ -117,7 +117,7 @@ public class UsersPO {
 	 * This method is used to check for an existing user
 	 **/
 	public void checkExistingUser() {
-		String checkUser = FileUtility.testData.get("Full_Name");
+		String checkUser = FileUtility.getTestData().get("Full_Name");
 		System.out.println("Check for user: " + checkUser);
 		driver.navigate().refresh();
 		int count = 0;
@@ -179,7 +179,7 @@ public class UsersPO {
 	 * This method is used to delete an existing user
 	 **/
 	public void deleteUser() {
-		String deleteUser = FileUtility.testData.get("Full_Name");
+		String deleteUser = FileUtility.getTestData().get("Full_Name");
 		System.out.println("Delete user :" + deleteUser);
 		driver.navigate().refresh();
 		int count = 0;
