@@ -11,7 +11,6 @@ package com.actitime.genericlibrary;
 import java.io.File;
 import java.net.URL;
 import java.util.Date;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
