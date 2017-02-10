@@ -12,11 +12,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import com.actitime.webpageobjects.DashboardPO;
 import com.actitime.webpageobjects.LoginPO;
 import com.actitime.webpageobjects.UsersPO;
+
 
 /*
  * Updated on 1/7/2017
@@ -28,8 +30,8 @@ import com.actitime.webpageobjects.UsersPO;
  **/
 public class SuperReference {
 
-	private static WebDriver driver;
-	//private String nodeURL;
+	protected WebDriver driver;
+	// private String nodeURL;
 	protected static LoginPO loginPO;
 	protected static DashboardPO dashBoardPO;
 	protected static UsersPO usersPO;
@@ -63,7 +65,7 @@ public class SuperReference {
 	 * 
 	 **/
 	public void invokeBrowser() throws MalformedURLException {
-		if (Driver.getBrowserName().equalsIgnoreCase("firefox")) {
+		if (new Driver().getBrowserName().equalsIgnoreCase("firefox")) {
 			System.setProperty("webdriver.gecko.driver",
 					"./src/main/resources/GeckoDriver/geckodriver.exe");
 
@@ -76,11 +78,11 @@ public class SuperReference {
 			driver.manage().window().maximize();
 		}
 
-		else if (Driver.getBrowserName().equalsIgnoreCase("chrome")) {
+		else if (new Driver().getBrowserName().equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver",
 					"./src/main/resources/ChromeDriver/chromedriver.exe");
 			driver = new ChromeDriver();
-			//nodeURL = "http://192.168.0.13:5555/wd/hub";
+			// nodeURL = "http://192.168.0.13:5555/wd/hub";
 			// DesiredCapabilities caps = DesiredCapabilities.chrome();
 			// caps.setBrowserName("chrome");
 			// caps.setPlatform(Platform.WINDOWS);
@@ -88,8 +90,8 @@ public class SuperReference {
 			driver.manage().window().maximize();
 		}
 
-		else if (Driver.getBrowserName().equalsIgnoreCase("ie")) {
-			//nodeURL = "http://10.182.64.151:5555/wd/hub";
+		else if (new Driver().getBrowserName().equalsIgnoreCase("ie")) {
+			// nodeURL = "http://10.182.64.151:5555/wd/hub";
 			DesiredCapabilities capabilities = DesiredCapabilities
 					.internetExplorer();
 			capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS,
@@ -122,15 +124,18 @@ public class SuperReference {
 			driver = new FirefoxDriver();
 			driver.manage().window().maximize();
 		}
-		loginPO = new LoginPO(driver);
-		dashBoardPO = new DashboardPO(driver);
-		usersPO = new UsersPO(driver);
+		//loginPO = new LoginPO(driver);
+		//dashBoardPO = new DashboardPO(driver);
+		//usersPO = new UsersPO(driver);
+		loginPO = PageFactory.initElements(driver, LoginPO.class);
+		dashBoardPO =  PageFactory.initElements(driver, DashboardPO.class);
+		usersPO =  PageFactory.initElements(driver, UsersPO.class);
 	}
 
 	/**
 	 * This method closes the browser
 	 **/
-	public static void closeBrowser() throws IOException {
+	public void closeBrowser() throws IOException {
 		driver.quit();
 	}
 
@@ -140,19 +145,23 @@ public class SuperReference {
 	@SuppressWarnings("rawtypes")
 	public void setup() throws MalformedURLException, InterruptedException {
 		DesiredCapabilities capabilities = DesiredCapabilities.android();
-		capabilities
-				.setCapability("automationName", Driver.getAutomationName());
-		capabilities.setCapability("deviceName", Driver.getDeviceName());
-		capabilities.setCapability("platformName", Driver.getPlatformName());
+		capabilities.setCapability("automationName",
+				new Driver().getAutomationName());
+		capabilities.setCapability("deviceName", new Driver().getDeviceName());
+		capabilities.setCapability("platformName",
+				new Driver().getPlatformName());
 		capabilities.setCapability("platformVersion",
-				Driver.getPlatformVersion());
-		capabilities.setCapability("app", Driver.getApp());
-		capabilities.setCapability("device", Driver.getDevice());
+				new Driver().getPlatformVersion());
+		capabilities.setCapability("app", new Driver().getApp());
+		capabilities.setCapability("device", new Driver().getDevice());
 		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),
 				capabilities);
-		loginPO = new LoginPO(driver);
-		dashBoardPO = new DashboardPO(driver);
-		usersPO = new UsersPO(driver);
+//		loginPO = new LoginPO(driver);
+//		dashBoardPO = new DashboardPO(driver);
+//		usersPO = new UsersPO(driver);
+		loginPO = PageFactory.initElements(driver, LoginPO.class);
+		dashBoardPO =  PageFactory.initElements(driver, DashboardPO.class);
+		usersPO =  PageFactory.initElements(driver, UsersPO.class);
 	}
 
 	/**
@@ -163,16 +172,17 @@ public class SuperReference {
 		File app = new File("./src/test/resources/Apk/FormApp.apk");
 		DesiredCapabilities capabilities = DesiredCapabilities.android();
 		capabilities.setCapability("appium-version", "1.4.16.1");
-		capabilities
-				.setCapability("automationName", Driver.getAutomationName());
-		capabilities.setCapability("deviceName", Driver.getDeviceName());
-		capabilities.setCapability("platformName", Driver.getPlatformName());
+		capabilities.setCapability("automationName",
+				new Driver().getAutomationName());
+		capabilities.setCapability("deviceName", new Driver().getDeviceName());
+		capabilities.setCapability("platformName",
+				new Driver().getPlatformName());
 		capabilities.setCapability("platformVersion",
-				Driver.getPlatformVersion());
-		capabilities.setCapability("device", Driver.getDevice());
+				new Driver().getPlatformVersion());
+		capabilities.setCapability("device", new Driver().getDevice());
 		capabilities.setCapability("app", app.getAbsolutePath());
-		capabilities.setCapability("noReset", Driver.getNoReset());
-		capabilities.setCapability("fullReset", Driver.getFullReset());
+		capabilities.setCapability("noReset", new Driver().getNoReset());
+		capabilities.setCapability("fullReset", new Driver().getFullReset());
 		capabilities.setCapability("appActivity", "com.anuj.task1.FormLogin");
 		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),
 				capabilities);
@@ -183,13 +193,12 @@ public class SuperReference {
 	public void beforeSuite() throws Exception {
 
 		System.out.println("In BeforeSuite ...........");
-		Driver.getProperties();
-		if (Driver.getType().equalsIgnoreCase("Device")) {
+		if (new Driver().getType().equalsIgnoreCase("Device")) {
 			appiumStart();
 			setup();
-		} else if (Driver.getType().equalsIgnoreCase("Desktop")) {
+		} else if (new Driver().getType().equalsIgnoreCase("Desktop")) {
 			invokeBrowser();
-		} else if (Driver.getType().equalsIgnoreCase("App")) {
+		} else if (new Driver().getType().equalsIgnoreCase("App")) {
 			appiumStart();
 			setupApp();
 		}
@@ -198,9 +207,9 @@ public class SuperReference {
 	/* After Suite */
 	@AfterSuite
 	public void afterSuite() throws IOException, InterruptedException {
-		if (Driver.getType().equalsIgnoreCase("Device")) {
+		if (new Driver().getType().equalsIgnoreCase("Device")) {
 			appiumStop();
-		} else if (Driver.getType().equalsIgnoreCase("Desktop")) {
+		} else if (new Driver().getType().equalsIgnoreCase("Desktop")) {
 			closeBrowser();
 		}
 	}

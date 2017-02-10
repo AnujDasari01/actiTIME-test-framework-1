@@ -1,11 +1,13 @@
 package com.actitime.driver;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
 import java.util.Properties;
 import java.util.Set;
+
 import com.actitime.genericlibrary.XMLUtility;
 
 /*
@@ -16,69 +18,69 @@ import com.actitime.genericlibrary.XMLUtility;
  * This is Driver class with main method
  **/
 public class Driver {
-	private static String relativePath;
-	private static String envPropFilePath;
-	private static String app;
-	private static String browserName;
-	private static String automationName;
-	private static String deviceName;
-	private static String platformName;
-	private static String platformVersion;
-	private static String noReset;
-	private static String fullReset;
-	private static String url;
-	private static String type;
-	private static String device;
+	private String relativePath;
+	private String envPropFilePath;
+	private String app;
+	private String browserName;
+	private String automationName;
+	private String deviceName;
+	private String platformName;
+	private String platformVersion;
+	private String noReset;
+	private String fullReset;
+	private String url;
+	private String type;
+	private String device;
 
-	public static String getEnvPropFilePath() {
+	public String getEnvPropFilePath() {
 		return envPropFilePath;
 	}
 
-	public static String getApp() {
+	public String getApp() {
 		return app;
 	}
 
-	public static String getBrowserName() {
+	public String getBrowserName() {
 		return browserName;
 	}
 
-	public static String getAutomationName() {
+	public String getAutomationName() {
 		return automationName;
 	}
 
-	public static String getDeviceName() {
+	public String getDeviceName() {
 		return deviceName;
 	}
 
-	public static String getPlatformName() {
+	public String getPlatformName() {
 		return platformName;
 	}
 
-	public static String getPlatformVersion() {
+	public String getPlatformVersion() {
 		return platformVersion;
 	}
 
-	public static String getNoReset() {
+	public String getNoReset() {
 		return noReset;
 	}
 
-	public static String getFullReset() {
+	public String getFullReset() {
 		return fullReset;
 	}
 
-	public static String getUrl() {
+	public String getUrl() {
 		return url;
 	}
 
-	public static String getType() {
+	public String getType() {
 		return type;
 	}
 
-	public static String getDevice() {
+	public String getDevice() {
 		return device;
 	}
 
-	public static String getRelativePath() {
+	public String getRelativePath() {
 		return relativePath;
 	}
 
@@ -87,28 +89,34 @@ public class Driver {
 	 **/
 	public static void main(String args[]) throws Exception {
 
-		relativePath = System.getProperty("user.dir");
-
-		getProperties();
-
-		readValidXmlSheet();
+		new Driver().readValidXmlSheet();
 
 		XMLUtility.autoRunXml();
 
 	}
 
 	/**
-	 * This method reads properties from properties file
+	 * Driver constructor to initialize all instance variables 
 	 **/
-	public static void getProperties() throws IOException {
-
+	public Driver()  {
+		relativePath = System.getProperty("user.dir");
+		
 		envPropFilePath = "Env.properties";
-
+		
 		Properties prop = new Properties();
 
-		InputStream input = new FileInputStream(envPropFilePath);
+		InputStream input = null;
+		try {
+			input = new FileInputStream(envPropFilePath);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 
-		prop.load(input);
+		try {
+			prop.load(input);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 		Set<Object> set = prop.keySet();
 
@@ -142,13 +150,13 @@ public class Driver {
 			} else
 				continue;
 		}
-
 	}
+
 
 	/**
 	 * This method selects the sheet based on platform type
 	 **/
-	public static void readValidXmlSheet() throws Exception {
+	public void readValidXmlSheet() throws Exception {
 		if (type.equalsIgnoreCase("Desktop")) {
 			XMLUtility.createXml("TestScriptsWeb");
 		}

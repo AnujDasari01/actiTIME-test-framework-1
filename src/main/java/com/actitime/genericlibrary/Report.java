@@ -40,8 +40,8 @@ public class Report extends TestListenerAdapter {
 	 * This method creates the execution report
 	 **/
 	public static String makDir() {
-
-		String s = Driver.getRelativePath() + "/Resources/Reports/"
+		
+		String s = new Driver().getRelativePath() + "/Resources/Reports/"
 				+ strDateStamp;
 		File srcDir = new File(s);
 		srcDir.mkdirs();
