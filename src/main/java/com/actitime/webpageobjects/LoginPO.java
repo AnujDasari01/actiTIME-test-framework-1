@@ -22,7 +22,7 @@ import com.actitime.genericlibrary.Report;
  * This is ActiTime Login Page Object
  **/
 public class LoginPO {
-
+	
 	private WebDriver driver;
 
 	@FindBy(css = "input#username")
@@ -48,8 +48,7 @@ public class LoginPO {
 	 **/
 	public void login() throws IOException {
 		try {
-			Driver.getProperties();
-			driver.get(Driver.getUrl());
+			driver.get(new Driver().getUrl());
 			Helper.implicitWait(driver);
 			userName.sendKeys(FileUtility.getTestData().get("UserID"));
 			passWord.sendKeys(FileUtility.getTestData().get("Pwd"));
