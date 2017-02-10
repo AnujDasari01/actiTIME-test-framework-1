@@ -35,12 +35,13 @@ public class Report extends TestListenerAdapter {
 	private static String strStartDate = dtNow.toString().replace(":", "_");
 
 	private static String strDateStamp = strStartDate.replace(" ", "_");
+	
+	
 
 	/**
 	 * This method creates the execution report
 	 **/
 	public static String makDir() {
-
 		String s = Driver.getRelativePath() + "/Resources/Reports/"
 				+ strDateStamp;
 		File srcDir = new File(s);

@@ -29,7 +29,7 @@ import com.actitime.webpageobjects.UsersPO;
 public class SuperReference {
 
 	private static WebDriver driver;
-	//private String nodeURL;
+	// private String nodeURL;
 	protected static LoginPO loginPO;
 	protected static DashboardPO dashBoardPO;
 	protected static UsersPO usersPO;
@@ -80,7 +80,7 @@ public class SuperReference {
 			System.setProperty("webdriver.chrome.driver",
 					"./src/main/resources/ChromeDriver/chromedriver.exe");
 			driver = new ChromeDriver();
-			//nodeURL = "http://192.168.0.13:5555/wd/hub";
+			// nodeURL = "http://192.168.0.13:5555/wd/hub";
 			// DesiredCapabilities caps = DesiredCapabilities.chrome();
 			// caps.setBrowserName("chrome");
 			// caps.setPlatform(Platform.WINDOWS);
@@ -89,7 +89,7 @@ public class SuperReference {
 		}
 
 		else if (Driver.getBrowserName().equalsIgnoreCase("ie")) {
-			//nodeURL = "http://10.182.64.151:5555/wd/hub";
+			// nodeURL = "http://10.182.64.151:5555/wd/hub";
 			DesiredCapabilities capabilities = DesiredCapabilities
 					.internetExplorer();
 			capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS,
@@ -163,12 +163,10 @@ public class SuperReference {
 		File app = new File("./src/test/resources/Apk/FormApp.apk");
 		DesiredCapabilities capabilities = DesiredCapabilities.android();
 		capabilities.setCapability("appium-version", "1.4.16.1");
-		capabilities
-				.setCapability("automationName", Driver.getAutomationName());
+		capabilities.setCapability("automationName", Driver.getAutomationName());
 		capabilities.setCapability("deviceName", Driver.getDeviceName());
 		capabilities.setCapability("platformName", Driver.getPlatformName());
-		capabilities.setCapability("platformVersion",
-				Driver.getPlatformVersion());
+		capabilities.setCapability("platformVersion", Driver.getPlatformVersion());
 		capabilities.setCapability("device", Driver.getDevice());
 		capabilities.setCapability("app", app.getAbsolutePath());
 		capabilities.setCapability("noReset", Driver.getNoReset());

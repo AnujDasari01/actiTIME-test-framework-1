@@ -193,6 +193,7 @@ public class UsersPO {
 					Helper.normalWait(driver, 1);
 					if (!deleteUserBtn.isEnabled()) {
 						modalWindowClose.click();
+						Report.captureScreenshot(driver, "DeleteExistingUser");
 						Assert.fail("Unable to delete user");
 					}
 
@@ -201,7 +202,6 @@ public class UsersPO {
 						Helper.normalWait(driver, 1);
 						Helper.handleAlert("Y", driver);
 						Report.captureScreenshot(driver, "DeleteExistingUser");
-
 						break;
 
 					}

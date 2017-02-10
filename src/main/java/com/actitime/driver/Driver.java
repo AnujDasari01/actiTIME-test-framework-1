@@ -29,6 +29,7 @@ public class Driver {
 	private static String url;
 	private static String type;
 	private static String device;
+	
 
 	public static String getEnvPropFilePath() {
 		return envPropFilePath;
