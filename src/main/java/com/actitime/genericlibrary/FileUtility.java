@@ -38,8 +38,7 @@ public class FileUtility {
 					"./src/test/resources/ExcelLib/TestData.xls");
 			Workbook wb = WorkbookFactory.create(fis);
 			Sheet sh;
-			Driver dr = new Driver();
-			String env = dr.getType();
+			String env = new Driver().getType();
 			if (env.equalsIgnoreCase("Desktop")) {
 				sh = wb.getSheet("Desktop");
 			} else {
