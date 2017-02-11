@@ -17,7 +17,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
 import org.testng.TestListenerAdapter;
-
 import com.actitime.driver.Driver;
 
 /*

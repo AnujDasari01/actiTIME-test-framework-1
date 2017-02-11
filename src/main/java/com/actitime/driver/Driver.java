@@ -31,6 +31,7 @@ public class Driver {
 	private String fullReset;
 	private String url;
 	private String type;
+	private String runOn;
 	private String device;
 
 	public String getEnvPropFilePath() {
@@ -77,6 +78,9 @@ public class Driver {
 		return type;
 	}
 
+	public String getRunOn() {
+		return runOn;
+	}
 	public String getDevice() {
 		return device;
 	}
@@ -147,8 +151,10 @@ public class Driver {
 			} else if (key.equalsIgnoreCase("app")) {
 				app = prop.getProperty(key);
 			} else if (key.equalsIgnoreCase("device")) {
-				device = prop.getProperty("device");
-			} else
+				device = prop.getProperty(key);
+			} else if (key.equalsIgnoreCase("runOn")) {
+				runOn = prop.getProperty(key);
+			}else
 				continue;
 		}
 	}
