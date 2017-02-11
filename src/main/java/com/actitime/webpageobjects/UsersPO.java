@@ -1,11 +1,13 @@
 package com.actitime.webpageobjects;
 
 import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+
 import com.actitime.genericlibrary.FileUtility;
 import com.actitime.genericlibrary.Helper;
 import com.actitime.genericlibrary.Report;
@@ -193,6 +195,7 @@ public class UsersPO {
 					Helper.normalWait(driver, 1);
 					if (!deleteUserBtn.isEnabled()) {
 						modalWindowClose.click();
+						Report.captureScreenshot(driver, "DeleteExistingUser");
 						Assert.fail("Unable to delete user");
 					}
 
@@ -201,7 +204,6 @@ public class UsersPO {
 						Helper.normalWait(driver, 1);
 						Helper.handleAlert("Y", driver);
 						Report.captureScreenshot(driver, "DeleteExistingUser");
-
 						break;
 
 					}

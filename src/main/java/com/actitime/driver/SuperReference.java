@@ -100,8 +100,7 @@ public class SuperReference {
 			driver.manage().window().maximize();
 			return driver;
 		}
-		
-//		else if(browser.equalsIgnoreCase("ie")) {
+
 		else if (new Driver().getBrowserName().equalsIgnoreCase("ie")) {
 			nodeURL = "http://192.168.0.13:5555/wd/hub";
 			DesiredCapabilities capabilities = DesiredCapabilities

@@ -1,6 +1,9 @@
 package com.actitime.testscripts;
 
+import java.io.IOException;
+
 import org.testng.annotations.Test;
+
 import com.actitime.driver.SuperReference;
 import com.actitime.genericlibrary.FileUtility;
 
@@ -9,7 +12,7 @@ import com.actitime.genericlibrary.FileUtility;
  */
 public class TestScriptsDevice extends SuperReference {
 	@Test
-	public void TC01_SignIntoApplication() {
+	public void TC01_SignIntoApplication() throws IOException {
 		FileUtility.retrieveData("TC01_SignIntoApplication");
 		loginPO.login();
 	}

@@ -33,6 +33,8 @@ public class XMLUtility {
 	/**
 	 * This method creates the XML suite file dynamically
 	 **/
+	Report reportObject = new Report();
+	
 	public static void createXml(String sheetName) throws Exception {
 		if (new Driver().getRunOn().equalsIgnoreCase("Grid")) {
 			try {

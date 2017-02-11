@@ -18,6 +18,7 @@ import com.actitime.genericlibrary.XMLUtility;
  * This is Driver class with main method
  **/
 public class Driver {
+
 	private String relativePath;
 	private String envPropFilePath;
 	private String app;
