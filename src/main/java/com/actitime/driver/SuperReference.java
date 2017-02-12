@@ -3,12 +3,10 @@ package com.actitime.driver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,11 +16,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
-
 import com.actitime.webpageobjects.DashboardPO;
 import com.actitime.webpageobjects.LoginPO;
 import com.actitime.webpageobjects.UsersPO;
@@ -68,41 +63,27 @@ public class SuperReference {
 	}
 
 	/**
-	 * This method invokes a browser
+	 * This method invokes a standalone browser
 	 * 
 	 **/
-	public WebDriver invokeBrowser(/*String browser*/) throws MalformedURLException {
-//		if(browser.equalsIgnoreCase("firefox")) {
-		if (new Driver().getBrowserName().equalsIgnoreCase("firefox")) {
+	public WebDriver invokeBrowser(String browser) throws MalformedURLException {
+		if (browser.equalsIgnoreCase("firefox")) {
 			System.setProperty("webdriver.gecko.driver",
 					"./src/main/resources/GeckoDriver/geckodriver.exe");
-
 			driver = new FirefoxDriver();
-//			nodeURL = "http://192.168.0.26:5555/wd/hub";
-//			DesiredCapabilities caps = DesiredCapabilities.firefox();
-//			caps.setBrowserName("firefox");
-//			caps.setPlatform(Platform.WINDOWS);
-//			driver = new RemoteWebDriver(new URL(nodeURL), caps);
 			driver.manage().window().maximize();
 			return driver;
 		}
 
-//		else if(browser.equalsIgnoreCase("chrome")){
-		else if (new Driver().getBrowserName().equalsIgnoreCase("chrome")) {
+		else if (browser.equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver",
 					"./src/main/resources/ChromeDriver/chromedriver.exe");
 			driver = new ChromeDriver();
-//			nodeURL = "http://192.168.0.13:5555/wd/hub";
-//			DesiredCapabilities caps = DesiredCapabilities.chrome();
-//			caps.setBrowserName("chrome");
-//			caps.setPlatform(Platform.WINDOWS);
-//			driver = new RemoteWebDriver(new URL(nodeURL), caps);
 			driver.manage().window().maximize();
 			return driver;
 		}
-		
-//		else if(browser.equalsIgnoreCase("ie")) {
-		else if (new Driver().getBrowserName().equalsIgnoreCase("ie")) {
+
+		else if (browser.equalsIgnoreCase("ie")) {
 			nodeURL = "http://192.168.0.13:5555/wd/hub";
 			DesiredCapabilities capabilities = DesiredCapabilities
 					.internetExplorer();
@@ -124,23 +105,72 @@ public class SuperReference {
 					"./src/main/resources/IEDriver/IEDriverServer.exe");
 
 			driver = new InternetExplorerDriver(capabilities);
-//			capabilities.setBrowserName("ie");
-//			capabilities.setPlatform(Platform.WINDOWS);
-//			driver = new RemoteWebDriver(new URL(nodeURL), capabilities);
+			driver.manage().window().maximize();
+			return driver;
+		}
+		return driver;
+	}
+
+	/**
+	 * This method invokes a grid browser
+	 * 
+	 **/
+	public WebDriver invokeBrowserInGrid(String browser)
+			throws MalformedURLException {
+		if (browser.equalsIgnoreCase("firefox")) {
+			nodeURL = new Driver().getNodeUrl1();
+			DesiredCapabilities caps = DesiredCapabilities.firefox();
+			caps.setBrowserName("firefox");
+			caps.setPlatform(Platform.WINDOWS);
+			driver = new RemoteWebDriver(new URL(nodeURL), caps);
+			driver.manage().window().maximize();
+			return driver;
+		}
+
+		else if (browser.equalsIgnoreCase("chrome")) {
+			nodeURL = new Driver().getNodeUrl2();
+			DesiredCapabilities caps = DesiredCapabilities.chrome();
+			caps.setBrowserName("chrome");
+			caps.setPlatform(Platform.WINDOWS);
+			driver = new RemoteWebDriver(new URL(nodeURL), caps);
+			driver.manage().window().maximize();
+			return driver;
+		}
+
+		else if (browser.equalsIgnoreCase("ie")) {
+			nodeURL = new Driver().getNodeUrl2();
+			DesiredCapabilities capabilities = DesiredCapabilities
+					.internetExplorer();
+			capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS,
+					false);
+			capabilities.setCapability(
+					InternetExplorerDriver.ENABLE_PERSISTENT_HOVERING, false);
+			capabilities.setCapability(
+					InternetExplorerDriver.REQUIRE_WINDOW_FOCUS, false);
+			capabilities.setCapability(
+					InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
+			capabilities.setCapability(
+					InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
+			capabilities
+					.setCapability(
+							InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
+							true);
+			capabilities.setBrowserName("ie");
+			capabilities.setPlatform(Platform.WINDOWS);
+			driver = new RemoteWebDriver(new URL(nodeURL), capabilities);
 			driver.manage().window().maximize();
 			return driver;
 		}
 
 		else {
-			System.setProperty("webdriver.gecko.driver",
-					"./src/main/resources/GeckoDriver/geckodriver.exe");
-			driver = new FirefoxDriver();
+			nodeURL = new Driver().getNodeUrl1();
+			DesiredCapabilities caps = DesiredCapabilities.chrome();
+			caps.setBrowserName("chrome");
+			caps.setPlatform(Platform.WINDOWS);
+			driver = new RemoteWebDriver(new URL(nodeURL), caps);
 			driver.manage().window().maximize();
+			return driver;
 		}
-//		loginPO = PageFactory.initElements(driver, LoginPO.class);
-//		dashBoardPO = PageFactory.initElements(driver, DashboardPO.class);
-//		usersPO = PageFactory.initElements(driver, UsersPO.class);
-		return driver;
 	}
 
 	/**
@@ -154,7 +184,8 @@ public class SuperReference {
 	 * This method runs scripts in a device browser
 	 **/
 	@SuppressWarnings("rawtypes")
-	public void setup() throws MalformedURLException, InterruptedException {
+	public void setup(String browser) throws MalformedURLException,
+			InterruptedException {
 		DesiredCapabilities capabilities = DesiredCapabilities.android();
 		capabilities.setCapability("automationName",
 				new Driver().getAutomationName());
@@ -196,30 +227,47 @@ public class SuperReference {
 				capabilities);
 	}
 
-	/* Before Suite */
-	//@Parameters({"browser"})
-	@BeforeClass(alwaysRun=true)
-	public void beforeSuite(/*String browser*/) throws Exception {
-
+	/* Before Class */
+	@Parameters({ "browser" })
+	@BeforeClass(alwaysRun = true)
+	public void beforeClass(String browser) throws Exception {
 		System.out.println("In BeforeSuite ...........");
-		if (new Driver().getType().equalsIgnoreCase("Device")) {
-			appiumStart();
-			setup();
-		} else if (new Driver().getType().equalsIgnoreCase("Desktop")) {
-			driver = invokeBrowser(/*browser*/);
-			loginPO = PageFactory.initElements(driver, LoginPO.class);
-			dashBoardPO = PageFactory.initElements(driver, DashboardPO.class);
-			usersPO = PageFactory.initElements(driver, UsersPO.class);
-			
-		} else if (new Driver().getType().equalsIgnoreCase("App")) {
-			appiumStart();
-			setupApp();
+		if (new Driver().getRunOn().equalsIgnoreCase("grid")) {
+			if (new Driver().getType().equalsIgnoreCase("Desktop")) {
+				driver = invokeBrowserInGrid(browser);
+				loginPO = PageFactory.initElements(driver, LoginPO.class);
+				dashBoardPO = PageFactory.initElements(driver,
+						DashboardPO.class);
+				usersPO = PageFactory.initElements(driver, UsersPO.class);
+			} else if (new Driver().getType().equalsIgnoreCase("Device")) {
+				appiumStart();
+				setup(browser);
+			} else if (new Driver().getType().equalsIgnoreCase("App")) {
+				appiumStart();
+				setupApp();
+			}
+		}
+
+		else if (new Driver().getRunOn().equalsIgnoreCase("StandAlone")) {
+			if (new Driver().getType().equalsIgnoreCase("Desktop")) {
+				driver = invokeBrowser(browser);
+				loginPO = PageFactory.initElements(driver, LoginPO.class);
+				dashBoardPO = PageFactory.initElements(driver,
+						DashboardPO.class);
+				usersPO = PageFactory.initElements(driver, UsersPO.class);
+			} else if (new Driver().getType().equalsIgnoreCase("Device")) {
+				appiumStart();
+				setup(browser);
+			} else if (new Driver().getType().equalsIgnoreCase("App")) {
+				appiumStart();
+				setupApp();
+			}
 		}
 	}
 
-	/* After Suite */
+	/* After Class */
 	@AfterClass
-	public void afterSuite() throws IOException, InterruptedException {
+	public void afterClass() throws IOException, InterruptedException {
 		if (new Driver().getType().equalsIgnoreCase("Device")) {
 			appiumStop();
 		} else if (new Driver().getType().equalsIgnoreCase("Desktop")) {
