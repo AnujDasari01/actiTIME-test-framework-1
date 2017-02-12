@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -12,14 +11,12 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
 import org.testng.TestNG;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.DocumentType;
 import org.w3c.dom.Element;
-
 import com.actitime.driver.Driver;
 
 /*
@@ -31,11 +28,10 @@ import com.actitime.driver.Driver;
  **/
 public class XMLUtility {
 	/**
-	 * This method creates the XML suite file dynamically
+	 * This method creates the XML suite file dynamically for standalone and grid configurations
 	 **/
-	Report reportObject = new Report();
 	
-	public static void createXml(String sheetName) throws Exception {
+	public static void createXml(String sheetName, String browser) throws Exception {
 		if (new Driver().getRunOn().equalsIgnoreCase("Grid")) {
 			try {
 				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory
@@ -292,13 +288,16 @@ public class XMLUtility {
 
 				// Type the root elements in the XML file
 				Element rootElementtest = document.createElement("test");
+				Element rootElementParameters = document.createElement("parameter");
 				Element rootElementClass = document.createElement("classes");
 
 				// Append values to the root elements
+				rootElementParameters.setAttribute("name", "browser");
+				rootElementParameters.setAttribute("value", browser);
 				rootElementsuite.appendChild(rootElementlisteners);
 				rootElementsuite.appendChild(rootElementtest);
+				rootElementtest.appendChild(rootElementParameters);
 				rootElementtest.appendChild(rootElementClass);
-				// rootElementgroups.appendChild(rootElementrun);
 				document.appendChild(rootElementsuite);
 
 				// Add listeners
