@@ -184,7 +184,7 @@ public class SuperReference {
 	 * This method runs scripts in a device browser
 	 **/
 	@SuppressWarnings("rawtypes")
-	public void setup(String browser) throws MalformedURLException,
+	public WebDriver setup(String browser) throws MalformedURLException,
 			InterruptedException {
 		DesiredCapabilities capabilities = DesiredCapabilities.android();
 		capabilities.setCapability("automationName",
@@ -198,9 +198,7 @@ public class SuperReference {
 		capabilities.setCapability("device", new Driver().getDevice());
 		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),
 				capabilities);
-		loginPO = PageFactory.initElements(driver, LoginPO.class);
-		dashBoardPO = PageFactory.initElements(driver, DashboardPO.class);
-		usersPO = PageFactory.initElements(driver, UsersPO.class);
+		return driver;
 	}
 
 	/**
@@ -241,7 +239,10 @@ public class SuperReference {
 				usersPO = PageFactory.initElements(driver, UsersPO.class);
 			} else if (new Driver().getType().equalsIgnoreCase("Device")) {
 				appiumStart();
-				setup(browser);
+				driver = setup(browser);
+				loginPO = PageFactory.initElements(driver, LoginPO.class);
+				dashBoardPO = PageFactory.initElements(driver, DashboardPO.class);
+				usersPO = PageFactory.initElements(driver, UsersPO.class);
 			} else if (new Driver().getType().equalsIgnoreCase("App")) {
 				appiumStart();
 				setupApp();
@@ -257,7 +258,10 @@ public class SuperReference {
 				usersPO = PageFactory.initElements(driver, UsersPO.class);
 			} else if (new Driver().getType().equalsIgnoreCase("Device")) {
 				appiumStart();
-				setup(browser);
+				driver = setup(browser);
+				loginPO = PageFactory.initElements(driver, LoginPO.class);
+				dashBoardPO = PageFactory.initElements(driver, DashboardPO.class);
+				usersPO = PageFactory.initElements(driver, UsersPO.class);
 			} else if (new Driver().getType().equalsIgnoreCase("App")) {
 				appiumStart();
 				setupApp();
