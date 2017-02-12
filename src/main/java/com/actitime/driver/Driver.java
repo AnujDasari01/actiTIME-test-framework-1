@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Properties;
 import java.util.Set;
@@ -18,109 +19,109 @@ import com.actitime.genericlibrary.XMLUtility;
  **/
 public class Driver {
 
-	private String relativePath;
-	private String generalEnvPropFilePath;
-	private String standAloneEnvPropFilePath;
-	private String gridEnvPropFilePath;
-	private String app;
-	private String browserName;
-	private String browserName1;
-	private String browserName2;
-	private String browserName3;
-	private String nodeUrl1;
-	private String nodeUrl2;
-	private String automationName;
-	private String deviceName;
-	private String platformName;
-	private String platformVersion;
-	private String noReset;
-	private String fullReset;
-	private String url;
-	private String type;
-	private String runOn;
-	private String device;
+	private static String relativePath;
+	private static String generalEnvPropFilePath;
+	private static String standAloneEnvPropFilePath;
+	private static String gridEnvPropFilePath;
+	private static String app;
+	private static String browserName;
+	private static String browserName1;
+	private static String browserName2;
+	private static String browserName3;
+	private static String nodeUrl1;
+	private static String nodeUrl2;
+	private static String automationName;
+	private static String deviceName;
+	private static String platformName;
+	private static String platformVersion;
+	private static String noReset;
+	private static String fullReset;
+	private static String url;
+	private static String type;
+	private static String runOn;
+	private static String device;
 
-	public String getApp() {
+	public static String getApp() {
 		return app;
 	}
 
-	public String getBrowserName() {
+	public static String getBrowserName() {
 		return browserName;
 	}
 
-	public String getAutomationName() {
+	public static String getAutomationName() {
 		return automationName;
 	}
 
-	public String getDeviceName() {
+	public static String getDeviceName() {
 		return deviceName;
 	}
 
-	public String getPlatformName() {
+	public static String getPlatformName() {
 		return platformName;
 	}
 
-	public String getPlatformVersion() {
+	public static String getPlatformVersion() {
 		return platformVersion;
 	}
 
-	public String getNoReset() {
+	public static String getNoReset() {
 		return noReset;
 	}
 
-	public String getFullReset() {
+	public static String getFullReset() {
 		return fullReset;
 	}
 
-	public String getUrl() {
+	public static String getUrl() {
 		return url;
 	}
 
-	public String getType() {
+	public static String getType() {
 		return type;
 	}
 
-	public String getRunOn() {
+	public static String getRunOn() {
 		return runOn;
 	}
 
-	public String getGeneralEnvPropFilePath() {
+	public static String getGeneralEnvPropFilePath() {
 		return generalEnvPropFilePath;
 	}
 
-	public String getStandAloneEnvPropFilePath() {
+	public static String getStandAloneEnvPropFilePath() {
 		return standAloneEnvPropFilePath;
 	}
 
-	public String getGridEnvPropFilePath() {
+	public static String getGridEnvPropFilePath() {
 		return gridEnvPropFilePath;
 	}
 
-	public String getBrowserName1() {
+	public static String getBrowserName1() {
 		return browserName1;
 	}
 
-	public String getBrowserName2() {
+	public static String getBrowserName2() {
 		return browserName2;
 	}
 
-	public String getBrowserName3() {
+	public static String getBrowserName3() {
 		return browserName3;
 	}
 
-	public String getNodeUrl1() {
+	public static String getNodeUrl1() {
 		return nodeUrl1;
 	}
 
-	public String getNodeUrl2() {
+	public static String getNodeUrl2() {
 		return nodeUrl2;
 	}
 
-	public String getDevice() {
+	public static String getDevice() {
 		return device;
 	}
 
-	public String getRelativePath() {
+	public static String getRelativePath() {
 		return relativePath;
 	}
 
@@ -128,27 +129,18 @@ public class Driver {
 	 * This is the main method
 	 **/
 	public static void main(String args[]) throws Exception {
-
-		new Driver().readValidXmlSheet();
-
-		XMLUtility.autoRunXml();
-
-	}
-
-	/**
-	 * Driver constructor to initialize all instance variables
-	 **/
-	public Driver() {
 		relativePath = System.getProperty("user.dir");
 		retrieveGeneralEnvProperties();
 		retrieveStandAloneEnvProperties();
 		retrieveGridEnvProperties();
+		readValidXmlSheet();
+		XMLUtility.autoRunXml();
 	}
 
 	/**
 	 * This method retrieves all properties from the GeneralEnvProperties file
 	 **/
-	public void retrieveGeneralEnvProperties() {
+	public static void retrieveGeneralEnvProperties() {
 		generalEnvPropFilePath = "GeneralEnvProperties.properties";
 		Properties prop = new Properties();
 		InputStream input = null;
@@ -184,7 +176,7 @@ public class Driver {
 	 * This method retrieves all properties from the StandAloneEnvProperties
 	 * file
 	 **/
-	public void retrieveStandAloneEnvProperties() {
+	public static void retrieveStandAloneEnvProperties() {
 		standAloneEnvPropFilePath = "StandAloneEnvProperties.properties";
 		Properties prop = new Properties();
 		InputStream input = null;
@@ -236,7 +228,7 @@ public class Driver {
 	/**
 	 * This method retrieves all properties from the GridEnvProperties file
 	 **/
-	public void retrieveGridEnvProperties() {
+	public static void retrieveGridEnvProperties() {
 		gridEnvPropFilePath = "GridEnvProperties.properties";
 		Properties prop = new Properties();
 		InputStream input = null;
@@ -263,9 +255,9 @@ public class Driver {
 			if (key.equalsIgnoreCase("browserName1")) {
 				browserName1 = prop.getProperty(key);
 			} else if (key.equalsIgnoreCase("browserName2")) {
-				platformName = prop.getProperty(key);
+				browserName2 = prop.getProperty(key);
 			} else if (key.equalsIgnoreCase("browserName3")) {
-				platformVersion = prop.getProperty(key);
+				browserName3 = prop.getProperty(key);
 			} else if (key.equalsIgnoreCase("nodeUrl1")) {
 				nodeUrl1 = prop.getProperty(key);
 			} else if (key.equalsIgnoreCase("nodeUrl2")) {
@@ -276,19 +268,41 @@ public class Driver {
 	}
 
 	/**
+	 * This method determines the number of parameters to pass while creating
+	 * testng.xml
+	 **/
+	public ArrayList<String> getNumberOfParametersForGrid() {
+		ArrayList<String> params = new ArrayList<String>();
+		params.add(browserName1);
+		params.add(browserName2);
+		params.add(browserName3);
+		return params;
+
+	}
+
+	/**
 	 * This method selects the sheet based on platform type
 	 **/
-	public void readValidXmlSheet() throws Exception {
-		if (type.equalsIgnoreCase("Desktop")) {
-			XMLUtility.createXml("TestScriptsWeb", new Driver().browserName);
+	public static void readValidXmlSheet() throws Exception {
+		if (Driver.getType().equalsIgnoreCase("Desktop")) {
+			if (Driver.getRunOn().equalsIgnoreCase("grid")) {
+				// ArrayList<String> listOfBrowsers =
+				// getNumberOfParametersForGrid();
+				XMLUtility.createXmlForGridConfig("TestScriptsWeb",
+						browserName1, browserName2, browserName3);
+			} else if (runOn.equalsIgnoreCase("StandAlone")) {
+				XMLUtility.createXmlForStandAloneConfig("TestScriptsWeb",
+						Driver.browserName);
+			}
 		}
 
 		if (type.equalsIgnoreCase("Device")) {
-			XMLUtility.createXml("TestScriptsDevice", new Driver().browserName);
+			// XMLUtility.createXml("TestScriptsDevice", new
+			// Driver().browserName);
 		}
 
 		if (type.equalsIgnoreCase("App")) {
-			XMLUtility.createXml("TestScriptsApp", new Driver().browserName);
+			// XMLUtility.createXml("TestScriptsApp", new Driver().browserName);
 		}
 	}
 }

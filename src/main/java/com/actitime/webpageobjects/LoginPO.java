@@ -1,14 +1,12 @@
 package com.actitime.webpageobjects;
 
 import java.io.IOException;
-
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
 import com.actitime.driver.Driver;
 import com.actitime.genericlibrary.FileUtility;
 import com.actitime.genericlibrary.Helper;
@@ -22,8 +20,8 @@ import com.actitime.genericlibrary.Report;
  * This is ActiTime Login Page Object
  **/
 public class LoginPO {
-	
-	private WebDriver driver;
+
+	WebDriver driver;
 
 	@FindBy(css = "input#username")
 	private WebElement userName;
@@ -44,11 +42,12 @@ public class LoginPO {
 
 	/**
 	 * This method is used to login to ActiTime Application
-	 * @throws IOException 
+	 * 
+	 * @throws IOException
 	 **/
 	public void login() throws IOException {
 		try {
-			driver.get(new Driver().getUrl());
+			driver.get(Driver.getUrl());
 			Helper.implicitWait(driver);
 			userName.sendKeys(FileUtility.getTestData().get("UserID"));
 			passWord.sendKeys(FileUtility.getTestData().get("Pwd"));

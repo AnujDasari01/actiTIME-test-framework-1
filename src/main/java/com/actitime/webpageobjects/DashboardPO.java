@@ -17,7 +17,7 @@ import com.actitime.genericlibrary.Report;
 
 public class DashboardPO {
 
-	private WebDriver driver;
+	WebDriver driver;
 
 	@FindBy(css = "a.content.tasks")
 	private WebElement tasksWidget;

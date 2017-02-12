@@ -33,10 +33,9 @@ import com.actitime.webpageobjects.UsersPO;
 public class SuperReference {
 
 	protected WebDriver driver;
-	private String nodeURL;
-	protected static LoginPO loginPO;
-	protected static DashboardPO dashBoardPO;
-	protected static UsersPO usersPO;
+	protected LoginPO loginPO;
+	protected DashboardPO dashBoardPO;
+	protected UsersPO usersPO;
 
 	/* Starting Appium from Console */
 	AppiumDriverLocalService service = AppiumDriverLocalService
@@ -84,7 +83,6 @@ public class SuperReference {
 		}
 
 		else if (browser.equalsIgnoreCase("ie")) {
-			nodeURL = "http://192.168.0.13:5555/wd/hub";
 			DesiredCapabilities capabilities = DesiredCapabilities
 					.internetExplorer();
 			capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS,
@@ -115,10 +113,12 @@ public class SuperReference {
 	 * This method invokes a grid browser
 	 * 
 	 **/
-	public WebDriver invokeBrowserInGrid(String browser)
+	public static WebDriver invokeBrowserInGrid(String browser)
 			throws MalformedURLException {
+		String nodeURL = null;
+		WebDriver driver = null;
 		if (browser.equalsIgnoreCase("firefox")) {
-			nodeURL = new Driver().getNodeUrl1();
+			nodeURL = Driver.getNodeUrl1();
 			DesiredCapabilities caps = DesiredCapabilities.firefox();
 			caps.setBrowserName("firefox");
 			caps.setPlatform(Platform.WINDOWS);
@@ -128,7 +128,7 @@ public class SuperReference {
 		}
 
 		else if (browser.equalsIgnoreCase("chrome")) {
-			nodeURL = new Driver().getNodeUrl2();
+			nodeURL = Driver.getNodeUrl2();
 			DesiredCapabilities caps = DesiredCapabilities.chrome();
 			caps.setBrowserName("chrome");
 			caps.setPlatform(Platform.WINDOWS);
@@ -138,7 +138,7 @@ public class SuperReference {
 		}
 
 		else if (browser.equalsIgnoreCase("ie")) {
-			nodeURL = new Driver().getNodeUrl2();
+			nodeURL = Driver.getNodeUrl2();
 			DesiredCapabilities capabilities = DesiredCapabilities
 					.internetExplorer();
 			capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS,
@@ -163,7 +163,7 @@ public class SuperReference {
 		}
 
 		else {
-			nodeURL = new Driver().getNodeUrl1();
+			nodeURL = Driver.getNodeUrl2();
 			DesiredCapabilities caps = DesiredCapabilities.chrome();
 			caps.setBrowserName("chrome");
 			caps.setPlatform(Platform.WINDOWS);
@@ -187,15 +187,14 @@ public class SuperReference {
 	public WebDriver setup(String browser) throws MalformedURLException,
 			InterruptedException {
 		DesiredCapabilities capabilities = DesiredCapabilities.android();
-		capabilities.setCapability("automationName",
-				new Driver().getAutomationName());
-		capabilities.setCapability("deviceName", new Driver().getDeviceName());
-		capabilities.setCapability("platformName",
-				new Driver().getPlatformName());
+		capabilities
+				.setCapability("automationName", Driver.getAutomationName());
+		capabilities.setCapability("deviceName", Driver.getDeviceName());
+		capabilities.setCapability("platformName", Driver.getPlatformName());
 		capabilities.setCapability("platformVersion",
-				new Driver().getPlatformVersion());
-		capabilities.setCapability("app", new Driver().getApp());
-		capabilities.setCapability("device", new Driver().getDevice());
+				Driver.getPlatformVersion());
+		capabilities.setCapability("app", Driver.getApp());
+		capabilities.setCapability("device", Driver.getDevice());
 		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),
 				capabilities);
 		return driver;
@@ -209,17 +208,16 @@ public class SuperReference {
 		File app = new File("./src/test/resources/Apk/FormApp.apk");
 		DesiredCapabilities capabilities = DesiredCapabilities.android();
 		capabilities.setCapability("appium-version", "1.4.16.1");
-		capabilities.setCapability("automationName",
-				new Driver().getAutomationName());
-		capabilities.setCapability("deviceName", new Driver().getDeviceName());
-		capabilities.setCapability("platformName",
-				new Driver().getPlatformName());
+		capabilities
+				.setCapability("automationName", Driver.getAutomationName());
+		capabilities.setCapability("deviceName", Driver.getDeviceName());
+		capabilities.setCapability("platformName", Driver.getPlatformName());
 		capabilities.setCapability("platformVersion",
-				new Driver().getPlatformVersion());
-		capabilities.setCapability("device", new Driver().getDevice());
+				Driver.getPlatformVersion());
+		capabilities.setCapability("device", Driver.getDevice());
 		capabilities.setCapability("app", app.getAbsolutePath());
-		capabilities.setCapability("noReset", new Driver().getNoReset());
-		capabilities.setCapability("fullReset", new Driver().getFullReset());
+		capabilities.setCapability("noReset", Driver.getNoReset());
+		capabilities.setCapability("fullReset", Driver.getFullReset());
 		capabilities.setCapability("appActivity", "com.anuj.task1.FormLogin");
 		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),
 				capabilities);
@@ -230,39 +228,41 @@ public class SuperReference {
 	@BeforeClass(alwaysRun = true)
 	public void beforeClass(String browser) throws Exception {
 		System.out.println("In BeforeSuite ...........");
-		if (new Driver().getRunOn().equalsIgnoreCase("grid")) {
-			if (new Driver().getType().equalsIgnoreCase("Desktop")) {
+		if (Driver.getRunOn().equalsIgnoreCase("grid")) {
+			if (Driver.getType().equalsIgnoreCase("Desktop")) {
 				driver = invokeBrowserInGrid(browser);
 				loginPO = PageFactory.initElements(driver, LoginPO.class);
 				dashBoardPO = PageFactory.initElements(driver,
 						DashboardPO.class);
 				usersPO = PageFactory.initElements(driver, UsersPO.class);
-			} else if (new Driver().getType().equalsIgnoreCase("Device")) {
+			} else if (Driver.getType().equalsIgnoreCase("Device")) {
 				appiumStart();
 				driver = setup(browser);
 				loginPO = PageFactory.initElements(driver, LoginPO.class);
-				dashBoardPO = PageFactory.initElements(driver, DashboardPO.class);
+				dashBoardPO = PageFactory.initElements(driver,
+						DashboardPO.class);
 				usersPO = PageFactory.initElements(driver, UsersPO.class);
-			} else if (new Driver().getType().equalsIgnoreCase("App")) {
+			} else if (Driver.getType().equalsIgnoreCase("App")) {
 				appiumStart();
 				setupApp();
 			}
 		}
 
-		else if (new Driver().getRunOn().equalsIgnoreCase("StandAlone")) {
-			if (new Driver().getType().equalsIgnoreCase("Desktop")) {
+		else if (Driver.getRunOn().equalsIgnoreCase("StandAlone")) {
+			if (Driver.getType().equalsIgnoreCase("Desktop")) {
 				driver = invokeBrowser(browser);
 				loginPO = PageFactory.initElements(driver, LoginPO.class);
 				dashBoardPO = PageFactory.initElements(driver,
 						DashboardPO.class);
 				usersPO = PageFactory.initElements(driver, UsersPO.class);
-			} else if (new Driver().getType().equalsIgnoreCase("Device")) {
+			} else if (Driver.getType().equalsIgnoreCase("Device")) {
 				appiumStart();
 				driver = setup(browser);
 				loginPO = PageFactory.initElements(driver, LoginPO.class);
-				dashBoardPO = PageFactory.initElements(driver, DashboardPO.class);
+				dashBoardPO = PageFactory.initElements(driver,
+						DashboardPO.class);
 				usersPO = PageFactory.initElements(driver, UsersPO.class);
-			} else if (new Driver().getType().equalsIgnoreCase("App")) {
+			} else if (Driver.getType().equalsIgnoreCase("App")) {
 				appiumStart();
 				setupApp();
 			}
@@ -272,9 +272,9 @@ public class SuperReference {
 	/* After Class */
 	@AfterClass
 	public void afterClass() throws IOException, InterruptedException {
-		if (new Driver().getType().equalsIgnoreCase("Device")) {
+		if (Driver.getType().equalsIgnoreCase("Device")) {
 			appiumStop();
-		} else if (new Driver().getType().equalsIgnoreCase("Desktop")) {
+		} else if (Driver.getType().equalsIgnoreCase("Desktop")) {
 			closeBrowser();
 		}
 	}

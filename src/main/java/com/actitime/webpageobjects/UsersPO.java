@@ -1,13 +1,11 @@
 package com.actitime.webpageobjects;
 
 import java.util.List;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
 import com.actitime.genericlibrary.FileUtility;
 import com.actitime.genericlibrary.Helper;
 import com.actitime.genericlibrary.Report;
@@ -21,7 +19,8 @@ import com.actitime.genericlibrary.Report;
  **/
 public class UsersPO {
 
-	private WebDriver driver;
+	WebDriver driver;
+
 	@FindBy(xpath = "//div[@class='pagetitle']/span")
 	private WebElement usersTitle;
 
@@ -80,12 +79,14 @@ public class UsersPO {
 	 **/
 	public void createUser() {
 		addUserBtn.click();
-		firstNameTextField.sendKeys(FileUtility.getTestData().get("First_Name"));
+		firstNameTextField
+				.sendKeys(FileUtility.getTestData().get("First_Name"));
 		lastNameTextField.sendKeys(FileUtility.getTestData().get("Last_Name"));
 		emailTextField.sendKeys(FileUtility.getTestData().get("Email_Address"));
 		userNameTextField.sendKeys(FileUtility.getTestData().get("UserName"));
 		passwordTextField.sendKeys(FileUtility.getTestData().get("Password"));
-		retypePasswordTextField.sendKeys(FileUtility.getTestData().get("Password"));
+		retypePasswordTextField.sendKeys(FileUtility.getTestData().get(
+				"Password"));
 		System.out.println("Create user: "
 				+ FileUtility.getTestData().get("First_Name") + " "
 				+ FileUtility.getTestData().get("Last_Name"));
@@ -95,15 +96,16 @@ public class UsersPO {
 			modalWindowClose.click();
 			Helper.handleAlert("Y", driver);
 			Assert.fail("User having username: "
-					+ FileUtility.getTestData().get("UserName") + " already exists!");
+					+ FileUtility.getTestData().get("UserName")
+					+ " already exists!");
 		} else {
 			Helper.scrollTo(confirmUserAddBtn, driver);
 			confirmUserAddBtn.click();
 			Helper.normalWait(driver, 1);
 			Helper.scrollTo(confirmUserAdd, driver);
 			String actualName = confirmUserAdd.getText();
-			String expectedName = FileUtility.getTestData().get("Last_Name") + ", "
-					+ FileUtility.getTestData().get("First_Name");
+			String expectedName = FileUtility.getTestData().get("Last_Name")
+					+ ", " + FileUtility.getTestData().get("First_Name");
 			Assert.assertEquals(actualName, expectedName);
 			Helper.scrollTo(usersTitle, driver);
 			Report.captureScreenshot(driver, "UserAddition ");

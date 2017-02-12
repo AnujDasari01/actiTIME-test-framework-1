@@ -14,15 +14,12 @@ import org.testng.Reporter;
  * Updated on 1/7/2017
  */
 
-
 /**
- * This is Helper class with all generic methods 
+ * This is Helper class with all generic methods
  **/
 public class Helper {
-
-
 	/**
-	 * This method makes the driver wait for specified seconds 
+	 * This method makes the driver wait for specified seconds
 	 **/
 	public static void normalWait(WebDriver driver, long seconds) {
 		try {
@@ -32,15 +29,13 @@ public class Helper {
 		}
 	}
 
-
 	/**
-	 * This method makes the driver wait implicitly 
+	 * This method makes the driver wait implicitly
 	 **/
 	public static void implicitWait(WebDriver driver) {
 		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 
 	}
-
 
 	/**
 	 * This method makes the driver wait till the webelement is located
@@ -48,12 +43,12 @@ public class Helper {
 	public static void explicitWait(WebElement wb, WebDriver driver) {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 20);
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.id(wb+"")));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.id(wb
+					+ "")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 
 	/**
 	 * This method makes the driver scroll down the specified webelement
@@ -62,16 +57,15 @@ public class Helper {
 		try {
 			JavascriptExecutor je = (JavascriptExecutor) driver;
 			je.executeScript("arguments[0].scrollIntoView(true);", wb);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return wb.isDisplayed();
 	}
 
-
 	/**
-	 * This method checks for partial text in a webelement 
+	 * This method checks for partial text in a webelement
 	 **/
 	public static void checkPartialText(WebElement wb, String st) {
 		try {
@@ -86,9 +80,8 @@ public class Helper {
 		}
 	}
 
-
 	/**
-	 * This method checks for text in a webelement 
+	 * This method checks for text in a webelement
 	 **/
 	public static void checkText(WebElement wb, String st) {
 		try {
@@ -102,20 +95,17 @@ public class Helper {
 			System.out.println(e);
 		}
 	}
-	
+
 	/**
-	 * This method handles alert windows 
+	 * This method handles alert windows
 	 **/
 	public static void handleAlert(String status, WebDriver driver) {
 		Alert alert = driver.switchTo().alert();
-		if(status.equalsIgnoreCase("Y")) {
+		if (status.equalsIgnoreCase("Y")) {
 			alert.accept();
-		}
-		else if (status.equalsIgnoreCase("N")) {
+		} else if (status.equalsIgnoreCase("N")) {
 			alert.dismiss();
 		}
 	}
-	
-	
 
 }
