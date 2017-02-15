@@ -94,6 +94,7 @@ public class UsersPO {
 		if (duplicateUserError.isDisplayed()) {
 			Report.captureScreenshot(driver, "UserAddition");
 			modalWindowClose.click();
+			Helper.normalWait(driver, 1);
 			Helper.handleAlert("Y", driver);
 			Assert.fail("User having username: "
 					+ FileUtility.getTestData().get("UserName")

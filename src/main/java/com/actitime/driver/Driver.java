@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Properties;
 import java.util.Set;
@@ -141,7 +140,7 @@ public class Driver {
 	 * This method retrieves all properties from the GeneralEnvProperties file
 	 **/
 	public static void retrieveGeneralEnvProperties() {
-		generalEnvPropFilePath = "GeneralEnvProperties.properties";
+		generalEnvPropFilePath = "./src/test/resources/PropertiesFiles/GeneralEnvProperties.properties";
 		Properties prop = new Properties();
 		InputStream input = null;
 		try {
@@ -177,7 +176,7 @@ public class Driver {
 	 * file
 	 **/
 	public static void retrieveStandAloneEnvProperties() {
-		standAloneEnvPropFilePath = "StandAloneEnvProperties.properties";
+		standAloneEnvPropFilePath = "./src/test/resources/PropertiesFiles/StandAloneEnvProperties.properties";
 		Properties prop = new Properties();
 		InputStream input = null;
 
@@ -229,7 +228,7 @@ public class Driver {
 	 * This method retrieves all properties from the GridEnvProperties file
 	 **/
 	public static void retrieveGridEnvProperties() {
-		gridEnvPropFilePath = "GridEnvProperties.properties";
+		gridEnvPropFilePath = "./src/test/resources/PropertiesFiles/GridEnvProperties.properties";
 		Properties prop = new Properties();
 		InputStream input = null;
 
@@ -268,41 +267,38 @@ public class Driver {
 	}
 
 	/**
-	 * This method determines the number of parameters to pass while creating
-	 * testng.xml
-	 **/
-	public ArrayList<String> getNumberOfParametersForGrid() {
-		ArrayList<String> params = new ArrayList<String>();
-		params.add(browserName1);
-		params.add(browserName2);
-		params.add(browserName3);
-		return params;
-
-	}
-
-	/**
 	 * This method selects the sheet based on platform type
 	 **/
 	public static void readValidXmlSheet() throws Exception {
-		if (Driver.getType().equalsIgnoreCase("Desktop")) {
-			if (Driver.getRunOn().equalsIgnoreCase("grid")) {
-				// ArrayList<String> listOfBrowsers =
-				// getNumberOfParametersForGrid();
+		if (type.equalsIgnoreCase("Desktop")) {
+			if (runOn.equalsIgnoreCase("grid")) {
 				XMLUtility.createXmlForGridConfig("TestScriptsWeb",
 						browserName1, browserName2, browserName3);
 			} else if (runOn.equalsIgnoreCase("StandAlone")) {
 				XMLUtility.createXmlForStandAloneConfig("TestScriptsWeb",
-						Driver.browserName);
+						browserName);
 			}
 		}
 
 		if (type.equalsIgnoreCase("Device")) {
-			// XMLUtility.createXml("TestScriptsDevice", new
-			// Driver().browserName);
+			if (runOn.equalsIgnoreCase("grid")) {
+				XMLUtility.createXmlForGridConfig("TestScriptsDevice",
+						browserName1, browserName2, browserName3);
+			} else if (runOn.equalsIgnoreCase("StandAlone")) {
+				XMLUtility.createXmlForStandAloneConfig("TestScriptsDevice",
+						app);
+			}
+
 		}
 
 		if (type.equalsIgnoreCase("App")) {
-			// XMLUtility.createXml("TestScriptsApp", new Driver().browserName);
+			if (runOn.equalsIgnoreCase("grid")) {
+				XMLUtility.createXmlForGridConfig("TestScriptsApp",
+						browserName1, browserName2, browserName3);
+			} else if (runOn.equalsIgnoreCase("StandAlone")) {
+				XMLUtility.createXmlForStandAloneConfig("TestScriptsDevice",
+						app);
+			}
 		}
 	}
 }

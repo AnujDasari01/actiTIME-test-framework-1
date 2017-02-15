@@ -141,20 +141,20 @@ public class SuperReference {
 			nodeURL = Driver.getNodeUrl2();
 			DesiredCapabilities capabilities = DesiredCapabilities
 					.internetExplorer();
-			capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS,
-					false);
-			capabilities.setCapability(
-					InternetExplorerDriver.ENABLE_PERSISTENT_HOVERING, false);
-			capabilities.setCapability(
-					InternetExplorerDriver.REQUIRE_WINDOW_FOCUS, false);
-			capabilities.setCapability(
-					InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
-			capabilities.setCapability(
-					InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
-			capabilities
-					.setCapability(
-							InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
-							true);
+//			capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS,
+//					false);
+//			capabilities.setCapability(
+//					InternetExplorerDriver.ENABLE_PERSISTENT_HOVERING, false);
+//			capabilities.setCapability(
+//					InternetExplorerDriver.REQUIRE_WINDOW_FOCUS, false);
+//			capabilities.setCapability(
+//					InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
+//			capabilities.setCapability(
+//					InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
+//			capabilities
+//					.setCapability(
+//							InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
+//							true);
 			capabilities.setBrowserName("ie");
 			capabilities.setPlatform(Platform.WINDOWS);
 			driver = new RemoteWebDriver(new URL(nodeURL), capabilities);
@@ -227,7 +227,6 @@ public class SuperReference {
 	@Parameters({ "browser" })
 	@BeforeClass(alwaysRun = true)
 	public void beforeClass(String browser) throws Exception {
-		System.out.println("In BeforeSuite ...........");
 		if (Driver.getRunOn().equalsIgnoreCase("grid")) {
 			if (Driver.getType().equalsIgnoreCase("Desktop")) {
 				driver = invokeBrowserInGrid(browser);
