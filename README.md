@@ -5,10 +5,13 @@ A Github repository for Functional and UI Automation Testing using Java, Seleniu
 * Windows OS  
 * Eclipse IDE  
 * JDK 7 or above  
-* MAVEN  
-* APPIUM  
-* PDANET  
+* Maven  
+* Appium  
+* PDAnet  
 
 ## Let's get started
 *Download the project from*  
 https://github.com/AnujDasari/ActiTimeProject
+
+## To run from commandline
+`mvn exec:java`
