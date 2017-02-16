@@ -2,8 +2,10 @@ package com.actitime.genericlibrary;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Properties;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Row;
@@ -154,6 +156,20 @@ public class FileUtility {
 			System.out.println("Exception with respect to Input/Output file");
 		}
 		return sheetNames;
+	}
+	
+	public static Properties getProperties(String propFilePath) {
+		Properties prop = new Properties();
+		InputStream input = null;
+
+		try {
+			input = new FileInputStream(propFilePath);
+			prop.load(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return prop;
 	}
 
 }

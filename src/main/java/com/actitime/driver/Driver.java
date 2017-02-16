@@ -1,12 +1,9 @@
 package com.actitime.driver;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Iterator;
 import java.util.Properties;
 import java.util.Set;
+import com.actitime.genericlibrary.FileUtility;
 import com.actitime.genericlibrary.XMLUtility;
 
 /*
@@ -29,17 +26,27 @@ public class Driver {
 	private static String browserName3;
 	private static String nodeUrl1;
 	private static String nodeUrl2;
+	private static String nodeUrl3;
 	private static String automationName;
 	private static String deviceName;
 	private static String platformName;
 	private static String platformVersion;
 	private static String noReset;
 	private static String fullReset;
-	private static String url;
+	private static String desktopUrl;
+	private static String deviceUrl;
 	private static String type;
 	private static String runOn;
 	private static String device;
 
+	public static String getDesktopUrl() {
+		return desktopUrl;
+	}
+
+	public static String getDeviceUrl() {
+		return deviceUrl;
+	}
+	
 	public static String getApp() {
 		return app;
 	}
@@ -70,10 +77,6 @@ public class Driver {
 
 	public static String getFullReset() {
 		return fullReset;
-	}
-
-	public static String getUrl() {
-		return url;
 	}
 
 	public static String getType() {
@@ -115,6 +118,10 @@ public class Driver {
 	public static String getNodeUrl2() {
 		return nodeUrl2;
 	}
+	
+	public static String getNodeUrl3() {
+		return nodeUrl3;
+	}
 
 	public static String getDevice() {
 		return device;
@@ -141,19 +148,8 @@ public class Driver {
 	 **/
 	public static void retrieveGeneralEnvProperties() {
 		generalEnvPropFilePath = "./src/test/resources/PropertiesFiles/GeneralEnvProperties.properties";
-		Properties prop = new Properties();
-		InputStream input = null;
-		try {
-			input = new FileInputStream(generalEnvPropFilePath);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
 
-		try {
-			prop.load(input);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Properties prop = FileUtility.getProperties(generalEnvPropFilePath);
 
 		Set<Object> set = prop.keySet();
 
@@ -177,20 +173,8 @@ public class Driver {
 	 **/
 	public static void retrieveStandAloneEnvProperties() {
 		standAloneEnvPropFilePath = "./src/test/resources/PropertiesFiles/StandAloneEnvProperties.properties";
-		Properties prop = new Properties();
-		InputStream input = null;
 
-		try {
-			input = new FileInputStream(standAloneEnvPropFilePath);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		try {
-			prop.load(input);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Properties prop = FileUtility.getProperties(standAloneEnvPropFilePath);
 
 		Set<Object> set = prop.keySet();
 
@@ -199,8 +183,10 @@ public class Driver {
 		for (int i = 0; i < set.size(); i++) {
 			String key = (String) it.next();
 
-			if (key.equalsIgnoreCase("url")) {
-				url = prop.getProperty(key);
+			if (key.equalsIgnoreCase("desktopUrl")) {
+				desktopUrl = prop.getProperty(key);
+			} else if (key.equalsIgnoreCase("deviceUrl")) {
+				deviceUrl = prop.getProperty(key);
 			} else if (key.equalsIgnoreCase("browserName")) {
 				browserName = prop.getProperty(key);
 			} else if (key.equalsIgnoreCase("platformName")) {
@@ -229,20 +215,8 @@ public class Driver {
 	 **/
 	public static void retrieveGridEnvProperties() {
 		gridEnvPropFilePath = "./src/test/resources/PropertiesFiles/GridEnvProperties.properties";
-		Properties prop = new Properties();
-		InputStream input = null;
 
-		try {
-			input = new FileInputStream(gridEnvPropFilePath);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		try {
-			prop.load(input);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Properties prop = FileUtility.getProperties(gridEnvPropFilePath);
 
 		Set<Object> set = prop.keySet();
 
@@ -261,6 +235,8 @@ public class Driver {
 				nodeUrl1 = prop.getProperty(key);
 			} else if (key.equalsIgnoreCase("nodeUrl2")) {
 				nodeUrl2 = prop.getProperty(key);
+			} else if (key.equalsIgnoreCase("nodeUrl3")) {
+				nodeUrl3 = prop.getProperty(key);
 			} else
 				continue;
 		}
@@ -296,8 +272,7 @@ public class Driver {
 				XMLUtility.createXmlForGridConfig("TestScriptsApp",
 						browserName1, browserName2, browserName3);
 			} else if (runOn.equalsIgnoreCase("StandAlone")) {
-				XMLUtility.createXmlForStandAloneConfig("TestScriptsDevice",
-						app);
+				XMLUtility.createXmlForStandAloneConfig("TestScriptsApp", app);
 			}
 		}
 	}
