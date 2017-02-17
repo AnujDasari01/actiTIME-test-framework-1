@@ -47,7 +47,11 @@ public class LoginPO {
 	 **/
 	public void login() throws IOException {
 		try {
-			driver.get(Driver.getUrl());
+			if(Driver.getType().equalsIgnoreCase("Desktop")) {
+				driver.get(Driver.getDesktopUrl());
+			} else if (Driver.getType().equalsIgnoreCase("Device")) {
+				driver.get(Driver.getDeviceUrl());
+			}
 			Helper.implicitWait(driver);
 			userName.sendKeys(FileUtility.getTestData().get("UserID"));
 			passWord.sendKeys(FileUtility.getTestData().get("Pwd"));

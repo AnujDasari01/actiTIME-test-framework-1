@@ -118,27 +118,29 @@ public class SuperReference {
 		String nodeURL = null;
 		WebDriver driver = null;
 		if (browser.equalsIgnoreCase("firefox")) {
+			System.out.println("FIREFOX");
 			nodeURL = Driver.getNodeUrl1();
-			DesiredCapabilities caps = DesiredCapabilities.firefox();
-			caps.setBrowserName("firefox");
-			caps.setPlatform(Platform.WINDOWS);
-			driver = new RemoteWebDriver(new URL(nodeURL), caps);
+			DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+			capabilities.setPlatform(Platform.WINDOWS);
+			driver = new RemoteWebDriver(new URL(nodeURL), capabilities);
 			driver.manage().window().maximize();
 			return driver;
 		}
 
 		else if (browser.equalsIgnoreCase("chrome")) {
+			System.out.println("CHROME");
 			nodeURL = Driver.getNodeUrl2();
-			DesiredCapabilities caps = DesiredCapabilities.chrome();
-			caps.setBrowserName("chrome");
-			caps.setPlatform(Platform.WINDOWS);
-			driver = new RemoteWebDriver(new URL(nodeURL), caps);
+			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+			capabilities.setPlatform(Platform.WINDOWS);
+			driver = new RemoteWebDriver(new URL(nodeURL), capabilities);
 			driver.manage().window().maximize();
 			return driver;
 		}
 
-		else if (browser.equalsIgnoreCase("ie")) {
-			nodeURL = Driver.getNodeUrl2();
+		else if (browser.equalsIgnoreCase("internet explorer")) {
+			System.out.println("INTERNET EXPLORER");
+			nodeURL = Driver.getNodeUrl3();
+			System.out.println("Node 3 url is: " +nodeURL);
 			DesiredCapabilities capabilities = DesiredCapabilities
 					.internetExplorer();
 			capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS,
@@ -155,7 +157,6 @@ public class SuperReference {
 					.setCapability(
 							InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
 							true);
-			capabilities.setBrowserName("ie");
 			capabilities.setPlatform(Platform.WINDOWS);
 			driver = new RemoteWebDriver(new URL(nodeURL), capabilities);
 			driver.manage().window().maximize();
@@ -164,10 +165,9 @@ public class SuperReference {
 
 		else {
 			nodeURL = Driver.getNodeUrl2();
-			DesiredCapabilities caps = DesiredCapabilities.chrome();
-			caps.setBrowserName("chrome");
-			caps.setPlatform(Platform.WINDOWS);
-			driver = new RemoteWebDriver(new URL(nodeURL), caps);
+			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+			capabilities.setPlatform(Platform.WINDOWS);
+			driver = new RemoteWebDriver(new URL(nodeURL), capabilities);
 			driver.manage().window().maximize();
 			return driver;
 		}
@@ -227,7 +227,6 @@ public class SuperReference {
 	@Parameters({ "browser" })
 	@BeforeClass(alwaysRun = true)
 	public void beforeClass(String browser) throws Exception {
-		System.out.println("In BeforeSuite ...........");
 		if (Driver.getRunOn().equalsIgnoreCase("grid")) {
 			if (Driver.getType().equalsIgnoreCase("Desktop")) {
 				driver = invokeBrowserInGrid(browser);
