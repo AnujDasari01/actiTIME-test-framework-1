@@ -1,5 +1,5 @@
 # ActiTimeProject
-A Github repository for Functional and UI Automation Testing using Java, Selenium, TestNG and Appium. This is a Test Automation Framework used to Automate Scenarios for ActiTime Application. 
+A Github repository for Functional and UI Automation Testing using Java, Selenium, TestNG and Appium. 
 
 ## Pre-requisites
 * Windows OS  
