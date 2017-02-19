@@ -10,10 +10,6 @@ import com.actitime.genericlibrary.FileUtility;
 import com.actitime.genericlibrary.Helper;
 import com.actitime.genericlibrary.Report;
 
-/*
- * Updated on 1/7/2017
- */
-
 /**
  * This is ActiTime Users Page Object
  **/
@@ -77,40 +73,34 @@ public class UsersPO {
 	/**
 	 * This method is used to create a user
 	 **/
-	public void createUser() {
+	public String createUser() {
 		addUserBtn.click();
-		firstNameTextField
-				.sendKeys(FileUtility.getTestData().get("First_Name"));
+		firstNameTextField.sendKeys(FileUtility.getTestData().get("First_Name"));
 		lastNameTextField.sendKeys(FileUtility.getTestData().get("Last_Name"));
 		emailTextField.sendKeys(FileUtility.getTestData().get("Email_Address"));
 		userNameTextField.sendKeys(FileUtility.getTestData().get("UserName"));
 		passwordTextField.sendKeys(FileUtility.getTestData().get("Password"));
 		retypePasswordTextField.sendKeys(FileUtility.getTestData().get(
 				"Password"));
-		System.out.println("Create user: "
-				+ FileUtility.getTestData().get("First_Name") + " "
-				+ FileUtility.getTestData().get("Last_Name"));
 
 		if (duplicateUserError.isDisplayed()) {
 			Report.captureScreenshot(driver, "UserAddition");
 			modalWindowClose.click();
 			Helper.normalWait(driver, 1);
 			Helper.handleAlert("Y", driver);
-			Assert.fail("User having username: "
+			return "User having username: "
 					+ FileUtility.getTestData().get("UserName")
-					+ " already exists!");
+					+ " already exists!";
+
 		} else {
 			Helper.scrollTo(confirmUserAddBtn, driver);
 			confirmUserAddBtn.click();
 			Helper.normalWait(driver, 1);
 			Helper.scrollTo(confirmUserAdd, driver);
 			String actualName = confirmUserAdd.getText();
-			String expectedName = FileUtility.getTestData().get("Last_Name")
-					+ ", " + FileUtility.getTestData().get("First_Name");
-			Assert.assertEquals(actualName, expectedName);
 			Helper.scrollTo(usersTitle, driver);
 			Report.captureScreenshot(driver, "UserAddition ");
-			// modalWindowClose.click();
+			return actualName;
 
 		}
 
@@ -119,9 +109,7 @@ public class UsersPO {
 	/**
 	 * This method is used to check for an existing user
 	 **/
-	public void checkExistingUser() {
-		String checkUser = FileUtility.getTestData().get("Full_Name");
-		System.out.println("Check for user: " + checkUser);
+	public void checkExistingUser(String checkUser) {
 		driver.navigate().refresh();
 		int count = 0;
 		String availableUsers;
@@ -176,6 +164,7 @@ public class UsersPO {
 
 			}
 		}
+		
 	}
 
 	/**
@@ -183,7 +172,6 @@ public class UsersPO {
 	 **/
 	public void deleteUser() {
 		String deleteUser = FileUtility.getTestData().get("Full_Name");
-		System.out.println("Delete user :" + deleteUser);
 		driver.navigate().refresh();
 		int count = 0;
 		String availableUsers;

@@ -1,13 +1,5 @@
 package com.actitime.genericlibrary;
 
-/*
- * Updated on 18/12/2016
- */
-
-/*
- * Class with Report Functionality
- */
-
 import java.io.File;
 import java.net.URL;
 import java.util.Date;
@@ -18,10 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
 import org.testng.TestListenerAdapter;
 import com.actitime.driver.Driver;
-
-/*
- * Updated on 1/7/2017
- */
 
 /**
  * This is Report class with reporting and screenshot functionality

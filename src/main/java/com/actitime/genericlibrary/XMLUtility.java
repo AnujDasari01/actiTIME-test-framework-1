@@ -18,10 +18,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.DocumentType;
 import org.w3c.dom.Element;
 
-/*
- * Updated on 1/7/2017
- */
-
 /**
  * This is XMLUtility class which creates and runs testng xml programmatically
  **/

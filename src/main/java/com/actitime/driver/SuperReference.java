@@ -22,10 +22,6 @@ import com.actitime.webpageobjects.DashboardPO;
 import com.actitime.webpageobjects.LoginPO;
 import com.actitime.webpageobjects.UsersPO;
 
-/*
- * Updated on 1/7/2017
- */
-
 /**
  * This is SuperReference class which runs scripts in desktop and device
  * browsers
@@ -118,7 +114,6 @@ public class SuperReference {
 		String nodeURL = null;
 		WebDriver driver = null;
 		if (browser.equalsIgnoreCase("firefox")) {
-			System.out.println("FIREFOX");
 			nodeURL = Driver.getNodeUrl1();
 			DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 			capabilities.setPlatform(Platform.WINDOWS);
@@ -128,7 +123,6 @@ public class SuperReference {
 		}
 
 		else if (browser.equalsIgnoreCase("chrome")) {
-			System.out.println("CHROME");
 			nodeURL = Driver.getNodeUrl2();
 			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 			capabilities.setPlatform(Platform.WINDOWS);
@@ -138,9 +132,7 @@ public class SuperReference {
 		}
 
 		else if (browser.equalsIgnoreCase("internet explorer")) {
-			System.out.println("INTERNET EXPLORER");
 			nodeURL = Driver.getNodeUrl3();
-			System.out.println("Node 3 url is: " +nodeURL);
 			DesiredCapabilities capabilities = DesiredCapabilities
 					.internetExplorer();
 			capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS,
