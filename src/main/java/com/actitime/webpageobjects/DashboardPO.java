@@ -4,12 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
-import com.actitime.genericlibrary.Report;
 
-/*
- * Updated on 1/7/2017
- */
+import com.actitime.genericlibrary.Report;
 
 /**
  * This is ActiTime Dashboard Page Object
@@ -48,28 +44,28 @@ public class DashboardPO {
 	/**
 	 * This methods Navigates driver to Tasks
 	 **/
-	public void navigateToTasks() {
+	public String navigateToTasks() {
 		tasksWidget.click();
 		Report.captureScreenshot(driver, "NavigateToTasks ");
-		Assert.assertEquals("actiTIME - Open Tasks", driver.getTitle());
+		return driver.getTitle();
 	}
 
 	/**
 	 * This methods Navigates driver to Reports
 	 **/
-	public void navigateToReports() {
+	public String navigateToReports() {
 		reportWidget.click();
 		Report.captureScreenshot(driver, "NavigateToReports ");
-		Assert.assertEquals("actiTIME - Reports Dashboard", driver.getTitle());
+		return driver.getTitle();
 	}
 
 	/**
 	 * This methods Navigates driver to Users
 	 **/
-	public void navigateToUsers() {
+	public String navigateToUsers() {
 		usersWidget.click();
 		Report.captureScreenshot(driver, "NavigateToUsers ");
-		Assert.assertEquals("actiTIME - User List", driver.getTitle());
+		return driver.getTitle();
 	}
 
 	/**

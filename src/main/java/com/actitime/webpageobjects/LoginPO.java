@@ -6,15 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 import com.actitime.driver.Driver;
 import com.actitime.genericlibrary.FileUtility;
 import com.actitime.genericlibrary.Helper;
 import com.actitime.genericlibrary.Report;
-
-/*
- * Updated on 1/7/2017
- */
 
 /**
  * This is ActiTime Login Page Object
@@ -45,9 +40,9 @@ public class LoginPO {
 	 * 
 	 * @throws IOException
 	 **/
-	public void login() throws IOException {
+	public String login() throws IOException {
 		try {
-			if(Driver.getType().equalsIgnoreCase("Desktop")) {
+			if (Driver.getType().equalsIgnoreCase("Desktop")) {
 				driver.get(Driver.getDesktopUrl());
 			} else if (Driver.getType().equalsIgnoreCase("Device")) {
 				driver.get(Driver.getDeviceUrl());
@@ -59,12 +54,11 @@ public class LoginPO {
 			passWord.sendKeys(Keys.TAB);
 			passWord.sendKeys(Keys.ENTER);
 			Report.captureScreenshot(driver, "SignIntoApplication ");
-			Assert.assertEquals("actiTIME - Enter Time-Track",
-					driver.getTitle());
+
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
-
+		return driver.getTitle();
 	}
 
 }

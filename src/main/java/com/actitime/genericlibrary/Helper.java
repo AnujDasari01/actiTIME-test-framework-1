@@ -10,10 +10,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
-/*
- * Updated on 1/7/2017
- */
-
 /**
  * This is Helper class with all generic methods
  **/

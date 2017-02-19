@@ -6,10 +6,6 @@ import java.util.Set;
 import com.actitime.genericlibrary.FileUtility;
 import com.actitime.genericlibrary.XMLUtility;
 
-/*
- * Updated on 1/7/2017
- */
-
 /**
  * This is Driver class with main method
  **/
