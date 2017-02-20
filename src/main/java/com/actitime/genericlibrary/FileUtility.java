@@ -19,7 +19,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import com.actitime.driver.Driver;
 
 /**
- * This is FileUtility class to read data from Test Data sheets
+ * This is FileUtility class to read data from Test Data sheets and Properties files
  **/
 
 public class FileUtility {
