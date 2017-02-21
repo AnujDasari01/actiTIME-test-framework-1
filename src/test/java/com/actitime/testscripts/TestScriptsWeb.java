@@ -18,25 +18,25 @@ public class TestScriptsWeb extends SuperReference {
 	public void TC01_SignIntoApplication() throws IOException {
 		FileUtility.retrieveData("TC01_SignIntoApplication");
 		String loginTitle = loginPO.login();
-		Assert.assertEquals("actiTIME - Enter Time-Track", loginTitle);
+		Assert.assertEquals(loginTitle, "actiTIME - Enter Time-Track");
 	}
 
 	@Test
 	public void TC02_NavigateToTasks() {
 		String dashboardTitle = dashBoardPO.navigateToTasks();
-		Assert.assertEquals("actiTIME - Open Tasks", dashboardTitle);
+		Assert.assertEquals(dashboardTitle, "actiTIME - Open Tasks");
 	}
 
 	@Test
 	public void TC03_NavigateToReports() {
 		String reportTitle = dashBoardPO.navigateToReports();
-		Assert.assertEquals("actiTIME - Reports Dashboard", reportTitle);
+		Assert.assertEquals(reportTitle, "actiTIME - Reports Dashboard");
 	}
 
 	@Test
 	public void TC04_NavigateToUsers() {
 		String usersTitle = dashBoardPO.navigateToUsers();
-		Assert.assertEquals("actiTIME - User List", usersTitle);
+		Assert.assertEquals(usersTitle, "actiTIME - User List");
 	}
 
 	@Test
@@ -48,7 +48,7 @@ public class TestScriptsWeb extends SuperReference {
 		if (createUser.contains("already exists")) {
 			Assert.fail(createUser);
 		} else {
-			Assert.assertEquals(createUser, expectedName);
+			Assert.assertEquals(expectedName, createUser);
 		}
 	}
 
