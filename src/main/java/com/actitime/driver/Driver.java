@@ -19,7 +19,7 @@ public class Driver {
 	private static String browserName;
 	private static String browserName1;
 	private static String browserName2;
-	private static String browserName3;
+	private static String browserName3; 
 	private static String nodeUrl1;
 	private static String nodeUrl2;
 	private static String nodeUrl3;
