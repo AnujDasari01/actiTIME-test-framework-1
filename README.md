@@ -6,6 +6,7 @@ A repository to run Functional and UI Test Scripts in Desktop and Android Device
 * **Eclipse Luna IDE** from [here](http://www.eclipse.org/downloads/packages/eclipse-standard-44/lunar)  
 * **JDK 8** from [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)  
 * **Maven** from [here](https://maven.apache.org/download.cgi)  
+* **Maven Plugin for Eclipse IDE** from [here](http://download.eclipse.org/technology/m2e/releases)
 * **Appium** from [here](https://appium.io/)  
 * **PDAnet** for Desktop from [here](http://pdanet.co/a/) and PDAnet in Device from Google Play Store.
 * **Android SDK** from [here](https://developer.android.com/studio/index.html) 
@@ -22,7 +23,13 @@ https://github.com/AnujDasari/ActiTimeProject
 2. Add the above set variables to PATH System Variable.
 ![set_path_variable](https://cloud.githubusercontent.com/assets/18676770/23308705/0fe0ae1a-fad2-11e6-9409-d5e1de8f3e4d.png)
 
-3. Import the downloaded project as an existing maven project.
+3. Install Maven Plugin in Eclipse IDE
+![image](https://cloud.githubusercontent.com/assets/24987300/23398119/55eaf914-fdc1-11e6-9763-791b5beee589.png)
+![image](https://cloud.githubusercontent.com/assets/24987300/23398168/7e898336-fdc1-11e6-8488-182e8180b906.png)
+![image](https://cloud.githubusercontent.com/assets/24987300/23398193/8deaea0e-fdc1-11e6-983a-61e35955cb38.png)
+
+4. Import the downloaded project as an existing maven project.
+![image](https://cloud.githubusercontent.com/assets/24987300/23398222/ae41881c-fdc1-11e6-87a8-5318c2c2cd0c.png)
 ![import_project_into_eclipse](https://cloud.githubusercontent.com/assets/18676770/23309097/668334ee-fad3-11e6-85db-b5fcf3273691.png)
 
 ## To run project in Desktop
