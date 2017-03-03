@@ -18,20 +18,13 @@ https://github.com/AnujDasari/ActiTimeProject
 ## Pre-requisites
 1. Set JAVA_HOME, MAVEN_HOME and ANDROID_HOME Environment Variables.
  
-2. Add the above set variables to PATH System Variable.
 
-3. Import the downloaded project as an existing maven project.
-
-## To run project in Desktop
-1. Open cmd prompt, navigate to path of the project and type `mvn compile`.
-2. Set the **runOn** property to **StandAlone** and **platformType** property to **Desktop** in *GeneralEnvProperties* file and set the desired **browser** in *StandAloneEnvProperties* file.
 3. Open Driver class, right click and run as Java Application.
 
 ## To run project in Device
 1. Connect Device to PC/laptop. Wait till PDAnet on the PC/laptop installs the neccesary drivers for the connected Android Device; Enable USB Debugging on the Device.
 2. Open cmd prompt, and type `adb devices`. Verify that device name is displayed.
-3. Open cmd prompt, navigate to path of the project and type `mvn compile`.
-4. Set the **runOn** property to **StandAlone** and **platformType** to **Device** in *GeneralEnvProperties* file.
+
 5. Open Driver class, right click and run as Java Application.
 
 ## To run project from commandline
