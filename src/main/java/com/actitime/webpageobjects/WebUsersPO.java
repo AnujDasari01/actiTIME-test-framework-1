@@ -13,7 +13,7 @@ import com.actitime.genericlibrary.Report;
 /**
  * This is ActiTime Users Page Object
  **/
-public class UsersPO {
+public class WebUsersPO {
 
 	WebDriver driver;
 
@@ -65,7 +65,7 @@ public class UsersPO {
 	@FindBy(css = "a.next")
 	private WebElement nextBtn;
 
-	public UsersPO(WebDriver driver) {
+	public WebUsersPO(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}

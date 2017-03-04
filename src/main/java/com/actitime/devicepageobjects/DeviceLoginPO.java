@@ -1,4 +1,4 @@
-package com.actitime.webpageobjects;
+package com.actitime.devicepageobjects;
 
 import java.io.IOException;
 import org.openqa.selenium.Keys;
@@ -14,7 +14,7 @@ import com.actitime.genericlibrary.Report;
 /**
  * This is ActiTime Login Page Object
  **/
-public class LoginPO {
+public class DeviceLoginPO {
 
 	WebDriver driver;
 
@@ -30,7 +30,7 @@ public class LoginPO {
 	@FindBy(css = "input#loginButton")
 	private WebElement logInBtn;
 
-	public LoginPO(WebDriver driver) {
+	public DeviceLoginPO(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}

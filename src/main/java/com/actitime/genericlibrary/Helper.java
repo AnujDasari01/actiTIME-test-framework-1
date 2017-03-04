@@ -36,11 +36,10 @@ public class Helper {
 	/**
 	 * This method makes the driver wait till the webelement is located
 	 **/
-	public static void explicitWait(WebElement wb, WebDriver driver) {
+	public static void explicitWait(WebElement wb, WebDriver driver) { 
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 20);
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.id(wb
-					+ "")));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.id(wb+"")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
