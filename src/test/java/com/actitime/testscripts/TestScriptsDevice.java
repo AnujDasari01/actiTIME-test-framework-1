@@ -13,30 +13,30 @@ public class TestScriptsDevice extends SuperReference {
 	@Test
 	public void TC01_SignIntoApplication() throws IOException {
 		FileUtility.retrieveData("TC01_SignIntoApplication");
-		String loginTitle = loginPO.login();
+		String loginTitle = deviceLoginPO.login();
 		Assert.assertEquals(loginTitle, "actiTIME - Enter Time-Track");
 	}
 
 	@Test
 	public void TC02_NavigateToTasks() {
-		String dashboardTitle = dashBoardPO.navigateToTasks();
+		String dashboardTitle = deviceDashBoardPO.navigateToTasks();
 		Assert.assertEquals(dashboardTitle, "actiTIME - Open Tasks");
 	}
 
 	@Test
 	public void TC03_NavigateToReports() {
-		String reportTitle = dashBoardPO.navigateToReports();
+		String reportTitle = deviceDashBoardPO.navigateToReports();
 		Assert.assertEquals(reportTitle, "actiTIME - Reports Dashboard");
 	}
 
 	@Test
 	public void TC04_NavigateToUsers() {
-		String usersTitle = dashBoardPO.navigateToUsers();
+		String usersTitle = deviceDashBoardPO.navigateToUsers();
 		Assert.assertEquals(usersTitle, "actiTIME - User List");
 	}
 
 	@Test
 	public void TC05_SignOutOfApplication() {
-		dashBoardPO.logout();
+		deviceDashBoardPO.logout();
 	}
 }

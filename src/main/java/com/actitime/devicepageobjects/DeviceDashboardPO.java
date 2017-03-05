@@ -1,4 +1,4 @@
-package com.actitime.webpageobjects;
+package com.actitime.devicepageobjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +11,7 @@ import com.actitime.genericlibrary.Report;
  * This is ActiTime Dashboard Page Object
  **/
 
-public class DashboardPO {
+public class DeviceDashboardPO {
 
 	WebDriver driver;
 
@@ -36,7 +36,7 @@ public class DashboardPO {
 	@FindBy(css = "a.logout")
 	private WebElement logOutBtn;
 
-	public DashboardPO(WebDriver driver) {
+	public DeviceDashboardPO(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}

@@ -1,12 +1,14 @@
- package com.actitime.driver;
+package com.actitime.driver;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,9 +20,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
-import com.actitime.webpageobjects.DashboardPO;
-import com.actitime.webpageobjects.LoginPO;
-import com.actitime.webpageobjects.UsersPO;
+import com.actitime.apppageobjects.*;
+import com.actitime.devicepageobjects.*;
+import com.actitime.webpageobjects.*;
 
 /**
  * This is SuperReference class which runs scripts in desktop and device
@@ -29,9 +31,14 @@ import com.actitime.webpageobjects.UsersPO;
 public class SuperReference {
 
 	protected WebDriver driver;
-	protected LoginPO loginPO;
-	protected DashboardPO dashBoardPO;
-	protected UsersPO usersPO;
+	protected WebLoginPO webLoginPO;
+	protected WebDashboardPO webDashBoardPO;
+	protected WebUsersPO webUsersPO;
+	protected DeviceLoginPO deviceLoginPO;
+	protected DeviceDashboardPO deviceDashBoardPO;
+	protected DeviceUsersPO deviceUsersPO;
+	protected CreateNewFormPO appCreateNewFormPO;
+	
 
 	/* Starting Appium from Console */
 	AppiumDriverLocalService service = AppiumDriverLocalService
@@ -196,7 +203,7 @@ public class SuperReference {
 	 * This method runs scripts in a mobile application
 	 **/
 	@SuppressWarnings("rawtypes")
-	public void setupApp() throws MalformedURLException, InterruptedException {
+	public WebDriver setupApp(String browser) throws MalformedURLException, InterruptedException {
 		File app = new File("./src/test/resources/Apk/FormApp.apk");
 		DesiredCapabilities capabilities = DesiredCapabilities.android();
 		capabilities.setCapability("appium-version", "1.4.16.1");
@@ -213,6 +220,7 @@ public class SuperReference {
 		capabilities.setCapability("appActivity", "com.anuj.task1.FormLogin");
 		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),
 				capabilities);
+		return driver;
 	}
 
 	/* Before Class */
@@ -222,40 +230,42 @@ public class SuperReference {
 		if (Driver.getRunOn().equalsIgnoreCase("grid")) {
 			if (Driver.getType().equalsIgnoreCase("Desktop")) {
 				driver = invokeBrowserInGrid(browser);
-				loginPO = PageFactory.initElements(driver, LoginPO.class);
-				dashBoardPO = PageFactory.initElements(driver,
-						DashboardPO.class);
-				usersPO = PageFactory.initElements(driver, UsersPO.class);
+				webLoginPO = PageFactory.initElements(driver, WebLoginPO.class);
+				webDashBoardPO = PageFactory.initElements(driver,
+						WebDashboardPO.class);
+				webUsersPO = PageFactory.initElements(driver, WebUsersPO.class);
 			} else if (Driver.getType().equalsIgnoreCase("Device")) {
 				appiumStart();
 				driver = setup(browser);
-				loginPO = PageFactory.initElements(driver, LoginPO.class);
-				dashBoardPO = PageFactory.initElements(driver,
-						DashboardPO.class);
-				usersPO = PageFactory.initElements(driver, UsersPO.class);
+				deviceLoginPO = PageFactory.initElements(driver, DeviceLoginPO.class);
+				deviceDashBoardPO = PageFactory.initElements(driver,
+						DeviceDashboardPO.class);
+				deviceUsersPO = PageFactory.initElements(driver, DeviceUsersPO.class);
 			} else if (Driver.getType().equalsIgnoreCase("App")) {
 				appiumStart();
-				setupApp();
+				driver = setupApp(browser);
+				appCreateNewFormPO = PageFactory.initElements(driver,CreateNewFormPO.class);
 			}
 		}
 
 		else if (Driver.getRunOn().equalsIgnoreCase("StandAlone")) {
 			if (Driver.getType().equalsIgnoreCase("Desktop")) {
 				driver = invokeBrowser(browser);
-				loginPO = PageFactory.initElements(driver, LoginPO.class);
-				dashBoardPO = PageFactory.initElements(driver,
-						DashboardPO.class);
-				usersPO = PageFactory.initElements(driver, UsersPO.class);
+				webLoginPO = PageFactory.initElements(driver, WebLoginPO.class);
+				webDashBoardPO = PageFactory.initElements(driver,
+						WebDashboardPO.class);
+				webUsersPO = PageFactory.initElements(driver, WebUsersPO.class);
 			} else if (Driver.getType().equalsIgnoreCase("Device")) {
 				appiumStart();
 				driver = setup(browser);
-				loginPO = PageFactory.initElements(driver, LoginPO.class);
-				dashBoardPO = PageFactory.initElements(driver,
-						DashboardPO.class);
-				usersPO = PageFactory.initElements(driver, UsersPO.class);
+				deviceLoginPO = PageFactory.initElements(driver, DeviceLoginPO.class);
+				deviceDashBoardPO = PageFactory.initElements(driver,
+						DeviceDashboardPO.class);
+				deviceUsersPO = PageFactory.initElements(driver, DeviceUsersPO.class);
 			} else if (Driver.getType().equalsIgnoreCase("App")) {
 				appiumStart();
-				setupApp();
+				setupApp(browser);
+				appCreateNewFormPO = PageFactory.initElements(driver,CreateNewFormPO.class);
 			}
 		}
 	}

@@ -10,7 +10,6 @@ import com.actitime.genericlibrary.XMLUtility;
  * This is Driver class with main method
  **/
 public class Driver {
-
 	private static String relativePath;
 	private static String generalEnvPropFilePath;
 	private static String standAloneEnvPropFilePath;
@@ -42,7 +41,7 @@ public class Driver {
 	public static String getDeviceUrl() {
 		return deviceUrl;
 	}
-	
+
 	public static String getApp() {
 		return app;
 	}
@@ -114,7 +113,7 @@ public class Driver {
 	public static String getNodeUrl2() {
 		return nodeUrl2;
 	}
-	
+
 	public static String getNodeUrl3() {
 		return nodeUrl3;
 	}
@@ -133,8 +132,12 @@ public class Driver {
 	public static void main(String args[]) throws Exception {
 		relativePath = System.getProperty("user.dir");
 		retrieveGeneralEnvProperties();
-		retrieveStandAloneEnvProperties();
-		retrieveGridEnvProperties();
+
+		if (runOn.equalsIgnoreCase("StandAlone")) {
+			retrieveStandAloneEnvProperties();
+		} else {
+			retrieveGridEnvProperties();
+		}
 		readValidXmlSheet();
 		XMLUtility.autoRunXml();
 	}
