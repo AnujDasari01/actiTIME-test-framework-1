@@ -19,7 +19,8 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import com.actitime.driver.Driver;
 
 /**
- * This is FileUtility class to read data from Test Data sheets and Properties files
+ * This is FileUtility class to read data from Test Data sheets and Properties
+ * files
  **/
 
 public class FileUtility {
@@ -39,12 +40,14 @@ public class FileUtility {
 			FileInputStream fis = new FileInputStream(
 					"./src/test/resources/ExcelLib/TestData.xls");
 			Workbook wb = WorkbookFactory.create(fis);
-			Sheet sh;
+			Sheet sh = null;
 			String env = Driver.getType();
 			if (env.equalsIgnoreCase("Desktop")) {
 				sh = wb.getSheet("Desktop");
-			} else {
+			} else if (env.equalsIgnoreCase("Device")) {
 				sh = wb.getSheet("Device");
+			} else if (env.equalsIgnoreCase("App")) {
+				sh = wb.getSheet("App");
 			}
 			Row rheader = sh.getRow(0);
 			Row rValues = null;
@@ -157,7 +160,7 @@ public class FileUtility {
 		}
 		return sheetNames;
 	}
-	
+
 	public static Properties getProperties(String propFilePath) {
 		Properties prop = new Properties();
 		InputStream input = null;
@@ -168,7 +171,7 @@ public class FileUtility {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return prop;
 	}
 
