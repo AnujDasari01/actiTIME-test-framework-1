@@ -30,8 +30,8 @@ Sample test scripts have been written to execute test scripts across the three p
     b. XMLFlag sheet is used to set the test scripts that have to be automated or run.
     
 6. PropertiesFiles - This folder contains the property files - GeneralEnvProperties, StandAloneEnvProperties and GridEnvProperties.  
-    a.GeneralEnvProperties - Contains properties to determine if the scripts have to be run on a desktop browser, device browser or an  app.Also contains property to determine if the scripts have to be executed parallely on grid or on a single browser.
-    b.StandAloneEnvProperties -  Contains properties to run scripts on desktop and device browser.
+    a.GeneralEnvProperties - Contains properties to determine if the scripts have to be run on a desktop browser, device browser or an  app.Also contains property to determine if the scripts have to be executed parallely on grid or on a single browser.  
+    b.StandAloneEnvProperties -  Contains properties to run scripts on desktop and device browser.  
     c.GridEnvProperties - Contains properties to run scripts in parallel using grid.
     
 ### Test Report
