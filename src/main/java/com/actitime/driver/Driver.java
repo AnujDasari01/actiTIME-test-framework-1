@@ -3,6 +3,7 @@ package com.actitime.driver;
 import java.util.Iterator;
 import java.util.Properties;
 import java.util.Set;
+
 import com.actitime.genericlibrary.FileUtility;
 import com.actitime.genericlibrary.XMLUtility;
 
@@ -131,39 +132,18 @@ public class Driver {
 	 **/
 	public static void main(String args[]) throws Exception {
 		relativePath = System.getProperty("user.dir");
-		retrieveGeneralEnvProperties();
-
-		if (runOn.equalsIgnoreCase("StandAlone")) {
-			retrieveStandAloneEnvProperties();
-		} else {
+		runOn = System.getProperty("runOn");
+		type = System.getProperty("platformType");
+		if(type.equalsIgnoreCase("desktop")) {
+			browserName = System.getProperty("browserName");
+		}
+		if (runOn.equalsIgnoreCase("Grid")) {
 			retrieveGridEnvProperties();
+		} else if (runOn.equalsIgnoreCase("Standalone")) {
+			retrieveStandAloneEnvProperties();
 		}
 		readValidXmlSheet();
 		XMLUtility.autoRunXml();
-	}
-
-	/**
-	 * This method retrieves all properties from the GeneralEnvProperties file
-	 **/
-	public static void retrieveGeneralEnvProperties() {
-		generalEnvPropFilePath = "./src/test/resources/PropertiesFiles/GeneralEnvProperties.properties";
-
-		Properties prop = FileUtility.getProperties(generalEnvPropFilePath);
-
-		Set<Object> set = prop.keySet();
-
-		Iterator<Object> it = set.iterator();
-
-		for (int i = 0; i < set.size(); i++) {
-			String key = (String) it.next();
-
-			if (key.equalsIgnoreCase("runOn")) {
-				runOn = prop.getProperty(key);
-			} else if (key.equalsIgnoreCase("platformType")) {
-				type = prop.getProperty(key);
-			} else
-				continue;
-		}
 	}
 
 	/**
@@ -186,9 +166,8 @@ public class Driver {
 				desktopUrl = prop.getProperty(key);
 			} else if (key.equalsIgnoreCase("deviceUrl")) {
 				deviceUrl = prop.getProperty(key);
-			} else if (key.equalsIgnoreCase("browserName")) {
-				browserName = prop.getProperty(key);
-			} else if (key.equalsIgnoreCase("platformName")) {
+			}
+			else if (key.equalsIgnoreCase("platformName")) {
 				platformName = prop.getProperty(key);
 			} else if (key.equalsIgnoreCase("platformVersion")) {
 				platformVersion = prop.getProperty(key);
@@ -224,7 +203,11 @@ public class Driver {
 		for (int i = 0; i < set.size(); i++) {
 			String key = (String) it.next();
 
-			if (key.equalsIgnoreCase("browserName1")) {
+			if (key.equalsIgnoreCase("desktopUrl")) {
+				desktopUrl = prop.getProperty(key);
+			} else if (key.equalsIgnoreCase("deviceUrl")) {
+				deviceUrl = prop.getProperty(key);
+			} else if (key.equalsIgnoreCase("browserName1")) {
 				browserName1 = prop.getProperty(key);
 			} else if (key.equalsIgnoreCase("browserName2")) {
 				browserName2 = prop.getProperty(key);

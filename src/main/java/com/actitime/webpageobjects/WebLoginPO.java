@@ -1,11 +1,13 @@
 package com.actitime.webpageobjects;
 
 import java.io.IOException;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 import com.actitime.driver.Driver;
 import com.actitime.genericlibrary.FileUtility;
 import com.actitime.genericlibrary.Helper;
@@ -19,17 +21,18 @@ public class WebLoginPO {
 	WebDriver driver;
 
 	@FindBy(css = "input#username")
-	private WebElement userName;
+	private WebElement username;
 
 	@FindBy(css = "input[type='password']")
-	private WebElement passWord;
+	private WebElement password;
 
 	@FindBy(css = "input[type='checkbox']")
-	private WebElement passWordChkBox;
+	private WebElement passwordChkBox;
 
 	@FindBy(css = "input#loginButton")
 	private WebElement logInBtn;
-
+	
+	String type;
 	public WebLoginPO(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -48,11 +51,11 @@ public class WebLoginPO {
 				driver.get(Driver.getDeviceUrl());
 			}
 			Helper.implicitWait(driver);
-			userName.sendKeys(FileUtility.getTestData().get("UserID"));
-			passWord.sendKeys(FileUtility.getTestData().get("Pwd"));
-			passWord.sendKeys(Keys.TAB);
-			passWord.sendKeys(Keys.TAB);
-			passWord.sendKeys(Keys.ENTER);
+			username.sendKeys(FileUtility.getTestData().get("UserID"));
+			password.sendKeys(FileUtility.getTestData().get("Pwd"));
+			password.sendKeys(Keys.TAB);
+			password.sendKeys(Keys.TAB);
+			password.sendKeys(Keys.ENTER);
 			Report.captureScreenshot(driver, "SignIntoApplication ");
 
 		} catch (NullPointerException e) {
