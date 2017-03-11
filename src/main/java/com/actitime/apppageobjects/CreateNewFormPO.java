@@ -1,10 +1,13 @@
 package com.actitime.apppageobjects;
 
+import java.util.Arrays;
 import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 import com.actitime.genericlibrary.FileUtility;
 import com.actitime.genericlibrary.Helper;
 import com.actitime.genericlibrary.Report;
@@ -39,7 +42,10 @@ public class CreateNewFormPO {
 	@FindBy(id = "text1")
 	private List<WebElement> countryList;
 
-	@FindBy(id = "")
+	@FindBy(id = "text1")
+	private List<WebElement> stateList;
+
+	@FindBy(id = "spinner_states_main")
 	private WebElement stateDropDown;
 
 	@FindBy(id = "chkbox_tv")
@@ -77,36 +83,72 @@ public class CreateNewFormPO {
 		Helper.scrollDown(driver);
 		streetTextBox.sendKeys(FileUtility.getTestData().get("Street"));
 		countryDropDown.click();
-		int count = 0;
-		while (count < 11) {
+		int countriesCount = 0;
+		while (countriesCount < 11) {
 			for (int i = 0; i < countryList.size(); i++) {
 				String country = countryList.get(i).getText();
-				System.out.println(countryList.size());
-				System.out.println("Country is : " + country);
-				System.out.println(country.equalsIgnoreCase(FileUtility
-						.getTestData().get("Country")));
 				if (country.equalsIgnoreCase(FileUtility.getTestData().get(
 						"Country"))) {
-					Helper.normalWait(driver, 2);
+					countriesCount = 12;
 					countryList.get(i).click();
+					break;
 				} else if (!(country.equalsIgnoreCase(FileUtility.getTestData()
-						.get("Country"))) && count < 11) {
-					// Helper.scrollDown(driver);
-					count++;
-					continue;
-				}
-
-				else if (count == 10) {
-					count = 0;
-					Helper.scrollDown(driver);
-					Helper.normalWait(driver, 5);
-					continue;
+						.get("Country")))) {
+					countriesCount++;
+					if (countriesCount == 11) {
+						countriesCount = 0;
+						Helper.scrollDown(driver);
+						continue;
+					}
 				}
 			}
 		}
+
+		stateDropDown.click();
+		int statesCount = 0;
+		while (statesCount < 11) {
+			for (int i = 0; i < stateList.size(); i++) {
+				String state = stateList.get(i).getText();
+				if (state.equalsIgnoreCase(FileUtility.getTestData().get(
+						"State"))) {
+					statesCount = 12;
+					stateList.get(i).click();
+					break;
+				} else if (!(state.equalsIgnoreCase(FileUtility.getTestData()
+						.get("State")))) {
+					statesCount++;
+					if (statesCount == 11) {
+						statesCount = 0;
+						Helper.scrollDown(driver);
+						continue;
+					}
+				}
+			}
+		}
+
 		Helper.scrollDown(driver);
+		String hobbies = FileUtility.getTestData().get("Hobbies");
+		hobbies.replaceAll("\\s+","");
+		List<String> hobbiesList = Arrays.asList(hobbies.split(","));
+		for(int i = 0; i<hobbiesList.size();i++) {
+			String s = hobbiesList.get(i);
+			System.out.println(s);
+			if(hobbiesList.get(i).equalsIgnoreCase("watch tv")) {
+				watchTvCheckBox.click();
+			}
+			else if(hobbiesList.get(i).equalsIgnoreCase(" read books")) {
+				readBooksCheckBox.click();
+			}
+			else if(hobbiesList.get(i).equalsIgnoreCase("video games")) {
+				playVideoGamesCheckBox.click();
+			}
+			else if(hobbiesList.get(i).equalsIgnoreCase("collect stamps")) {
+				collectStampsCheckBox.click();
+			}
+			
+		}
 		termsAndConditionsCheckBox.click();
 		saveFormBtn.click();
-		Report.captureScreenshot(driver, "FormDetails ");
+		Report.captureScreenshot(driver, "CreateNewForm ");
 	}
 }

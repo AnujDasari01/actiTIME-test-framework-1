@@ -1,11 +1,8 @@
 package com.actitime.genericlibrary;
 
 import io.appium.java_client.AppiumDriver;
-
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -43,7 +40,7 @@ public class Helper {
 	public static void explicitWait(WebElement wb, WebDriver driver) { 
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 20);
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.id(wb+"")));
+			wait.until(ExpectedConditions.visibilityOf(wb));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
