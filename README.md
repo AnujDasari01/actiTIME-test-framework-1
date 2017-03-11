@@ -25,14 +25,15 @@ Sample test scripts have been written to execute test scripts across the three p
 
 4. Apk - This folder contains the Apk of the app to be tested.
 
-5. ExcelLib - This folder contains the XMLFlag and TestData excel sheets.   
+5. Grid - This folder contains the node json config files to run in grid.
+
+6. ExcelLib - This folder contains the XMLFlag and TestData excel sheets.   
     a. TestData sheet is used to set the test data for the scripts that are being automated.  
     b. XMLFlag sheet is used to set the test scripts that have to be automated or run.
     
-6. PropertiesFiles - This folder contains the property files - GeneralEnvProperties, StandAloneEnvProperties and GridEnvProperties.  
-    a.GeneralEnvProperties - Contains properties to determine if the scripts have to be run on a desktop browser, device browser or an  app.Also contains property to determine if the scripts have to be executed parallely on grid or on a single browser.  
-    b.StandAloneEnvProperties -  Contains properties to run scripts on desktop and device browser.  
-    c.GridEnvProperties - Contains properties to run scripts in parallel using grid.
+7. PropertiesFiles - This folder contains the property files - GeneralEnvProperties, StandAloneEnvProperties and GridEnvProperties.    
+    a.**StandAloneEnvProperties** -  Contains properties to run scripts on desktop and device browser.  
+    b.**GridEnvProperties** - Contains properties to run scripts in parallel using grid.
     
 ### Test Report
 Test Report is generated under `./Resources/Reports`
