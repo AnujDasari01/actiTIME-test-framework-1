@@ -9,7 +9,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Reporter;
 
 /**
  * This is Helper class with all generic methods
@@ -37,7 +36,7 @@ public class Helper {
 	/**
 	 * This method makes the driver wait till the webelement is located
 	 **/
-	public static void explicitWait(WebElement wb, WebDriver driver) { 
+	public static void explicitWait(WebElement wb, WebDriver driver) {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 20);
 			wait.until(ExpectedConditions.visibilityOf(wb));
@@ -47,7 +46,8 @@ public class Helper {
 	}
 
 	/**
-	 * This method makes the driver scroll to the specified webelement in browser
+	 * This method makes the driver scroll to the specified webelement in
+	 * browser
 	 **/
 	public static boolean scrollTo(WebElement wb, WebDriver driver) {
 		try {
@@ -59,10 +59,10 @@ public class Helper {
 		}
 		return wb.isDisplayed();
 	}
-	
 
 	/**
-	 * This method makes the driver scroll down the specified webelement in an android app
+	 * This method makes the driver scroll down the specified webelement in an
+	 * android app
 	 **/
 	public static void scrollDown(WebDriver driver) {
 		try {
@@ -71,43 +71,10 @@ public class Helper {
 			int scrollStart = screenHeightStart.intValue();
 			Double screenHeightEnd = dimensions.getHeight() * 0.1;
 			int scrollEnd = screenHeightEnd.intValue();
-			((AppiumDriver<?>) driver).swipe(0,scrollStart,0,scrollEnd,2000);
-		}
-		catch (Exception e) {
+			((AppiumDriver<?>) driver)
+					.swipe(0, scrollStart, 0, scrollEnd, 2000);
+		} catch (Exception e) {
 			e.printStackTrace();
-		}
-	}
-	
-
-	/**
-	 * This method checks for partial text in a webelement
-	 **/
-	public static void checkPartialText(WebElement wb, String st) {
-		try {
-			st = st.trim().toLowerCase();
-			if (wb.getText().contains(st)) {
-				Reporter.log(st + " is present in" + wb.getText() + "<br>");
-			} else {
-				Reporter.log(st + " is not present" + "<br>");
-			}
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-	}
-
-	/**
-	 * This method checks for text in a webelement
-	 **/
-	public static void checkText(WebElement wb, String st) {
-		try {
-			st = st.trim();
-			if (wb.getText().equalsIgnoreCase(st)) {
-				Reporter.log(st + " is present" + "<br>");
-			} else {
-				Reporter.log(st + " is not present" + "<br>");
-			}
-		} catch (Exception e) {
-			System.out.println(e);
 		}
 	}
 

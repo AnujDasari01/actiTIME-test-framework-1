@@ -12,10 +12,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-/*
- * Updated on 1/7/2017
- */
-
 import com.actitime.driver.Driver;
 
 /**
