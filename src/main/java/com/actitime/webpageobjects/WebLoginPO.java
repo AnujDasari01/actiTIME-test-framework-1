@@ -19,17 +19,18 @@ public class WebLoginPO {
 	WebDriver driver;
 
 	@FindBy(css = "input#username")
-	private WebElement userName;
+	private WebElement username;
 
 	@FindBy(css = "input[type='password']")
-	private WebElement passWord;
+	private WebElement password;
 
 	@FindBy(css = "input[type='checkbox']")
-	private WebElement passWordChkBox;
+	private WebElement passwordChkBox;
 
 	@FindBy(css = "input#loginButton")
 	private WebElement logInBtn;
-
+	
+	String type;
 	public WebLoginPO(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -48,11 +49,11 @@ public class WebLoginPO {
 				driver.get(Driver.getDeviceUrl());
 			}
 			Helper.implicitWait(driver);
-			userName.sendKeys(FileUtility.getTestData().get("UserID"));
-			passWord.sendKeys(FileUtility.getTestData().get("Pwd"));
-			passWord.sendKeys(Keys.TAB);
-			passWord.sendKeys(Keys.TAB);
-			passWord.sendKeys(Keys.ENTER);
+			username.sendKeys(FileUtility.getTestData().get("UserID"));
+			password.sendKeys(FileUtility.getTestData().get("Pwd"));
+			password.sendKeys(Keys.TAB);
+			password.sendKeys(Keys.TAB);
+			password.sendKeys(Keys.ENTER);
 			Report.captureScreenshot(driver, "SignIntoApplication ");
 
 		} catch (NullPointerException e) {
