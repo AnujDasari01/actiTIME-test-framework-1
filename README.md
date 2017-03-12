@@ -1,4 +1,4 @@
-# ActiTimeProject
+# actiTimeProject
 A simple framework to run Functional and UI Test Scripts for actiTIME application. The same framework can be used to run scripts - in Desktop browsers(firefox,chrome and internet explorer); in chrome browser on Android Device; and to run scripts on a Native Android App. 
 
 Sample test scripts have been written to execute test scripts across the three platforms - Desktop, Device and App.
@@ -28,10 +28,10 @@ Sample test scripts have been written to execute test scripts across the three p
 5. Grid - This folder contains the node json config files to run in grid.
 
 6. ExcelLib - This folder contains the XMLFlag and TestData excel sheets.   
-    a. TestData sheet is used to set the test data for the scripts that are being automated.  
-    b. XMLFlag sheet is used to set the test scripts that have to be automated or run.
+    a.**TestData** sheet is used to set the test data for the scripts that are being automated.  
+    b.**XMLFlag** sheet is used to set the test scripts that have to be automated or run.
     
-7. PropertiesFiles - This folder contains the property files - GeneralEnvProperties, StandAloneEnvProperties and GridEnvProperties.    
+7. PropertiesFiles - This folder contains the property files - StandAloneEnvProperties and GridEnvProperties.    
     a.**StandAloneEnvProperties** -  Contains properties to run scripts on desktop and device browser.  
     b.**GridEnvProperties** - Contains properties to run scripts in parallel using grid.
     
