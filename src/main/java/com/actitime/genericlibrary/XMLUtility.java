@@ -1021,7 +1021,9 @@ public class XMLUtility {
 		List<String> files = new ArrayList<String>();
 		files.add("./testng.xml");
 		TestNG tng = new TestNG();
+		TestNG tng1 = new TestNG();
 		tng.setOutputDirectory(Report.makDir());
+		tng1.setOutputDirectory(ExtentReport.makDir());
 		tng.setUseDefaultListeners(false);
 		tng.setTestSuites(files);
 		tng.run();

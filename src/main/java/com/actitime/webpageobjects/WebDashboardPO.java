@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import com.actitime.genericlibrary.Report;
 
 /**
  * This is ActiTime Dashboard Page Object
@@ -45,7 +44,6 @@ public class WebDashboardPO {
 	 **/
 	public String navigateToTasks() {
 		tasksWidget.click();
-		Report.captureScreenshot(driver, "NavigateToTasks ");
 		return driver.getTitle();
 	}
 
@@ -54,7 +52,6 @@ public class WebDashboardPO {
 	 **/
 	public String navigateToReports() {
 		reportWidget.click();
-		Report.captureScreenshot(driver, "NavigateToReports ");
 		return driver.getTitle();
 	}
 
@@ -63,15 +60,14 @@ public class WebDashboardPO {
 	 **/
 	public String navigateToUsers() {
 		usersWidget.click();
-		Report.captureScreenshot(driver, "NavigateToUsers ");
 		return driver.getTitle();
 	}
 
 	/**
 	 * This methods makes driver logout of application
 	 **/
-	public void logout() {
+	public String logout() {
 		logOutBtn.click();
-		Report.captureScreenshot(driver, "SignOutOfApplication ");
+		return driver.getTitle();
 	}
 }

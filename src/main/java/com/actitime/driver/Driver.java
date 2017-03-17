@@ -132,9 +132,9 @@ public class Driver {
 	public static void main(String args[]) throws Exception {
 		relativePath = System.getProperty("user.dir");
 		runOn = System.getProperty("runOn");
-		type = System.getProperty("platformType");
+		type = System.getProperty("platform");
 		if(type.equalsIgnoreCase("desktop")) {
-			browserName = System.getProperty("browserName");
+			browserName = System.getProperty("browser");
 		}
 		if (runOn.equalsIgnoreCase("Grid")) {
 			retrieveGridEnvProperties();

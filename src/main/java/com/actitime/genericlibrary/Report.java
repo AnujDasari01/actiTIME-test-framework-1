@@ -27,7 +27,7 @@ public class Report extends TestListenerAdapter {
 	 * This method creates the execution report
 	 **/
 	public static String makDir() {
-		String s = Driver.getRelativePath() + "/Resources/Reports/"
+		String s = Driver.getRelativePath() + "/Resources/ReportNGReports/"
 				+ strDateStamp;
 		File srcDir = new File(s);
 		srcDir.mkdirs();
@@ -41,7 +41,6 @@ public class Report extends TestListenerAdapter {
 		Date dtnow2 = new Date();
 		String strStartDate2 = dtnow2.toString().replace(":", "_");
 		String strDateStamp2 = strStartDate2.replace(" ", "_");
-
 		try {
 			Helper.normalWait(driver, 7);
 			TakesScreenshot ts = (TakesScreenshot) driver;

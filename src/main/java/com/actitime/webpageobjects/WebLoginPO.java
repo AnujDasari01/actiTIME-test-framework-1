@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 import com.actitime.driver.Driver;
 import com.actitime.genericlibrary.FileUtility;
 import com.actitime.genericlibrary.Helper;
-import com.actitime.genericlibrary.Report;
 
 /**
  * This is ActiTime Login Page Object
@@ -30,7 +29,6 @@ public class WebLoginPO {
 	@FindBy(css = "input#loginButton")
 	private WebElement logInBtn;
 	
-	String type;
 	public WebLoginPO(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -54,8 +52,7 @@ public class WebLoginPO {
 			password.sendKeys(Keys.TAB);
 			password.sendKeys(Keys.TAB);
 			password.sendKeys(Keys.ENTER);
-			Report.captureScreenshot(driver, "SignIntoApplication ");
-
+			Helper.normalWait(driver, 2);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}

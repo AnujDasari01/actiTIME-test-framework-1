@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 import com.actitime.driver.Driver;
 import com.actitime.genericlibrary.FileUtility;
 import com.actitime.genericlibrary.Helper;
-import com.actitime.genericlibrary.Report;
 
 /**
  * This is ActiTime Login Page Object
@@ -53,8 +52,7 @@ public class DeviceLoginPO {
 			passWord.sendKeys(Keys.TAB);
 			passWord.sendKeys(Keys.TAB);
 			passWord.sendKeys(Keys.ENTER);
-			Report.captureScreenshot(driver, "SignIntoApplication ");
-
+			Helper.normalWait(driver, 2);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}

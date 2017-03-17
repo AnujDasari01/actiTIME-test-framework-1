@@ -1,11 +1,14 @@
 package com.actitime.webpageobjects;
 
 import java.util.List;
+
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+
 import com.actitime.genericlibrary.FileUtility;
 import com.actitime.genericlibrary.Helper;
 import com.actitime.genericlibrary.Report;
@@ -75,7 +78,8 @@ public class WebUsersPO {
 	 **/
 	public String createUser() {
 		addUserBtn.click();
-		firstNameTextField.sendKeys(FileUtility.getTestData().get("First_Name"));
+		firstNameTextField
+				.sendKeys(FileUtility.getTestData().get("First_Name"));
 		lastNameTextField.sendKeys(FileUtility.getTestData().get("Last_Name"));
 		emailTextField.sendKeys(FileUtility.getTestData().get("Email_Address"));
 		userNameTextField.sendKeys(FileUtility.getTestData().get("UserName"));
@@ -132,9 +136,15 @@ public class WebUsersPO {
 			/* If all items in one page are checked, click on next page */
 			if (count == 10) {
 				count = 0;
-				Helper.scrollTo(nextBtn, driver);
-				nextBtn.click();
-				continue;
+				try {
+					Helper.scrollTo(nextBtn, driver);
+					nextBtn.click();
+					continue;
+				} catch (NoSuchElementException e) {
+					Report.captureScreenshot(driver, "CheckExistingUser");
+					Assert.fail(checkUser + " : No Such User Found!");
+				}
+
 			}
 
 			/* Verify for an user on all pages */
@@ -164,7 +174,7 @@ public class WebUsersPO {
 
 			}
 		}
-		
+
 	}
 
 	/**
@@ -208,9 +218,15 @@ public class WebUsersPO {
 			/* If all items in one page are checked, click on next page */
 			if (count == 10) {
 				count = 0;
-				Helper.scrollTo(nextBtn, driver);
-				nextBtn.click();
-				continue;
+				try {
+					Helper.scrollTo(nextBtn, driver);
+					nextBtn.click();
+					continue;
+				} catch (NoSuchElementException e) {
+					Report.captureScreenshot(driver, "DeleteExistingUser");
+					Assert.fail(deleteUser + " : No Such User Found!");
+				}
+
 			}
 
 			/* Verify for an user on all pages */

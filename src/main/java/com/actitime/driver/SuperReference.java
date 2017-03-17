@@ -3,10 +3,12 @@ package com.actitime.driver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,9 +20,13 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
+
 import com.actitime.apppageobjects.*;
 import com.actitime.devicepageobjects.*;
+import com.actitime.genericlibrary.ExtentReport;
 import com.actitime.webpageobjects.*;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 
 /**
  * This is SuperReference class which runs scripts in desktop and device
@@ -36,7 +42,8 @@ public class SuperReference {
 	protected DeviceDashboardPO deviceDashBoardPO;
 	protected DeviceUsersPO deviceUsersPO;
 	protected CreateNewFormPO appCreateNewFormPO;
-	
+	protected ExtentReports extent;
+	protected ExtentTest test;
 
 	/* Starting Appium from Console */
 	AppiumDriverLocalService service = AppiumDriverLocalService
@@ -201,7 +208,8 @@ public class SuperReference {
 	 * This method runs scripts in a mobile application
 	 **/
 	@SuppressWarnings("rawtypes")
-	public WebDriver setupApp(String browser) throws MalformedURLException, InterruptedException {
+	public WebDriver setupApp(String browser) throws MalformedURLException,
+			InterruptedException {
 		File app = new File("./src/test/resources/Apk/FormApp.apk");
 		DesiredCapabilities capabilities = DesiredCapabilities.android();
 		capabilities.setCapability("appium-version", "1.4.16.1");
@@ -225,6 +233,7 @@ public class SuperReference {
 	@Parameters({ "browser" })
 	@BeforeClass(alwaysRun = true)
 	public void beforeClass(String browser) throws Exception {
+		extent = ExtentReport.GetExtent();
 		if (Driver.getRunOn().equalsIgnoreCase("grid")) {
 			if (Driver.getType().equalsIgnoreCase("Desktop")) {
 				driver = invokeBrowserInGrid(browser);
@@ -235,14 +244,17 @@ public class SuperReference {
 			} else if (Driver.getType().equalsIgnoreCase("Device")) {
 				appiumStart();
 				driver = setup(browser);
-				deviceLoginPO = PageFactory.initElements(driver, DeviceLoginPO.class);
+				deviceLoginPO = PageFactory.initElements(driver,
+						DeviceLoginPO.class);
 				deviceDashBoardPO = PageFactory.initElements(driver,
 						DeviceDashboardPO.class);
-				deviceUsersPO = PageFactory.initElements(driver, DeviceUsersPO.class);
+				deviceUsersPO = PageFactory.initElements(driver,
+						DeviceUsersPO.class);
 			} else if (Driver.getType().equalsIgnoreCase("App")) {
 				appiumStart();
 				driver = setupApp(browser);
-				appCreateNewFormPO = PageFactory.initElements(driver,CreateNewFormPO.class);
+				appCreateNewFormPO = PageFactory.initElements(driver,
+						CreateNewFormPO.class);
 			}
 		}
 
@@ -256,14 +268,17 @@ public class SuperReference {
 			} else if (Driver.getType().equalsIgnoreCase("Device")) {
 				appiumStart();
 				driver = setup(browser);
-				deviceLoginPO = PageFactory.initElements(driver, DeviceLoginPO.class);
+				deviceLoginPO = PageFactory.initElements(driver,
+						DeviceLoginPO.class);
 				deviceDashBoardPO = PageFactory.initElements(driver,
 						DeviceDashboardPO.class);
-				deviceUsersPO = PageFactory.initElements(driver, DeviceUsersPO.class);
+				deviceUsersPO = PageFactory.initElements(driver,
+						DeviceUsersPO.class);
 			} else if (Driver.getType().equalsIgnoreCase("App")) {
 				appiumStart();
 				setupApp(browser);
-				appCreateNewFormPO = PageFactory.initElements(driver,CreateNewFormPO.class);
+				appCreateNewFormPO = PageFactory.initElements(driver,
+						CreateNewFormPO.class);
 			}
 		}
 	}
@@ -271,6 +286,7 @@ public class SuperReference {
 	/* After Class */
 	@AfterClass
 	public void afterClass() throws IOException, InterruptedException {
+		extent.flush();
 		if (Driver.getType().equalsIgnoreCase("Device")) {
 			appiumStop();
 		} else if (Driver.getType().equalsIgnoreCase("Desktop")) {
