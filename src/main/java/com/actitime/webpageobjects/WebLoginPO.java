@@ -1,11 +1,13 @@
 package com.actitime.webpageobjects;
 
 import java.io.IOException;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 import com.actitime.driver.Driver;
 import com.actitime.genericlibrary.FileUtility;
 import com.actitime.genericlibrary.Helper;
@@ -46,13 +48,12 @@ public class WebLoginPO {
 			} else if (Driver.getType().equalsIgnoreCase("Device")) {
 				driver.get(Driver.getDeviceUrl());
 			}
-			Helper.implicitWait(driver);
 			username.sendKeys(FileUtility.getTestData().get("UserID"));
 			password.sendKeys(FileUtility.getTestData().get("Pwd"));
 			password.sendKeys(Keys.TAB);
 			password.sendKeys(Keys.TAB);
 			password.sendKeys(Keys.ENTER);
-			Helper.normalWait(driver, 2);
+			Helper.normalWait(driver, 5);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}

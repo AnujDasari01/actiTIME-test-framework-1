@@ -1,4 +1,4 @@
-package com.actitime.genericlibrary;
+package com.actitime.reports;
 
 import java.io.File;
 import java.net.URL;
@@ -38,21 +38,17 @@ public class Report extends TestListenerAdapter {
 	 * This method captures a screenshot
 	 **/
 	public static void captureScreenshot(WebDriver driver, String screenshotName) {
-		Date dtnow2 = new Date();
-		String strStartDate2 = dtnow2.toString().replace(":", "_");
-		String strDateStamp2 = strStartDate2.replace(" ", "_");
 		try {
-			Helper.normalWait(driver, 7);
 			TakesScreenshot ts = (TakesScreenshot) driver;
 			File source = ts.getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(source, new File(dirPath + "/ " + screenshotName
-					+ "_" + strDateStamp2
+					+ "_" + strDateStamp
 
 					+ ".png"));
 			String ESCAPE_PROPERTY = "org.uncommons.reportng.escape-output";
 			System.setProperty(ESCAPE_PROPERTY, "false");
 			URL path = new File(dirPath + "/ " + screenshotName + "_"
-					+ strDateStamp2 + ".png").toURI().toURL();
+					+ strDateStamp + ".png").toURI().toURL();
 			String test = "<a href=" + path + "> click to open screenshot of "
 					+ screenshotName + "</a>";
 			Reporter.log(screenshotName + test + "<br>");

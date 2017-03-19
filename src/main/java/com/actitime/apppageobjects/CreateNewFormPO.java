@@ -2,13 +2,13 @@ package com.actitime.apppageobjects;
 
 import java.util.Arrays;
 import java.util.List;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import com.actitime.genericlibrary.FileUtility;
 import com.actitime.genericlibrary.Helper;
-import com.actitime.genericlibrary.Report;
 
 public class CreateNewFormPO {
 	WebDriver driver;
@@ -72,58 +72,75 @@ public class CreateNewFormPO {
 	/**
 	 * This methods creates a new form
 	 **/
-	public void createNewForm() {
+	public boolean createNewForm() {
 		Helper.explicitWait(firstNameTextBox, driver);
 		firstNameTextBox.sendKeys(FileUtility.getTestData().get("First_Name"));
 		lastNameTextBox.sendKeys(FileUtility.getTestData().get("Last_Name"));
 		emailTextBox.sendKeys(FileUtility.getTestData().get("Email_Address"));
 		phoneNumberTextBox.sendKeys(FileUtility.getTestData().get("Phone"));
+		String gender = FileUtility.getTestData().get("Gender");
 		Helper.scrollDown(driver);
+		if(gender.equalsIgnoreCase("male")) {
+			maleGenderRadioBtn.click();
+		}
+		else {
+			femaleGenderRadioBtn.click();
+		}
 		streetTextBox.sendKeys(FileUtility.getTestData().get("Street"));
-		countryDropDown.click();
-		int countriesCount = 0;
-		while (countriesCount < 11) {
-			for (int i = 0; i < countryList.size(); i++) {
-				String country = countryList.get(i).getText();
-				if (country.equalsIgnoreCase(FileUtility.getTestData().get(
-						"Country"))) {
-					countriesCount = 12;
-					countryList.get(i).click();
-					break;
-				} else if (!(country.equalsIgnoreCase(FileUtility.getTestData()
-						.get("Country")))) {
-					countriesCount++;
-					if (countriesCount == 11) {
-						countriesCount = 0;
-						Helper.scrollDown(driver);
-						continue;
+		try {
+			countryDropDown.click();
+			int countriesCount = 0;
+			while (countriesCount < 11) {
+				for (int i = 0; i < countryList.size(); i++) {
+					String country = countryList.get(i).getText();
+					if (country.equalsIgnoreCase(FileUtility.getTestData().get(
+							"Country"))) {
+						countriesCount = 12;
+						countryList.get(i).click();
+						break;
+					} else if (!(country.equalsIgnoreCase(FileUtility.getTestData()
+							.get("Country")))) {
+						countriesCount++;
+						if (countriesCount == 11) {
+							countriesCount = 0;
+							Helper.scrollDown(driver);
+							continue;
+						}
+					}
+				}
+			}
+	
+		}
+		catch(NoSuchElementException e) {
+			return false;
+		}
+		
+		try {
+			stateDropDown.click();
+			int statesCount = 0;
+			while (statesCount < 11) {
+				for (int i = 0; i < stateList.size(); i++) {
+					String state = stateList.get(i).getText();
+					if (state.equalsIgnoreCase(FileUtility.getTestData().get(
+							"State"))) {
+						statesCount = 12;
+						stateList.get(i).click();
+						break;
+					} else if (!(state.equalsIgnoreCase(FileUtility.getTestData()
+							.get("State")))) {
+						statesCount++;
+						if (statesCount == 11) {
+							statesCount = 0;
+							Helper.scrollDown(driver);
+							continue;
+						}
 					}
 				}
 			}
 		}
-
-		stateDropDown.click();
-		int statesCount = 0;
-		while (statesCount < 11) {
-			for (int i = 0; i < stateList.size(); i++) {
-				String state = stateList.get(i).getText();
-				if (state.equalsIgnoreCase(FileUtility.getTestData().get(
-						"State"))) {
-					statesCount = 12;
-					stateList.get(i).click();
-					break;
-				} else if (!(state.equalsIgnoreCase(FileUtility.getTestData()
-						.get("State")))) {
-					statesCount++;
-					if (statesCount == 11) {
-						statesCount = 0;
-						Helper.scrollDown(driver);
-						continue;
-					}
-				}
-			}
+		catch(NoSuchElementException e) {
+			return false;
 		}
-
 		Helper.scrollDown(driver);
 		String hobbies = FileUtility.getTestData().get("Hobbies");
 		hobbies.replaceAll("\\s+","");
@@ -145,8 +162,9 @@ public class CreateNewFormPO {
 			}
 			
 		}
+		Helper.scrollDown(driver);
 		termsAndConditionsCheckBox.click();
 		saveFormBtn.click();
-		Report.captureScreenshot(driver, "CreateNewForm ");
+		return true;
 	}
 }

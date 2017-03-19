@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.actitime.genericlibrary.Helper;
+
 /**
  * This is ActiTime Dashboard Page Object
  **/
@@ -22,13 +24,13 @@ public class WebDashboardPO {
 	@FindBy(css = "a.content.users")
 	private WebElement usersWidget;
 
-	@FindBy(xpath = "//div[@class='overlayTipWrapper']/span")
+	@FindBy(xpath = "//span[contains(text(),'Open Tasks')]")
 	private WebElement tasksTitle;
 
-	@FindBy(xpath = "//div[@class='overlayTipWrapper' and contains(text(),'Reports')]")
+	@FindBy(xpath = "//td[@class='pagetitle']")
 	private WebElement reportsTitle;
 
-	@FindBy(xpath = "//div[@class='pagetitle']/span")
+	@FindBy(xpath = "//span[contains(text(),'User List')]")
 	private WebElement usersTitle;
 
 	@FindBy(css = "a.logout")
@@ -44,6 +46,7 @@ public class WebDashboardPO {
 	 **/
 	public String navigateToTasks() {
 		tasksWidget.click();
+		Helper.explicitWait(tasksTitle, driver);
 		return driver.getTitle();
 	}
 
@@ -52,6 +55,7 @@ public class WebDashboardPO {
 	 **/
 	public String navigateToReports() {
 		reportWidget.click();
+		Helper.explicitWait(reportsTitle, driver);
 		return driver.getTitle();
 	}
 
@@ -60,6 +64,7 @@ public class WebDashboardPO {
 	 **/
 	public String navigateToUsers() {
 		usersWidget.click();
+		Helper.explicitWait(usersTitle, driver);
 		return driver.getTitle();
 	}
 
@@ -68,6 +73,7 @@ public class WebDashboardPO {
 	 **/
 	public String logout() {
 		logOutBtn.click();
+		Helper.normalWait(driver, 5);
 		return driver.getTitle();
 	}
 }

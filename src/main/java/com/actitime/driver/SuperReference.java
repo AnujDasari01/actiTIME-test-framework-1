@@ -23,7 +23,7 @@ import org.testng.annotations.Parameters;
 
 import com.actitime.apppageobjects.*;
 import com.actitime.devicepageobjects.*;
-import com.actitime.genericlibrary.ExtentReport;
+import com.actitime.reports.ExtentReport;
 import com.actitime.webpageobjects.*;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -40,7 +40,6 @@ public class SuperReference {
 	protected WebUsersPO webUsersPO;
 	protected DeviceLoginPO deviceLoginPO;
 	protected DeviceDashboardPO deviceDashBoardPO;
-	protected DeviceUsersPO deviceUsersPO;
 	protected CreateNewFormPO appCreateNewFormPO;
 	protected ExtentReports extent;
 	protected ExtentTest test;
@@ -248,8 +247,7 @@ public class SuperReference {
 						DeviceLoginPO.class);
 				deviceDashBoardPO = PageFactory.initElements(driver,
 						DeviceDashboardPO.class);
-				deviceUsersPO = PageFactory.initElements(driver,
-						DeviceUsersPO.class);
+
 			} else if (Driver.getType().equalsIgnoreCase("App")) {
 				appiumStart();
 				driver = setupApp(browser);
@@ -272,8 +270,6 @@ public class SuperReference {
 						DeviceLoginPO.class);
 				deviceDashBoardPO = PageFactory.initElements(driver,
 						DeviceDashboardPO.class);
-				deviceUsersPO = PageFactory.initElements(driver,
-						DeviceUsersPO.class);
 			} else if (Driver.getType().equalsIgnoreCase("App")) {
 				appiumStart();
 				setupApp(browser);

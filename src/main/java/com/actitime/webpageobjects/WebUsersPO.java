@@ -7,11 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
 import com.actitime.genericlibrary.FileUtility;
 import com.actitime.genericlibrary.Helper;
-import com.actitime.genericlibrary.Report;
+import com.actitime.reports.Report;
 
 /**
  * This is ActiTime Users Page Object
@@ -77,6 +76,7 @@ public class WebUsersPO {
 	 * This method is used to create a user
 	 **/
 	public String createUser() {
+		Helper.explicitWait(addUserBtn, driver);
 		addUserBtn.click();
 		firstNameTextField
 				.sendKeys(FileUtility.getTestData().get("First_Name"));
@@ -103,17 +103,14 @@ public class WebUsersPO {
 			Helper.scrollTo(confirmUserAdd, driver);
 			String actualName = confirmUserAdd.getText();
 			Helper.scrollTo(usersTitle, driver);
-			Report.captureScreenshot(driver, "UserAddition ");
 			return actualName;
-
 		}
-
 	}
 
 	/**
 	 * This method is used to check for an existing user
 	 **/
-	public void checkExistingUser(String checkUser) {
+	public boolean checkExistingUser(String checkUser) {
 		driver.navigate().refresh();
 		int count = 0;
 		String availableUsers;
@@ -124,8 +121,9 @@ public class WebUsersPO {
 				if (checkUser.equalsIgnoreCase(availableUsers)) {
 					WebElement we = addedUsersList.get(i);
 					Helper.scrollTo(we, driver);
-					Report.captureScreenshot(driver, "CheckExistingUser");
-					break;
+					return true;
+					//Report.captureScreenshot(driver, "CheckExistingUser");
+					//break;
 				} else if (!(checkUser.equalsIgnoreCase(availableUsers))
 						&& count < 10) {
 					count++;
@@ -141,8 +139,9 @@ public class WebUsersPO {
 					nextBtn.click();
 					continue;
 				} catch (NoSuchElementException e) {
-					Report.captureScreenshot(driver, "CheckExistingUser");
-					Assert.fail(checkUser + " : No Such User Found!");
+					return false;
+					//Report.captureScreenshot(driver, "CheckExistingUser");
+					//Assert.fail(checkUser + " : No Such User Found!");
 				}
 
 			}
@@ -162,10 +161,11 @@ public class WebUsersPO {
 								&& count < addedUsersList.size()) {
 							continue;
 						} else {
-							Report.captureScreenshot(driver,
-									"CheckExistingUser");
-							Assert.fail(checkUser + " : No Such User Found!");
-							break;
+							return false;
+//							Report.captureScreenshot(driver,
+//									"CheckExistingUser");
+//							Assert.fail(checkUser + " : No Such User Found!");
+//							break;
 						}
 					}
 					break;
@@ -174,14 +174,14 @@ public class WebUsersPO {
 
 			}
 		}
+		return false;
 
 	}
 
 	/**
 	 * This method is used to delete an existing user
 	 **/
-	public void deleteUser() {
-		String deleteUser = FileUtility.getTestData().get("Full_Name");
+	public boolean deleteUser(String deleteUser) {
 		driver.navigate().refresh();
 		int count = 0;
 		String availableUsers;
@@ -196,16 +196,18 @@ public class WebUsersPO {
 					Helper.normalWait(driver, 1);
 					if (!deleteUserBtn.isEnabled()) {
 						modalWindowClose.click();
-						Report.captureScreenshot(driver, "DeleteExistingUser");
-						Assert.fail("Unable to delete user");
+						//Report.captureScreenshot(driver, "DeleteExistingUser");
+						//Assert.fail("Unable to delete user");
+						return false;
 					}
 
 					else {
 						deleteUserBtn.click();
 						Helper.normalWait(driver, 1);
 						Helper.handleAlert("Y", driver);
-						Report.captureScreenshot(driver, "DeleteExistingUser");
-						break;
+						//Report.captureScreenshot(driver, "DeleteExistingUser");
+						return true;
+						//break;
 
 					}
 				} else if (!(deleteUser.equalsIgnoreCase(availableUsers))
@@ -223,8 +225,9 @@ public class WebUsersPO {
 					nextBtn.click();
 					continue;
 				} catch (NoSuchElementException e) {
-					Report.captureScreenshot(driver, "DeleteExistingUser");
-					Assert.fail(deleteUser + " : No Such User Found!");
+					//Report.captureScreenshot(driver, "DeleteExistingUser");
+					//Assert.fail(deleteUser + " : No Such User Found!");
+					return false;
 				}
 
 			}
@@ -245,10 +248,11 @@ public class WebUsersPO {
 								&& count < addedUsersList.size()) {
 							continue;
 						} else {
-							Report.captureScreenshot(driver,
-									"DeleteExistingUser");
-							Assert.fail(deleteUser + " : No Such User Found!");
-							break;
+//							Report.captureScreenshot(driver,
+//									"DeleteExistingUser");
+//							Assert.fail(deleteUser + " : No Such User Found!");
+//							break;
+							return false;
 						}
 					}
 					break;
@@ -257,6 +261,7 @@ public class WebUsersPO {
 
 			}
 		}
+		return false;
 	}
 
 }

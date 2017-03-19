@@ -6,9 +6,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.actitime.driver.SuperReference;
-import com.actitime.genericlibrary.ExtentReport;
 import com.actitime.genericlibrary.FileUtility;
-import com.actitime.genericlibrary.Report;
+import com.actitime.reports.ExtentReport;
+import com.actitime.reports.Report;
 import com.aventstack.extentreports.Status;
 
 /*
@@ -86,7 +86,7 @@ public class TestScriptsDevice extends SuperReference {
 			test.pass("TC05_SignOutOfApplication");
 			ExtentReport.captureAndDisplayScreenShot(driver, test);
 		} else {
-			test.log(Status.FAIL, "TC08_SignOutOfApplication");
+			test.log(Status.FAIL, "TC05_SignOutOfApplication");
 			ExtentReport.captureAndDisplayScreenShot(driver, test);
 		}
 	}

@@ -1,4 +1,4 @@
-package com.actitime.genericlibrary;
+package com.actitime.reports;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,7 +10,6 @@ import org.openqa.selenium.WebDriver;
 import com.actitime.driver.Driver;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 public class ExtentReport {
@@ -50,8 +49,8 @@ public class ExtentReport {
 	private static ExtentHtmlReporter getHtmlReporter() {
 		htmlReporter = new ExtentHtmlReporter(dirPath);
 		htmlReporter.config().setChartVisibilityOnOpen(true);
-		htmlReporter.config().setDocumentTitle("actiTIME automation report");
-		htmlReporter.config().setReportName("Automated Regression cycle");
+		htmlReporter.config().setDocumentTitle("ActiTIME Automation Report");
+		htmlReporter.config().setReportName("Automated Smoke cycle");
 		return htmlReporter;
 	}
 
@@ -60,7 +59,8 @@ public class ExtentReport {
 		return test;
 	}
 
-	public static void captureAndDisplayScreenShot(WebDriver ldriver, ExtentTest eTest) {
+	public static void captureAndDisplayScreenShot(WebDriver ldriver,
+			ExtentTest eTest) {
 		Date dtnow2 = new Date();
 		String strStartDate2 = dtnow2.toString().replace(":", "_");
 		String strDateStamp2 = strStartDate2.replace(" ", "_");
@@ -68,7 +68,7 @@ public class ExtentReport {
 		try {
 			String screenshotPath = dirPath + "_" + strDateStamp2 + ".png";
 			FileUtils.copyFile(src, new File(screenshotPath));
-			eTest.log(Status.INFO, "Screenshot from : " + screenshotPath).addScreenCaptureFromPath(screenshotPath);
+			eTest.addScreenCaptureFromPath(screenshotPath);
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}

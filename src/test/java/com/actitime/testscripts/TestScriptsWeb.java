@@ -6,9 +6,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.actitime.driver.SuperReference;
-import com.actitime.genericlibrary.ExtentReport;
 import com.actitime.genericlibrary.FileUtility;
-import com.actitime.genericlibrary.Report;
+import com.actitime.reports.ExtentReport;
+import com.actitime.reports.Report;
 import com.aventstack.extentreports.Status;
 
 /*
@@ -17,7 +17,7 @@ import com.aventstack.extentreports.Status;
 public class TestScriptsWeb extends SuperReference {
 	@Test
 	public void TC01_SignIntoApplication() throws IOException {
-		test = extent.createTest("SignIntoApplication", "Verify SignIntoApplication");
+		test = extent.createTest("SignIntoApplication","Verify SignIntoApplication");
 		FileUtility.retrieveData("TC01_SignIntoApplication");
 		String loginTitle = webLoginPO.login();
 		Report.captureScreenshot(driver, "SignIntoApplication ");
@@ -48,7 +48,8 @@ public class TestScriptsWeb extends SuperReference {
 
 	@Test
 	public void TC03_NavigateToReports() {
-		test = extent.createTest("NavigateToReports", "Verify NavigateToReports");
+		test = extent.createTest("NavigateToReports",
+				"Verify NavigateToReports");
 		String reportTitle = webDashBoardPO.navigateToReports();
 		Report.captureScreenshot(driver, "NavigateToReports ");
 		Assert.assertEquals(reportTitle, "actiTIME - Reports Dashboard");
@@ -78,31 +79,68 @@ public class TestScriptsWeb extends SuperReference {
 
 	@Test
 	public void TC05_CreateAUser() {
+		test = extent.createTest("CreateAUser", "Verify User is Created");
 		FileUtility.retrieveData("TC05_CreateAUser");
-		String expectedName = FileUtility.getTestData().get("Last_Name") + ", " + FileUtility.getTestData().get("First_Name");
+		String expectedName = FileUtility.getTestData().get("Last_Name") + ", "
+				+ FileUtility.getTestData().get("First_Name");
 		String createUser = webUsersPO.createUser();
 		if (createUser.contains("already exists")) {
+			test.log(Status.FAIL, "TC05_CreateAUser");
+			test.log(Status.INFO, createUser);
+			ExtentReport.captureAndDisplayScreenShot(driver, test);
 			Assert.fail(createUser);
 		} else {
+			Report.captureScreenshot(driver, "UserAddition ");
 			Assert.assertEquals(expectedName, createUser);
+			test.pass("TC05_CreateAUser");
+			ExtentReport.captureAndDisplayScreenShot(driver, test);
 		}
 	}
 
 	@Test
 	public void TC06_VerifyExistingUser() {
+		test = extent.createTest("VerifyExistingUser", "Verify if user exists");
 		FileUtility.retrieveData("TC06_VerifyExistingUser");
-		webUsersPO.checkExistingUser(FileUtility.getTestData().get("Full_Name"));
+		String checkUser = FileUtility.getTestData().get("Full_Name");
+		boolean verifyUserStatus = webUsersPO.checkExistingUser(checkUser);
+		if (verifyUserStatus) {
+			test.pass("TC06_VerifyExistingUser");
+			ExtentReport.captureAndDisplayScreenShot(driver, test);
+			Report.captureScreenshot(driver, "DeleteExistingUser");
+		} else {
+			test.log(Status.FAIL, "TC06_VerifyExistingUser");
+			test.log(Status.INFO, checkUser + ":No Such User Found!");
+			ExtentReport.captureAndDisplayScreenShot(driver, test);
+			Report.captureScreenshot(driver, "VerifyExistingUser");
+			Assert.fail(checkUser + " : No Such User Found!");
+		}
+
 	}
 
 	@Test
 	public void TC07_DeleteUser() {
+		test = extent.createTest("DeleteUser", "Verify User is Deleted");
 		FileUtility.retrieveData("TC07_DeleteUser");
-		webUsersPO.deleteUser();
+		String deleteUser = FileUtility.getTestData().get("Full_Name");
+		boolean deleteUserStatus = webUsersPO.deleteUser(deleteUser);
+		if (deleteUserStatus) {
+			test.pass("TC07_DeleteUser");
+			ExtentReport.captureAndDisplayScreenShot(driver, test);
+			Report.captureScreenshot(driver, "DeleteExistingUser");
+		} else {
+			test.log(Status.FAIL, "TC07_DeleteUser");
+			test.log(Status.INFO, deleteUser + ":No Such User Found!");
+			ExtentReport.captureAndDisplayScreenShot(driver, test);
+			Report.captureScreenshot(driver, "DeleteExistingUser");
+			Assert.fail(deleteUser + " : No Such User Found!");
+		}
+
 	}
 
 	@Test
-	public void TC08_SignOutOfApplication() { 
-		test = extent.createTest("SignOutOfApplication", "Verify SignOutOfApplication");
+	public void TC08_SignOutOfApplication() {
+		test = extent.createTest("SignOutOfApplication",
+				"Verify SignOutOfApplication");
 		String logoutConfirmTitle = webDashBoardPO.logout();
 		Report.captureScreenshot(driver, "SignOutOfApplication");
 		Assert.assertEquals(logoutConfirmTitle, "actiTIME - Login");
