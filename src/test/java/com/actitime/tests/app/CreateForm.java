@@ -1,4 +1,4 @@
-package com.actitime.testscripts;
+package com.actitime.tests.app;
 
 import org.testng.annotations.Test;
 
@@ -8,26 +8,21 @@ import com.actitime.tests.base.BaseTest;
 import com.actitime.utils.FileUtilityManager;
 import com.aventstack.extentreports.Status;
 
-/*
- * ActiTime Application Test Scripts
- */
-public class TestScriptsApp extends BaseTest {
+public class CreateForm extends BaseTest {
 	@Test
-	public void TC01_CreateNewForm() throws InterruptedException {
+	public void CreateNewForm() throws InterruptedException {
 		test = extent.createTest("CreateNewForm");
-		FileUtilityManager.retrieveData("TC01_CreateNewForm");
+		FileUtilityManager.retrieveData("CreateNewForm");
 		boolean createForm = appCreateNewFormPO.createNewForm();
 		ReportNGReport.captureScreenshot(driver, "CreateNewForm ");
 		if (createForm) {
-			test.pass("TC01_CreateNewForm");
+			test.pass("CreateNewForm");
 			ExtentReport.captureAndDisplayScreenShot(driver, test);
 		} else {
-			test.log(Status.FAIL, "TC01_CreateNewForm");
+			test.log(Status.FAIL, "CreateNewForm");
 			test.log(Status.INFO, "Failed to create a new form");
 			ExtentReport.captureAndDisplayScreenShot(driver, test);
 		}
 		
 	}
-
 }
-	

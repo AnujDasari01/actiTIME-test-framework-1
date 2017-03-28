@@ -38,7 +38,7 @@ public class ExtentReport {
 		return dirPath = srcDir.getAbsolutePath() + "./ExtentReport.html";
 	}
 
-	public static ExtentReports GetExtent() {
+	public static ExtentReports getExtent() {
 		if (extent != null)
 			return extent; // avoid creating new instance of html file
 		extent = new ExtentReports();
@@ -50,7 +50,7 @@ public class ExtentReport {
 		htmlReporter = new ExtentHtmlReporter(dirPath);
 		htmlReporter.config().setChartVisibilityOnOpen(true);
 		htmlReporter.config().setDocumentTitle("ActiTIME Automation Report");
-		htmlReporter.config().setReportName("Automated Smoke cycle");
+		htmlReporter.config().setReportName("Automated Test Cycle");
 		return htmlReporter;
 	}
 
