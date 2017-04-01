@@ -14,11 +14,15 @@ public class Driver extends DriverManager {
 		relativePath = System.getProperty("user.dir");
 		runOn = System.getProperty("runOn");
 		type = System.getProperty("platform");
+		if(type.equalsIgnoreCase("desktop")) {
+			browserName = System.getProperty("browser");
+		}
 		if (runOn.equalsIgnoreCase("Grid")) {
 			retrieveGridEnvProperties();
 		} else if (runOn.equalsIgnoreCase("Standalone")) {
 			retrieveStandAloneEnvProperties();
 		}
+		readValidXmlSheet();
 		XMLUtilityManager.autoRunXml();
 	}
 }

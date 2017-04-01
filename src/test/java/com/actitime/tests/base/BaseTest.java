@@ -31,7 +31,7 @@ public class BaseTest extends DriverFactory {
 				webUsersPO = PageFactory.initElements(driver, WebUsers.class);
 			} else if (Driver.getType().equalsIgnoreCase("Device")) {
 				appiumStart();
-				driver = setup(browser);
+				driver = setupInGrid(browser);
 				deviceLoginPO = PageFactory.initElements(driver,DeviceLogin.class);
 				deviceDashBoardPO = PageFactory.initElements(driver,DeviceDashboard.class);
 

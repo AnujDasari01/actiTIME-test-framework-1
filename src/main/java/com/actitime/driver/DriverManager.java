@@ -16,6 +16,7 @@ public class DriverManager {
 	protected static String browserName1;
 	protected static String browserName2;
 	protected static String browserName3;
+	protected static String deviceNodeUrl;
 	protected static String nodeUrl1;
 	protected static String nodeUrl2;
 	protected static String nodeUrl3;
@@ -99,6 +100,10 @@ public class DriverManager {
 		return browserName3;
 	}
 
+	public static String getDeviceNodeUrl() {
+		return deviceNodeUrl;
+	}
+	
 	public static String getNodeUrl1() {
 		return nodeUrl1;
 	}
@@ -186,7 +191,10 @@ public class DriverManager {
 				browserName2 = prop.getProperty(key);
 			} else if (key.equalsIgnoreCase("browserName3")) {
 				browserName3 = prop.getProperty(key);
-			} else if (key.equalsIgnoreCase("nodeUrl1")) {
+			} else if (key.equalsIgnoreCase("deviceNodeUrl")) {
+				deviceNodeUrl = prop.getProperty(key);
+			}
+			else if (key.equalsIgnoreCase("nodeUrl1")) {
 				nodeUrl1 = prop.getProperty(key);
 			} else if (key.equalsIgnoreCase("nodeUrl2")) {
 				nodeUrl2 = prop.getProperty(key);

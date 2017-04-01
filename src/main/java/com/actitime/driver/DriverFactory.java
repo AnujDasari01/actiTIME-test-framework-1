@@ -1,6 +1,7 @@
 package com.actitime.driver;
 
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 
@@ -160,6 +161,22 @@ public class DriverFactory {
 	 **/
 	protected void closeBrowser() throws IOException {
 		driver.quit();
+	}
+	
+	/**
+	 * This method runs scripts in a device using grid
+	 * @throws MalformedURLException 
+	 **/
+	protected WebDriver setupInGrid(String browser) throws MalformedURLException {
+		String nodeURL = null;
+		WebDriver driver = null;
+		nodeURL = Driver.getDeviceNodeUrl();
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+		capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "6.0.1");
+		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Nexus");
+		driver = new RemoteWebDriver(new URL(nodeURL), capabilities);
+		return driver;
 	}
 
 	/**
