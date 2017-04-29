@@ -12,6 +12,10 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
+/*
+ * ExtentReport class to create extent report
+ * 
+ */
 public class ExtentReport {
 	private static String dirPath = null;
 
@@ -40,7 +44,7 @@ public class ExtentReport {
 
 	public static ExtentReports getExtent() {
 		if (extent != null)
-			return extent; // avoid creating new instance of html file
+			return extent; 
 		extent = new ExtentReports();
 		extent.attachReporter(getHtmlReporter());
 		return extent;
@@ -59,6 +63,9 @@ public class ExtentReport {
 		return test;
 	}
 
+	/**
+	 * This method captures the screenshot and places it in the execution report
+	 **/
 	public static void captureAndDisplayScreenShot(WebDriver ldriver,
 			ExtentTest eTest) {
 		Date dtnow2 = new Date();

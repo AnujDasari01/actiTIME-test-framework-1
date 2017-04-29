@@ -16,6 +16,9 @@ import com.actitime.webpages.WebUsers;
 import com.actitime.apppages.*;
 import com.actitime.devicepages.*;
 
+/*
+ * BaseTest 
+ */
 public class BaseTest extends DriverFactory {
 	/* Before Class */
 	@Parameters({ "browser" })

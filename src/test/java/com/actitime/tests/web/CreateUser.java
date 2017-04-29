@@ -9,6 +9,9 @@ import com.actitime.tests.base.BaseTest;
 import com.actitime.utils.FileUtilityManager;
 import com.aventstack.extentreports.Status;
 
+/*
+ * Create User Test Script
+ */
 public class CreateUser extends BaseTest {
 	@Test(groups = { "Regression" })
 	public void createUser() {

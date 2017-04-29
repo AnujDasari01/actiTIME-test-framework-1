@@ -6,19 +6,16 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
-
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-
 import com.actitime.driver.Driver;
 
 /**
- * This is FileUtility class to read data from Test Data sheets and Properties
- * files
+ * FileUtility class to read data from Test Data sheets and Properties files
  **/
 
 public class FileUtilityManager {
@@ -33,6 +30,9 @@ public class FileUtilityManager {
 		return sheetNames;
 	}
 
+	/*
+	 * Method to retrieve data from the TestData based on TestCaseId
+	 */
 	public static void retrieveData(String TestCaseDataId) {
 		try {
 			FileInputStream fis = new FileInputStream(
@@ -40,7 +40,6 @@ public class FileUtilityManager {
 			Workbook wb = WorkbookFactory.create(fis);
 			Sheet sh = null;
 			String env = Driver.getType();
-			System.out.println("Type is: " + env);
 			if (env.equalsIgnoreCase("Desktop")) {
 				sh = wb.getSheet("Desktop");
 			} else if (env.equalsIgnoreCase("Device")) {
@@ -80,7 +79,10 @@ public class FileUtilityManager {
 		}
 	}
 
-	public static ArrayList<String> getFlaggedMethods(String sheetname) {
+	/*
+	 * Method to get all classes set to 'Y' 
+	 */
+	public static ArrayList<String> getFlaggedClasses(String sheetname) {
 		ArrayList<String> testCaseToExecute = new ArrayList<>();
 		try {
 			FileInputStream fis = new FileInputStream(
@@ -110,7 +112,10 @@ public class FileUtilityManager {
 
 	}
 
-	public static ArrayList<String> getNotFlaggedMethods(String sheetname) {
+	/*
+	 * Method to get all classes set to 'N' 
+	 */
+	public static ArrayList<String> getNotFlaggedClasses(String sheetname) {
 		ArrayList<String> testCaseNotToExecute = new ArrayList<>();
 		try {
 
@@ -141,6 +146,9 @@ public class FileUtilityManager {
 
 	}
 
+	/*
+	 * Method to get sheet name 
+	 */
 	public static ArrayList<String> getSheetNameMethods() {
 		try {
 			sheetNames.clear();
@@ -160,6 +168,9 @@ public class FileUtilityManager {
 		return sheetNames;
 	}
 
+	/*
+	 * Method to get properties
+	 */
 	public static Properties getProperties(String propFilePath) {
 		Properties prop = new Properties();
 		InputStream input = null;

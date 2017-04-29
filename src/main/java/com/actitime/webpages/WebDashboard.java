@@ -8,7 +8,7 @@ import com.actitime.pages.BasePage;
 import com.actitime.utils.HelperManager;
 
 /**
- * This is ActiTime Dashboard Page Object
+ * ActiTime Dashboard Page Object
  **/
 
 public class WebDashboard extends BasePage {

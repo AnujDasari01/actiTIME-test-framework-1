@@ -4,12 +4,10 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,17 +15,18 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
 import com.actitime.apppages.CreateForm;
 import com.actitime.devicepages.DeviceDashboard;
 import com.actitime.devicepages.DeviceLogin;
-import com.actitime.devicepages.DeviceUsers;
 import com.actitime.webpages.WebDashboard;
 import com.actitime.webpages.WebLogin;
 import com.actitime.webpages.WebUsers;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 
+/**
+ * DriverFactory class to create WebDriver instance to run automated tests against desktop browsers, device browser and android app.
+ **/
 public class DriverFactory {
 	protected WebDriver driver;
 	protected WebLogin webLoginPO;
@@ -35,7 +34,6 @@ public class DriverFactory {
 	protected WebUsers webUsersPO;
 	protected DeviceLogin deviceLoginPO;
 	protected DeviceDashboard deviceDashBoardPO;
-	protected DeviceUsers deviceUsersPO;
 	protected CreateForm appCreateNewFormPO;
 	protected ExtentReports extent;
 	protected ExtentTest test;
@@ -61,18 +59,21 @@ public class DriverFactory {
 		service.stop();
 	}
 
+	/* Properties to trigger Chrome browser*/
 	protected void chromeDriver() {
 		System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriver/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 	}
 
+	/* Properties to trigger Firefox browser*/
 	protected void firefoxDriver() {
 		System.setProperty("webdriver.gecko.driver", "./src/main/resources/geckodriver/geckodriver.exe");
 		driver = new FirefoxDriver();
 		driver.manage().window().maximize();
 	}
 
+	/* Properties to trigger IE browser*/
 	protected void ieDriver() {
 		DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
 		capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false);

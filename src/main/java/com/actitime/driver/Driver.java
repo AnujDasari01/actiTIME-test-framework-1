@@ -3,14 +3,14 @@ package com.actitime.driver;
 import com.actitime.utils.XMLUtilityManager;
 
 /**
- * This is Driver class with main method
+ * Driver class with main method
  **/
 public class Driver extends DriverManager {
 	
 	
 	
 	/**
-	 * This is the main method
+	 * Main method
 	 **/
 	public static void main(String args[]) throws Exception {
 		relativePath = System.getProperty("user.dir");
@@ -25,7 +25,7 @@ public class Driver extends DriverManager {
 		} else if (runOn.equalsIgnoreCase("Standalone")) {
 			retrieveStandAloneEnvProperties();
 		}
-		readValidXmlSheet();
+		createXML();
 		XMLUtilityManager.autoRunXml();
 	}
 }

@@ -96,18 +96,18 @@ public class XMLUtilityManager {
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggedtorun1 = FileUtilityManager
-							.getFlaggedMethods(sheetName).size();
+							.getFlaggedClasses(sheetName).size();
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggednottorun1 = FileUtilityManager
-							.getNotFlaggedMethods(sheetName).size();
+							.getNotFlaggedClasses(sheetName).size();
 
 					// Obtain the column value flag = "Y" in a loop
 					for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun1; elementcounterY++) {
 						Element childElementClass = document
 								.createElement("class");
 						ArrayList<String> flagElement1 = FileUtilityManager
-								.getFlaggedMethods(sheetName);
+								.getFlaggedClasses(sheetName);
 						childElementClass.setAttribute(
 								"name",
 								"com.actitime.tests.web."
@@ -119,7 +119,7 @@ public class XMLUtilityManager {
 					// Obtain the column value flag = "N" in a loop
 					for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun1; elementcounterN++) {
 						// ArrayList<String> flagElement2 =
-						// FileUtilityManager.getNotFlaggedMethods(sheetName);
+						// FileUtilityManager.getNotFlaggedClasses(sheetName);
 					}
 
 					/**
@@ -149,18 +149,18 @@ public class XMLUtilityManager {
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggedtorun2 = FileUtilityManager
-							.getFlaggedMethods(sheetName).size();
+							.getFlaggedClasses(sheetName).size();
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggednottorun2 = FileUtilityManager
-							.getNotFlaggedMethods(sheetName).size();
+							.getNotFlaggedClasses(sheetName).size();
 
 					// Obtain the column value flag = "Y" in a loop
 					for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun2; elementcounterY++) {
 						Element childElementClass = document
 								.createElement("class");
 						ArrayList<String> flagElement3 = FileUtilityManager
-								.getFlaggedMethods(sheetName);
+								.getFlaggedClasses(sheetName);
 						childElementClass.setAttribute(
 								"name",
 								"com.actitime.tests.web."
@@ -171,7 +171,7 @@ public class XMLUtilityManager {
 					// Obtain the column value flag = "N" in a loop
 					for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun2; elementcounterN++) {
 						// ArrayList<String> flagElement4 =
-						// FileUtilityManager.getNotFlaggedMethods(sheetName);
+						// FileUtilityManager.getNotFlaggedClasses(sheetName);
 					}
 				}
 
@@ -203,18 +203,18 @@ public class XMLUtilityManager {
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggedtorun1 = FileUtilityManager
-							.getFlaggedMethods(sheetName).size();
+							.getFlaggedClasses(sheetName).size();
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggednottorun1 = FileUtilityManager
-							.getNotFlaggedMethods(sheetName).size();
+							.getNotFlaggedClasses(sheetName).size();
 
 					// Obtain the column value flag = "Y" in a loop
 					for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun1; elementcounterY++) {
 						Element childElementClass = document
 								.createElement("class");
 						ArrayList<String> flagElement1 = FileUtilityManager
-								.getFlaggedMethods(sheetName);
+								.getFlaggedClasses(sheetName);
 						childElementClass.setAttribute(
 								"name",
 								"com.actitime.tests.web."
@@ -226,7 +226,7 @@ public class XMLUtilityManager {
 					// Obtain the column value flag = "N" in a loop
 					for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun1; elementcounterN++) {
 						// ArrayList<String> flagElement2 =
-						// FileUtilityManager.getNotFlaggedMethods(sheetName);
+						// FileUtilityManager.getNotFlaggedClasses(sheetName);
 					}
 
 					/**
@@ -256,18 +256,18 @@ public class XMLUtilityManager {
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggedtorun2 = FileUtilityManager
-							.getFlaggedMethods(sheetName).size();
+							.getFlaggedClasses(sheetName).size();
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggednottorun2 = FileUtilityManager
-							.getNotFlaggedMethods(sheetName).size();
+							.getNotFlaggedClasses(sheetName).size();
 
 					// Obtain the column value flag = "Y" in a loop
 					for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun2; elementcounterY++) {
 						Element childElementClass = document
 								.createElement("class");
 						ArrayList<String> flagElement3 = FileUtilityManager
-								.getFlaggedMethods(sheetName);
+								.getFlaggedClasses(sheetName);
 						childElementClass.setAttribute(
 								"name",
 								"com.actitime.tests.web."
@@ -278,7 +278,7 @@ public class XMLUtilityManager {
 					// Obtain the column value flag = "N" in a loop
 					for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun2; elementcounterN++) {
 						// ArrayList<String> flagElement4 =
-						// FileUtilityManager.getNotFlaggedMethods(sheetName);
+						// FileUtilityManager.getNotFlaggedClasses(sheetName);
 					}
 				}
 
@@ -310,18 +310,18 @@ public class XMLUtilityManager {
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggedtorun1 = FileUtilityManager
-							.getFlaggedMethods(sheetName).size();
+							.getFlaggedClasses(sheetName).size();
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggednottorun1 = FileUtilityManager
-							.getNotFlaggedMethods(sheetName).size();
+							.getNotFlaggedClasses(sheetName).size();
 
 					// Obtain the column value flag = "Y" in a loop
 					for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun1; elementcounterY++) {
 						Element childElementClass = document
 								.createElement("class");
 						ArrayList<String> flagElement1 = FileUtilityManager
-								.getFlaggedMethods(sheetName);
+								.getFlaggedClasses(sheetName);
 						childElementClass.setAttribute(
 								"name",
 								"com.actitime.tests.web."
@@ -333,7 +333,7 @@ public class XMLUtilityManager {
 					// Obtain the column value flag = "N" in a loop
 					for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun1; elementcounterN++) {
 						// ArrayList<String> flagElement2 =
-						// FileUtilityManager.getNotFlaggedMethods(sheetName);
+						// FileUtilityManager.getNotFlaggedClasses(sheetName);
 					}
 
 					/**
@@ -363,18 +363,18 @@ public class XMLUtilityManager {
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggedtorun2 = FileUtilityManager
-							.getFlaggedMethods(sheetName).size();
+							.getFlaggedClasses(sheetName).size();
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggednottorun2 = FileUtilityManager
-							.getNotFlaggedMethods(sheetName).size();
+							.getNotFlaggedClasses(sheetName).size();
 
 					// Obtain the column value flag = "Y" in a loop
 					for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun2; elementcounterY++) {
 						Element childElementClass = document
 								.createElement("class");
 						ArrayList<String> flagElement3 = FileUtilityManager
-								.getFlaggedMethods(sheetName);
+								.getFlaggedClasses(sheetName);
 						childElementClass.setAttribute(
 								"name",
 								"com.actitime.tests.web."
@@ -385,7 +385,7 @@ public class XMLUtilityManager {
 					// Obtain the column value flag = "N" in a loop
 					for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun2; elementcounterN++) {
 						// ArrayList<String> flagElement4 =
-						// FileUtilityManager.getNotFlaggedMethods(sheetName);
+						// FileUtilityManager.getNotFlaggedClasses(sheetName);
 					}
 				}
 
@@ -417,18 +417,18 @@ public class XMLUtilityManager {
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggedtorun1 = FileUtilityManager
-							.getFlaggedMethods(sheetName).size();
+							.getFlaggedClasses(sheetName).size();
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggednottorun1 = FileUtilityManager
-							.getNotFlaggedMethods(sheetName).size();
+							.getNotFlaggedClasses(sheetName).size();
 
 					// Obtain the column value flag = "Y" in a loop
 					for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun1; elementcounterY++) {
 						Element childElementClass = document
 								.createElement("class");
 						ArrayList<String> flagElement1 = FileUtilityManager
-								.getFlaggedMethods(sheetName);
+								.getFlaggedClasses(sheetName);
 						childElementClass.setAttribute(
 								"name",
 								"com.actitime.tests.web."
@@ -440,7 +440,7 @@ public class XMLUtilityManager {
 					// Obtain the column value flag = "N" in a loop
 					for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun1; elementcounterN++) {
 						// ArrayList<String> flagElement2 =
-						// FileUtilityManager.getNotFlaggedMethods(sheetName);
+						// FileUtilityManager.getNotFlaggedClasses(sheetName);
 					}
 
 					/**
@@ -470,18 +470,18 @@ public class XMLUtilityManager {
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggedtorun2 = FileUtilityManager
-							.getFlaggedMethods(sheetName).size();
+							.getFlaggedClasses(sheetName).size();
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggednottorun2 = FileUtilityManager
-							.getNotFlaggedMethods(sheetName).size();
+							.getNotFlaggedClasses(sheetName).size();
 
 					// Obtain the column value flag = "Y" in a loop
 					for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun2; elementcounterY++) {
 						Element childElementClass = document
 								.createElement("class");
 						ArrayList<String> flagElement3 = FileUtilityManager
-								.getFlaggedMethods(sheetName);
+								.getFlaggedClasses(sheetName);
 						childElementClass.setAttribute(
 								"name",
 								"com.actitime.tests.web."
@@ -492,7 +492,7 @@ public class XMLUtilityManager {
 					// Obtain the column value flag = "N" in a loop
 					for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun2; elementcounterN++) {
 						// ArrayList<String> flagElement4 =
-						// FileUtilityManager.getNotFlaggedMethods(sheetName);
+						// FileUtilityManager.getNotFlaggedClasses(sheetName);
 					}
 
 					/**
@@ -522,18 +522,18 @@ public class XMLUtilityManager {
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggedtorun3 = FileUtilityManager
-							.getFlaggedMethods(sheetName).size();
+							.getFlaggedClasses(sheetName).size();
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggednottorun3 = FileUtilityManager
-							.getNotFlaggedMethods(sheetName).size();
+							.getNotFlaggedClasses(sheetName).size();
 
 					// Obtain the column value flag = "Y" in a loop
 					for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun3; elementcounterY++) {
 						Element childElementClass = document
 								.createElement("class");
 						ArrayList<String> flagElement5 = FileUtilityManager
-								.getFlaggedMethods(sheetName);
+								.getFlaggedClasses(sheetName);
 						childElementClass.setAttribute(
 								"name",
 								"com.actitime.tests.web."
@@ -544,7 +544,7 @@ public class XMLUtilityManager {
 					// Obtain the column value flag = "N" in a loop
 					for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun3; elementcounterN++) {
 						// ArrayList<String> flagElement6 =
-						// FileUtilityManager.getNotFlaggedMethods(sheetName);
+						// FileUtilityManager.getNotFlaggedClasses(sheetName);
 					}
 
 				}
@@ -554,11 +554,11 @@ public class XMLUtilityManager {
 				System.out.println("Device Test Scripts! in grid");
 				// Get the number of parameter to be created in XML
 				int totalnoofelementsflaggedtorun = FileUtilityManager
-						.getFlaggedMethods(sheetName).size();
+						.getFlaggedClasses(sheetName).size();
 
 				// Get the number of parameter to be created in XML
 				int totalnoofelementsflaggednottorun = FileUtilityManager
-						.getNotFlaggedMethods(sheetName).size();
+						.getNotFlaggedClasses(sheetName).size();
 
 				// Assign attribute to the root elements
 				rootElementsuite
@@ -587,7 +587,7 @@ public class XMLUtilityManager {
 				for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun; elementcounterY++) {
 					Element childElementClass = document.createElement("class");
 					ArrayList<String> flagElement1 = FileUtilityManager
-							.getFlaggedMethods(sheetName);
+							.getFlaggedClasses(sheetName);
 					childElementClass.setAttribute(
 							"name",
 							"com.actitime.tests.mobile."
@@ -598,7 +598,7 @@ public class XMLUtilityManager {
 				// Obtain the column value flag = "N" in a loop
 				for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun; elementcounterN++) {
 					// ArrayList<String> flagElement2 =
-					// FileUtilityManager.getNotFlaggedMethods(sheetName);
+					// FileUtilityManager.getNotFlaggedClasses(sheetName);
 				}
 
 			}
@@ -607,11 +607,11 @@ public class XMLUtilityManager {
 				System.out.println("App Test Scripts!");
 				// Get the number of parameter to be created in XML
 				int totalnoofelementsflaggedtorun = FileUtilityManager
-						.getFlaggedMethods(sheetName).size();
+						.getFlaggedClasses(sheetName).size();
 
 				// Get the number of parameter to be created in XML
 				int totalnoofelementsflaggednottorun = FileUtilityManager
-						.getNotFlaggedMethods(sheetName).size();
+						.getNotFlaggedClasses(sheetName).size();
 
 				// Type the parameter set of lines in the XML file
 				Element childElementClass = document.createElement("class");
@@ -620,7 +620,7 @@ public class XMLUtilityManager {
 
 				// Assign attribute to the root elements
 				childElementClass.setAttribute("name",
-						"com.actitime.testscripts." + sheetName);
+						"com.actitime.tests.app." + sheetName);
 
 				// Assign attribute to the root elements
 				rootElementsuite.setAttribute("name", "actiTIME Android App");
@@ -636,7 +636,7 @@ public class XMLUtilityManager {
 					String element = "include";
 					Element emy = document.createElement(element);
 					ArrayList<String> flagElement1 = FileUtilityManager
-							.getFlaggedMethods(sheetName);
+							.getFlaggedClasses(sheetName);
 
 					emy.setAttribute("name", flagElement1.get(elementcounterY));
 					rootElementgroups.appendChild(emy);
@@ -647,7 +647,7 @@ public class XMLUtilityManager {
 					String element = "exclude";
 					Element emn = document.createElement(element);
 					ArrayList<String> flagElement2 = FileUtilityManager
-							.getNotFlaggedMethods(sheetName);
+							.getNotFlaggedClasses(sheetName);
 
 					emn.setAttribute("name", flagElement2.get(elementcounterN));
 					rootElementgroups.appendChild(emn);
@@ -738,11 +738,11 @@ public class XMLUtilityManager {
 
 				// Get the number of parameter to be created in XML
 				int totalnoofelementsflaggedtorun = FileUtilityManager
-						.getFlaggedMethods(sheetName).size();
+						.getFlaggedClasses(sheetName).size();
 
 				// Get the number of parameter to be created in XML
 				int totalnoofelementsflaggednottorun = FileUtilityManager
-						.getNotFlaggedMethods(sheetName).size();
+						.getNotFlaggedClasses(sheetName).size();
 
 				// Assign attribute to the root elements
 				rootElementsuite.setAttribute("name", "actiTIME Web Browser");
@@ -754,7 +754,7 @@ public class XMLUtilityManager {
 				for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun; elementcounterY++) {
 					Element childElementClass = document.createElement("class");
 					ArrayList<String> flagElement1 = FileUtilityManager
-							.getFlaggedMethods(sheetName);
+							.getFlaggedClasses(sheetName);
 					childElementClass.setAttribute(
 							"name",
 							"com.actitime.tests.web."
@@ -765,7 +765,7 @@ public class XMLUtilityManager {
 				// Obtain the column value flag = "N" in a loop
 				for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun; elementcounterN++) {
 					// ArrayList<String> flagElement2 =
-					// FileUtilityManager.getNotFlaggedMethods(sheetName);
+					// FileUtilityManager.getNotFlaggedClasses(sheetName);
 				}
 
 			}
@@ -774,11 +774,11 @@ public class XMLUtilityManager {
 				System.out.println("Device Test Scripts!");
 				// Get the number of parameter to be created in XML
 				int totalnoofelementsflaggedtorun = FileUtilityManager
-						.getFlaggedMethods(sheetName).size();
+						.getFlaggedClasses(sheetName).size();
 
 				// Get the number of parameter to be created in XML
 				int totalnoofelementsflaggednottorun = FileUtilityManager
-						.getNotFlaggedMethods(sheetName).size();
+						.getNotFlaggedClasses(sheetName).size();
 
 				// Assign attribute to the root elements
 				rootElementsuite
@@ -790,7 +790,7 @@ public class XMLUtilityManager {
 				for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun; elementcounterY++) {
 					Element childElementClass = document.createElement("class");
 					ArrayList<String> flagElement1 = FileUtilityManager
-							.getFlaggedMethods(sheetName);
+							.getFlaggedClasses(sheetName);
 					childElementClass.setAttribute(
 							"name",
 							"com.actitime.tests.mobile."
@@ -801,7 +801,7 @@ public class XMLUtilityManager {
 				// Obtain the column value flag = "N" in a loop
 				for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun; elementcounterN++) {
 					// ArrayList<String> flagElement2 =
-					// FileUtilityManager.getNotFlaggedMethods(sheetName);
+					// FileUtilityManager.getNotFlaggedClasses(sheetName);
 				}
 			}
 
@@ -809,11 +809,11 @@ public class XMLUtilityManager {
 				System.out.println("App Test Scripts!");
 				// Get the number of parameter to be created in XML
 				int totalnoofelementsflaggedtorun = FileUtilityManager
-						.getFlaggedMethods(sheetName).size();
+						.getFlaggedClasses(sheetName).size();
 
 				// Get the number of parameter to be created in XML
 				int totalnoofelementsflaggednottorun = FileUtilityManager
-						.getNotFlaggedMethods(sheetName).size();
+						.getNotFlaggedClasses(sheetName).size();
 
 				// Assign attribute to the root elements
 				rootElementsuite.setAttribute("name", "actiTIME Android App");
@@ -824,7 +824,7 @@ public class XMLUtilityManager {
 				for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun; elementcounterY++) {
 					Element childElementClass = document.createElement("class");
 					ArrayList<String> flagElement1 = FileUtilityManager
-							.getFlaggedMethods(sheetName);
+							.getFlaggedClasses(sheetName);
 					childElementClass.setAttribute(
 							"name",
 							"com.actitime.tests.app."
@@ -835,7 +835,7 @@ public class XMLUtilityManager {
 				// Obtain the column value flag = "N" in a loop
 				for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun; elementcounterN++) {
 					// ArrayList<String> flagElement2 =
-					// FileUtilityManager.getNotFlaggedMethods(sheetName);
+					// FileUtilityManager.getNotFlaggedClasses(sheetName);
 				}
 
 			}

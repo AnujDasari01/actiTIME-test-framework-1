@@ -13,7 +13,7 @@ import com.actitime.utils.FileUtilityManager;
 import com.actitime.utils.HelperManager;
 
 /**
- * This is ActiTime Login Page Object
+ * ActiTime Login Page Object
  **/
 public class WebLogin extends BasePage {
 	@FindBy(css = "input#username")

@@ -3,12 +3,12 @@ package com.actitime.devicepages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import com.actitime.pages.BasePage;
 
 /**
- * This is ActiTime Login Page Object
+ * ActiTime Dashboard Page Object
  **/
+
 public class DeviceDashboard extends BasePage{
 	@FindBy(css = "a.content.tasks")
 	private WebElement tasksWidget;

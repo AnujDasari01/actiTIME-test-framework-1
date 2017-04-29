@@ -3,9 +3,12 @@ package com.actitime.driver;
 import java.util.Iterator;
 import java.util.Properties;
 import java.util.Set;
-
 import com.actitime.utils.FileUtilityManager;
 import com.actitime.utils.XMLUtilityManager;
+
+/**
+ * DriverManager class to Read properties from the configuration files.
+ **/
 
 public class DriverManager {
 	protected static String relativePath;
@@ -206,7 +209,7 @@ public class DriverManager {
 	/**
 	 * This method selects the sheet based on platform type
 	 **/
-	protected static void readValidXmlSheet() throws Exception {
+	protected static void createXML() throws Exception {
 		if (type.equalsIgnoreCase("Desktop")) {
 			if (runOn.equalsIgnoreCase("grid")) {
 				XMLUtilityManager.createXmlForGridConfig("TestScriptsWeb",

@@ -1,19 +1,17 @@
 package com.actitime.devicepages;
 
 import java.io.IOException;
-
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import com.actitime.driver.Driver;
 import com.actitime.pages.BasePage;
 import com.actitime.utils.FileUtilityManager;
 import com.actitime.utils.HelperManager;
 
 /**
- * This is ActiTime Login Page Object
+ * ActiTime Login Page Object
  **/
 public class DeviceLogin extends BasePage{
 	@FindBy(css = "input#username")

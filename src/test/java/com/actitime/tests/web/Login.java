@@ -8,6 +8,9 @@ import com.actitime.tests.base.BaseTest;
 import com.actitime.utils.FileUtilityManager;
 import com.aventstack.extentreports.Status;
 
+/*
+ * Login Test Script
+ */
 public class Login extends BaseTest {
 	@Test(groups = { "Regression" })
 	public void signIntoApplication() {

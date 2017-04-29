@@ -3,18 +3,16 @@ package com.actitime.reports;
 import java.io.File;
 import java.net.URL;
 import java.util.Date;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
 import org.testng.TestListenerAdapter;
-
 import com.actitime.driver.Driver;
 
 /**
- * This is Report class with reporting and screenshot functionality
+ * ReportNGReport class with reporting and screenshot functionality
  **/
 public class ReportNGReport extends TestListenerAdapter {
 	private static String dirPath = null;
@@ -62,41 +60,4 @@ public class ReportNGReport extends TestListenerAdapter {
 					+ e.getMessage());
 		}
 	}
-	
-//	public static void createShortcut() throws IOException {
-//		String target = null;
-//		try {
-//
-//			String path = System.getenv("userprofile") + "/Desktop/"
-//					+ "Execution Report" + ".URL";
-//			File file = new File(path);
-//			String icon = "./Resources/Reports/Report.ico";
-//			target = dirPath + "/html/index.html";
-//			if (file.exists()) {
-//				file.delete();
-//				FileWriter fw = new FileWriter(file);
-//				fw.write("[InternetShortcut]\n");
-//				fw.write("URL=" + target + "\n");
-//				fw.write("IconFile=" + icon + "\n");
-//
-//				fw.flush();
-//				fw.close();
-//
-//			}
-//
-//			else {
-//				FileWriter fw = new FileWriter(file);
-//				fw.write("[InternetShortcut]\n");
-//				fw.write("URL=" + target + "\n");
-//				fw.write("IconFile=" + icon + "\n");
-//
-//				fw.flush();
-//				fw.close();
-//			}
-//
-//		} catch (IOException e) {
-//
-//		}
-//
-//	}
 }

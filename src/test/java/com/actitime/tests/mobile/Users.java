@@ -9,6 +9,9 @@ import com.actitime.tests.base.BaseTest;
 import com.actitime.utils.FileUtilityManager;
 import com.aventstack.extentreports.Status;
 
+/*
+ * Navigate to Users Tab Test Script
+ */
 public class Users extends BaseTest {
 	@Test
 	public void navigateToTasks() {
