@@ -15,6 +15,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 import com.actitime.driver.Driver;
+
 /**
  * This is FileUtility class to read data from Test Data sheets and Properties
  * files
@@ -39,6 +40,7 @@ public class FileUtilityManager {
 			Workbook wb = WorkbookFactory.create(fis);
 			Sheet sh = null;
 			String env = Driver.getType();
+			System.out.println("Type is: " + env);
 			if (env.equalsIgnoreCase("Desktop")) {
 				sh = wb.getSheet("Desktop");
 			} else if (env.equalsIgnoreCase("Device")) {
@@ -74,8 +76,8 @@ public class FileUtilityManager {
 			System.out.println(e.getMessage());
 		} catch (NullPointerException e) {
 			System.out.println("Test Name not found in Test data sheet");
+			e.printStackTrace();
 		}
-
 	}
 
 	public static ArrayList<String> getFlaggedMethods(String sheetname) {

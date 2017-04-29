@@ -72,12 +72,12 @@ public class DriverManager {
 		return fullReset;
 	}
 
-	public static String getType() {
-		return type;
-	}
-
 	public static String getRunOn() {
 		return runOn;
+	}
+
+	public static String getType() {
+		return type;
 	}
 
 	public static String getConfigPath() {
@@ -103,7 +103,7 @@ public class DriverManager {
 	public static String getDeviceNodeUrl() {
 		return deviceNodeUrl;
 	}
-	
+
 	public static String getNodeUrl1() {
 		return nodeUrl1;
 	}
@@ -124,7 +124,6 @@ public class DriverManager {
 		return relativePath;
 	}
 
-	
 	/**
 	 * This method retrieves all properties from the StandAloneEnvProperties
 	 * file
@@ -193,8 +192,7 @@ public class DriverManager {
 				browserName3 = prop.getProperty(key);
 			} else if (key.equalsIgnoreCase("deviceNodeUrl")) {
 				deviceNodeUrl = prop.getProperty(key);
-			}
-			else if (key.equalsIgnoreCase("nodeUrl1")) {
+			} else if (key.equalsIgnoreCase("nodeUrl1")) {
 				nodeUrl1 = prop.getProperty(key);
 			} else if (key.equalsIgnoreCase("nodeUrl2")) {
 				nodeUrl2 = prop.getProperty(key);
@@ -204,7 +202,7 @@ public class DriverManager {
 				continue;
 		}
 	}
-	
+
 	/**
 	 * This method selects the sheet based on platform type
 	 **/
@@ -214,8 +212,8 @@ public class DriverManager {
 				XMLUtilityManager.createXmlForGridConfig("TestScriptsWeb",
 						browserName1, browserName2, browserName3);
 			} else if (runOn.equalsIgnoreCase("StandAlone")) {
-				XMLUtilityManager.createXmlForStandAloneConfig("TestScriptsWeb",
-						browserName);
+				XMLUtilityManager.createXmlForStandAloneConfig(
+						"TestScriptsWeb", browserName);
 			}
 		}
 
@@ -224,8 +222,8 @@ public class DriverManager {
 				XMLUtilityManager.createXmlForGridConfig("TestScriptsDevice",
 						browserName1, browserName2, browserName3);
 			} else if (runOn.equalsIgnoreCase("StandAlone")) {
-				XMLUtilityManager.createXmlForStandAloneConfig("TestScriptsDevice",
-						app);
+				XMLUtilityManager.createXmlForStandAloneConfig(
+						"TestScriptsDevice", app);
 			}
 
 		}
@@ -235,7 +233,8 @@ public class DriverManager {
 				XMLUtilityManager.createXmlForGridConfig("TestScriptsApp",
 						browserName1, browserName2, browserName3);
 			} else if (runOn.equalsIgnoreCase("StandAlone")) {
-				XMLUtilityManager.createXmlForStandAloneConfig("TestScriptsApp", app);
+				XMLUtilityManager.createXmlForStandAloneConfig(
+						"TestScriptsApp", app);
 			}
 		}
 	}

@@ -7,6 +7,8 @@ import com.actitime.utils.XMLUtilityManager;
  **/
 public class Driver extends DriverManager {
 	
+	
+	
 	/**
 	 * This is the main method
 	 **/
@@ -17,6 +19,7 @@ public class Driver extends DriverManager {
 		if(type.equalsIgnoreCase("desktop")) {
 			browserName = System.getProperty("browser");
 		}
+		
 		if (runOn.equalsIgnoreCase("Grid")) {
 			retrieveGridEnvProperties();
 		} else if (runOn.equalsIgnoreCase("Standalone")) {

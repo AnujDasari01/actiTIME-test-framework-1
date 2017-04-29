@@ -11,9 +11,8 @@ import com.aventstack.extentreports.Status;
 public class Login extends BaseTest {
 	@Test(groups = { "Regression" })
 	public void signIntoApplication() {
-		test = extent.createTest("SignIntoApplication",
-				"Verify SignIntoApplication");
-		FileUtilityManager.retrieveData("SignIntoApplication");
+		test = extent.createTest("Login","Verify SignIntoApplication");
+		FileUtilityManager.retrieveData("Login");
 		String loginTitle = webLoginPO.login();
 		ReportNGReport.captureScreenshot(driver, "SignIntoApplication ");
 		Assert.assertEquals(loginTitle, "actiTIME - Enter Time-Track");

@@ -14,7 +14,7 @@ public class Login extends BaseTest {
 	public void signIntoApplication() {
 		test = extent.createTest("SignIntoApplication",
 				"Verify SignIntoApplication");
-		FileUtilityManager.retrieveData("SignIntoApplication");
+		FileUtilityManager.retrieveData("Login");
 		String loginTitle = deviceLoginPO.login();
 		ReportNGReport.captureScreenshot(driver, "SignIntoApplication ");
 		Assert.assertEquals(loginTitle, "actiTIME - Enter Time-Track");

@@ -21,6 +21,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import com.actitime.apppages.CreateForm;
 import com.actitime.devicepages.DeviceDashboard;
 import com.actitime.devicepages.DeviceLogin;
+import com.actitime.devicepages.DeviceUsers;
 import com.actitime.webpages.WebDashboard;
 import com.actitime.webpages.WebLogin;
 import com.actitime.webpages.WebUsers;
@@ -34,6 +35,7 @@ public class DriverFactory {
 	protected WebUsers webUsersPO;
 	protected DeviceLogin deviceLoginPO;
 	protected DeviceDashboard deviceDashBoardPO;
+	protected DeviceUsers deviceUsersPO;
 	protected CreateForm appCreateNewFormPO;
 	protected ExtentReports extent;
 	protected ExtentTest test;

@@ -37,7 +37,7 @@ public class DeviceDashboard extends BasePage{
 	}
 
 	/**
-	 * This methods Navigates driver to Tasks
+	 * This method Navigates driver to Tasks
 	 **/
 	public String navigateToTasks() {
 		tasksWidget.click();
@@ -45,7 +45,7 @@ public class DeviceDashboard extends BasePage{
 	}
 
 	/**
-	 * This methods Navigates driver to Reports
+	 * This method Navigates driver to Reports
 	 **/
 	public String navigateToReports() {
 		reportWidget.click();
@@ -53,7 +53,7 @@ public class DeviceDashboard extends BasePage{
 	}
 
 	/**
-	 * This methods Navigates driver to Users
+	 * This method Navigates driver to Users
 	 **/
 	public String navigateToUsers() {
 		usersWidget.click();
@@ -61,7 +61,7 @@ public class DeviceDashboard extends BasePage{
 	}
 
 	/**
-	 * This methods makes driver logout of application
+	 * This method makes driver logout of application
 	 **/
 	public String logout() {
 		logOutBtn.click();

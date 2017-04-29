@@ -144,6 +144,8 @@ public class CreateForm extends BasePage {
 		} catch (NoSuchElementException e) {
 			return false;
 		}
+		
+		HelperManager.scrollDown(driver);
 		HelperManager.scrollDown(driver);
 		String hobbies = FileUtilityManager.getTestData().get("Hobbies");
 		hobbies.replaceAll("\\s+", "");

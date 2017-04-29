@@ -74,8 +74,10 @@ public class XMLUtilityManager {
 					 **/
 					// Type the root elements in the XML file
 					Element rootElementtest1 = document.createElement("test");
-					Element rootElementParameters1 = document.createElement("parameter");
-					Element rootElementClass1 = document.createElement("classes");
+					Element rootElementParameters1 = document
+							.createElement("parameter");
+					Element rootElementClass1 = document
+							.createElement("classes");
 
 					// Append test1 to the suite
 					rootElementsuite.appendChild(rootElementtest1);
@@ -89,7 +91,8 @@ public class XMLUtilityManager {
 					rootElementtest1.appendChild(rootElementClass1);
 
 					// Assign attribute to the root elements
-					rootElementtest1.setAttribute("name", "actiTIME - " + browser2 + " Smoke Test");
+					rootElementtest1.setAttribute("name", "actiTIME - "
+							+ browser2 + " Smoke Test");
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggedtorun1 = FileUtilityManager
@@ -101,16 +104,22 @@ public class XMLUtilityManager {
 
 					// Obtain the column value flag = "Y" in a loop
 					for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun1; elementcounterY++) {
-						Element childElementClass = document.createElement("class");
-						ArrayList<String> flagElement1 = FileUtilityManager.getFlaggedMethods(sheetName);
-						childElementClass.setAttribute("name","com.actitime.tests.web."+ flagElement1.get(elementcounterY));
+						Element childElementClass = document
+								.createElement("class");
+						ArrayList<String> flagElement1 = FileUtilityManager
+								.getFlaggedMethods(sheetName);
+						childElementClass.setAttribute(
+								"name",
+								"com.actitime.tests.web."
+										+ flagElement1.get(elementcounterY));
 						rootElementClass1.appendChild(childElementClass);
-					
+
 					}
 
 					// Obtain the column value flag = "N" in a loop
 					for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun1; elementcounterN++) {
-						ArrayList<String> flagElement2 = FileUtilityManager.getNotFlaggedMethods(sheetName);
+						// ArrayList<String> flagElement2 =
+						// FileUtilityManager.getNotFlaggedMethods(sheetName);
 					}
 
 					/**
@@ -118,8 +127,10 @@ public class XMLUtilityManager {
 					 **/
 					// Type the root elements in the XML file
 					Element rootElementtest2 = document.createElement("test");
-					Element rootElementParameters2 = document.createElement("parameter");
-					Element rootElementClass2 = document.createElement("classes");
+					Element rootElementParameters2 = document
+							.createElement("parameter");
+					Element rootElementClass2 = document
+							.createElement("classes");
 
 					// Append test2 to the suite
 					rootElementsuite.appendChild(rootElementtest2);
@@ -133,7 +144,8 @@ public class XMLUtilityManager {
 					rootElementtest2.appendChild(rootElementClass2);
 
 					// Assign attribute to the root elements
-					rootElementtest2.setAttribute("name", "actiTIME - " + browser3 + " Smoke Test");
+					rootElementtest2.setAttribute("name", "actiTIME - "
+							+ browser3 + " Smoke Test");
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggedtorun2 = FileUtilityManager
@@ -145,15 +157,21 @@ public class XMLUtilityManager {
 
 					// Obtain the column value flag = "Y" in a loop
 					for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun2; elementcounterY++) {
-						Element childElementClass = document.createElement("class");
-						ArrayList<String> flagElement3 = FileUtilityManager.getFlaggedMethods(sheetName);
-						childElementClass.setAttribute("name","com.actitime.tests.web."+ flagElement3.get(elementcounterY));
+						Element childElementClass = document
+								.createElement("class");
+						ArrayList<String> flagElement3 = FileUtilityManager
+								.getFlaggedMethods(sheetName);
+						childElementClass.setAttribute(
+								"name",
+								"com.actitime.tests.web."
+										+ flagElement3.get(elementcounterY));
 						rootElementClass2.appendChild(childElementClass);
 					}
 
 					// Obtain the column value flag = "N" in a loop
 					for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun2; elementcounterN++) {
-						ArrayList<String> flagElement4 = FileUtilityManager.getNotFlaggedMethods(sheetName);
+						// ArrayList<String> flagElement4 =
+						// FileUtilityManager.getNotFlaggedMethods(sheetName);
 					}
 				}
 
@@ -163,8 +181,10 @@ public class XMLUtilityManager {
 					 **/
 					// Type the root elements in the XML file
 					Element rootElementtest1 = document.createElement("test");
-					Element rootElementParameters1 = document.createElement("parameter");
-					Element rootElementClass1 = document.createElement("classes");
+					Element rootElementParameters1 = document
+							.createElement("parameter");
+					Element rootElementClass1 = document
+							.createElement("classes");
 
 					// Append test1 to the suite
 					rootElementsuite.appendChild(rootElementtest1);
@@ -178,7 +198,8 @@ public class XMLUtilityManager {
 					rootElementtest1.appendChild(rootElementClass1);
 
 					// Assign attribute to the root elements
-					rootElementtest1.setAttribute("name", "actiTIME - " + browser1 + " Smoke Test");
+					rootElementtest1.setAttribute("name", "actiTIME - "
+							+ browser1 + " Smoke Test");
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggedtorun1 = FileUtilityManager
@@ -190,16 +211,22 @@ public class XMLUtilityManager {
 
 					// Obtain the column value flag = "Y" in a loop
 					for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun1; elementcounterY++) {
-						Element childElementClass = document.createElement("class");
-						ArrayList<String> flagElement1 = FileUtilityManager.getFlaggedMethods(sheetName);
-						childElementClass.setAttribute("name","com.actitime.tests.web."+ flagElement1.get(elementcounterY));
+						Element childElementClass = document
+								.createElement("class");
+						ArrayList<String> flagElement1 = FileUtilityManager
+								.getFlaggedMethods(sheetName);
+						childElementClass.setAttribute(
+								"name",
+								"com.actitime.tests.web."
+										+ flagElement1.get(elementcounterY));
 						rootElementClass1.appendChild(childElementClass);
-					
+
 					}
 
 					// Obtain the column value flag = "N" in a loop
 					for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun1; elementcounterN++) {
-						ArrayList<String> flagElement2 = FileUtilityManager.getNotFlaggedMethods(sheetName);
+						// ArrayList<String> flagElement2 =
+						// FileUtilityManager.getNotFlaggedMethods(sheetName);
 					}
 
 					/**
@@ -207,8 +234,10 @@ public class XMLUtilityManager {
 					 **/
 					// Type the root elements in the XML file
 					Element rootElementtest2 = document.createElement("test");
-					Element rootElementParameters2 = document.createElement("parameter");
-					Element rootElementClass2 = document.createElement("classes");
+					Element rootElementParameters2 = document
+							.createElement("parameter");
+					Element rootElementClass2 = document
+							.createElement("classes");
 
 					// Append test2 to the suite
 					rootElementsuite.appendChild(rootElementtest2);
@@ -222,7 +251,8 @@ public class XMLUtilityManager {
 					rootElementtest2.appendChild(rootElementClass2);
 
 					// Assign attribute to the root elements
-					rootElementtest2.setAttribute("name", "actiTIME - " + browser3 + " Smoke Test");
+					rootElementtest2.setAttribute("name", "actiTIME - "
+							+ browser3 + " Smoke Test");
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggedtorun2 = FileUtilityManager
@@ -234,15 +264,21 @@ public class XMLUtilityManager {
 
 					// Obtain the column value flag = "Y" in a loop
 					for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun2; elementcounterY++) {
-						Element childElementClass = document.createElement("class");
-						ArrayList<String> flagElement3 = FileUtilityManager.getFlaggedMethods(sheetName);
-						childElementClass.setAttribute("name","com.actitime.tests.web."+ flagElement3.get(elementcounterY));
+						Element childElementClass = document
+								.createElement("class");
+						ArrayList<String> flagElement3 = FileUtilityManager
+								.getFlaggedMethods(sheetName);
+						childElementClass.setAttribute(
+								"name",
+								"com.actitime.tests.web."
+										+ flagElement3.get(elementcounterY));
 						rootElementClass2.appendChild(childElementClass);
 					}
 
 					// Obtain the column value flag = "N" in a loop
 					for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun2; elementcounterN++) {
-						ArrayList<String> flagElement4 = FileUtilityManager.getNotFlaggedMethods(sheetName);
+						// ArrayList<String> flagElement4 =
+						// FileUtilityManager.getNotFlaggedMethods(sheetName);
 					}
 				}
 
@@ -252,8 +288,10 @@ public class XMLUtilityManager {
 					 **/
 					// Type the root elements in the XML file
 					Element rootElementtest1 = document.createElement("test");
-					Element rootElementParameters1 = document.createElement("parameter");
-					Element rootElementClass1 = document.createElement("classes");
+					Element rootElementParameters1 = document
+							.createElement("parameter");
+					Element rootElementClass1 = document
+							.createElement("classes");
 
 					// Append test1 to the suite
 					rootElementsuite.appendChild(rootElementtest1);
@@ -267,7 +305,8 @@ public class XMLUtilityManager {
 					rootElementtest1.appendChild(rootElementClass1);
 
 					// Assign attribute to the root elements
-					rootElementtest1.setAttribute("name", "actiTIME - " + browser1 + " Smoke Test");
+					rootElementtest1.setAttribute("name", "actiTIME - "
+							+ browser1 + " Smoke Test");
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggedtorun1 = FileUtilityManager
@@ -279,16 +318,22 @@ public class XMLUtilityManager {
 
 					// Obtain the column value flag = "Y" in a loop
 					for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun1; elementcounterY++) {
-						Element childElementClass = document.createElement("class");
-						ArrayList<String> flagElement1 = FileUtilityManager.getFlaggedMethods(sheetName);
-						childElementClass.setAttribute("name","com.actitime.tests.web."+ flagElement1.get(elementcounterY));
+						Element childElementClass = document
+								.createElement("class");
+						ArrayList<String> flagElement1 = FileUtilityManager
+								.getFlaggedMethods(sheetName);
+						childElementClass.setAttribute(
+								"name",
+								"com.actitime.tests.web."
+										+ flagElement1.get(elementcounterY));
 						rootElementClass1.appendChild(childElementClass);
-					
+
 					}
 
 					// Obtain the column value flag = "N" in a loop
 					for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun1; elementcounterN++) {
-						ArrayList<String> flagElement2 = FileUtilityManager.getNotFlaggedMethods(sheetName);
+						// ArrayList<String> flagElement2 =
+						// FileUtilityManager.getNotFlaggedMethods(sheetName);
 					}
 
 					/**
@@ -296,8 +341,10 @@ public class XMLUtilityManager {
 					 **/
 					// Type the root elements in the XML file
 					Element rootElementtest2 = document.createElement("test");
-					Element rootElementParameters2 = document.createElement("parameter");
-					Element rootElementClass2 = document.createElement("classes");
+					Element rootElementParameters2 = document
+							.createElement("parameter");
+					Element rootElementClass2 = document
+							.createElement("classes");
 
 					// Append test2 to the suite
 					rootElementsuite.appendChild(rootElementtest2);
@@ -311,7 +358,8 @@ public class XMLUtilityManager {
 					rootElementtest2.appendChild(rootElementClass2);
 
 					// Assign attribute to the root elements
-					rootElementtest2.setAttribute("name", "actiTIME - " + browser2 + " Smoke Test");
+					rootElementtest2.setAttribute("name", "actiTIME - "
+							+ browser2 + " Smoke Test");
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggedtorun2 = FileUtilityManager
@@ -323,15 +371,21 @@ public class XMLUtilityManager {
 
 					// Obtain the column value flag = "Y" in a loop
 					for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun2; elementcounterY++) {
-						Element childElementClass = document.createElement("class");
-						ArrayList<String> flagElement3 = FileUtilityManager.getFlaggedMethods(sheetName);
-						childElementClass.setAttribute("name","com.actitime.tests.web."+ flagElement3.get(elementcounterY));
+						Element childElementClass = document
+								.createElement("class");
+						ArrayList<String> flagElement3 = FileUtilityManager
+								.getFlaggedMethods(sheetName);
+						childElementClass.setAttribute(
+								"name",
+								"com.actitime.tests.web."
+										+ flagElement3.get(elementcounterY));
 						rootElementClass2.appendChild(childElementClass);
 					}
 
 					// Obtain the column value flag = "N" in a loop
 					for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun2; elementcounterN++) {
-						ArrayList<String> flagElement4 = FileUtilityManager.getNotFlaggedMethods(sheetName);
+						// ArrayList<String> flagElement4 =
+						// FileUtilityManager.getNotFlaggedMethods(sheetName);
 					}
 				}
 
@@ -341,8 +395,10 @@ public class XMLUtilityManager {
 					 **/
 					// Type the root elements in the XML file
 					Element rootElementtest1 = document.createElement("test");
-					Element rootElementParameters1 = document.createElement("parameter");
-					Element rootElementClass1 = document.createElement("classes");
+					Element rootElementParameters1 = document
+							.createElement("parameter");
+					Element rootElementClass1 = document
+							.createElement("classes");
 
 					// Append test1 to the suite
 					rootElementsuite.appendChild(rootElementtest1);
@@ -356,7 +412,8 @@ public class XMLUtilityManager {
 					rootElementtest1.appendChild(rootElementClass1);
 
 					// Assign attribute to the root elements
-					rootElementtest1.setAttribute("name", "actiTIME - " + browser1 + " Smoke Test");
+					rootElementtest1.setAttribute("name", "actiTIME - "
+							+ browser1 + " Smoke Test");
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggedtorun1 = FileUtilityManager
@@ -368,16 +425,22 @@ public class XMLUtilityManager {
 
 					// Obtain the column value flag = "Y" in a loop
 					for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun1; elementcounterY++) {
-						Element childElementClass = document.createElement("class");
-						ArrayList<String> flagElement1 = FileUtilityManager.getFlaggedMethods(sheetName);
-						childElementClass.setAttribute("name","com.actitime.tests.web."+ flagElement1.get(elementcounterY));
+						Element childElementClass = document
+								.createElement("class");
+						ArrayList<String> flagElement1 = FileUtilityManager
+								.getFlaggedMethods(sheetName);
+						childElementClass.setAttribute(
+								"name",
+								"com.actitime.tests.web."
+										+ flagElement1.get(elementcounterY));
 						rootElementClass1.appendChild(childElementClass);
-					
+
 					}
 
 					// Obtain the column value flag = "N" in a loop
 					for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun1; elementcounterN++) {
-						ArrayList<String> flagElement2 = FileUtilityManager.getNotFlaggedMethods(sheetName);
+						// ArrayList<String> flagElement2 =
+						// FileUtilityManager.getNotFlaggedMethods(sheetName);
 					}
 
 					/**
@@ -385,8 +448,10 @@ public class XMLUtilityManager {
 					 **/
 					// Type the root elements in the XML file
 					Element rootElementtest2 = document.createElement("test");
-					Element rootElementParameters2 = document.createElement("parameter");
-					Element rootElementClass2 = document.createElement("classes");
+					Element rootElementParameters2 = document
+							.createElement("parameter");
+					Element rootElementClass2 = document
+							.createElement("classes");
 
 					// Append test2 to the suite
 					rootElementsuite.appendChild(rootElementtest2);
@@ -400,7 +465,8 @@ public class XMLUtilityManager {
 					rootElementtest2.appendChild(rootElementClass2);
 
 					// Assign attribute to the root elements
-					rootElementtest2.setAttribute("name", "actiTIME - " + browser2 + " Smoke Test");
+					rootElementtest2.setAttribute("name", "actiTIME - "
+							+ browser2 + " Smoke Test");
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggedtorun2 = FileUtilityManager
@@ -412,24 +478,32 @@ public class XMLUtilityManager {
 
 					// Obtain the column value flag = "Y" in a loop
 					for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun2; elementcounterY++) {
-						Element childElementClass = document.createElement("class");
-						ArrayList<String> flagElement3 = FileUtilityManager.getFlaggedMethods(sheetName);
-						childElementClass.setAttribute("name","com.actitime.tests.web."+ flagElement3.get(elementcounterY));
+						Element childElementClass = document
+								.createElement("class");
+						ArrayList<String> flagElement3 = FileUtilityManager
+								.getFlaggedMethods(sheetName);
+						childElementClass.setAttribute(
+								"name",
+								"com.actitime.tests.web."
+										+ flagElement3.get(elementcounterY));
 						rootElementClass2.appendChild(childElementClass);
 					}
 
 					// Obtain the column value flag = "N" in a loop
 					for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun2; elementcounterN++) {
-						ArrayList<String> flagElement4 = FileUtilityManager.getNotFlaggedMethods(sheetName);
+						// ArrayList<String> flagElement4 =
+						// FileUtilityManager.getNotFlaggedMethods(sheetName);
 					}
-					
+
 					/**
 					 * This is configuration for test 3
 					 **/
 					// Type the root elements in the XML file
 					Element rootElementtest3 = document.createElement("test");
-					Element rootElementParameters3 = document.createElement("parameter");
-					Element rootElementClass3 = document.createElement("classes");
+					Element rootElementParameters3 = document
+							.createElement("parameter");
+					Element rootElementClass3 = document
+							.createElement("classes");
 
 					// Append test3 to the suite
 					rootElementsuite.appendChild(rootElementtest3);
@@ -443,7 +517,8 @@ public class XMLUtilityManager {
 					rootElementtest3.appendChild(rootElementClass3);
 
 					// Assign attribute to the root elements
-					rootElementtest3.setAttribute("name", "actiTIME - " + browser3 + " Smoke Test");
+					rootElementtest3.setAttribute("name", "actiTIME - "
+							+ browser3 + " Smoke Test");
 
 					// Get the number of parameter to be created in XML
 					int totalnoofelementsflaggedtorun3 = FileUtilityManager
@@ -455,17 +530,22 @@ public class XMLUtilityManager {
 
 					// Obtain the column value flag = "Y" in a loop
 					for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun3; elementcounterY++) {
-						Element childElementClass = document.createElement("class");
-						ArrayList<String> flagElement5 = FileUtilityManager.getFlaggedMethods(sheetName);
-						childElementClass.setAttribute("name","com.actitime.tests.web."+ flagElement5.get(elementcounterY));
+						Element childElementClass = document
+								.createElement("class");
+						ArrayList<String> flagElement5 = FileUtilityManager
+								.getFlaggedMethods(sheetName);
+						childElementClass.setAttribute(
+								"name",
+								"com.actitime.tests.web."
+										+ flagElement5.get(elementcounterY));
 						rootElementClass3.appendChild(childElementClass);
 					}
 
 					// Obtain the column value flag = "N" in a loop
 					for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun3; elementcounterN++) {
-						ArrayList<String> flagElement6 = FileUtilityManager.getNotFlaggedMethods(sheetName);
+						// ArrayList<String> flagElement6 =
+						// FileUtilityManager.getNotFlaggedMethods(sheetName);
 					}
-
 
 				}
 			}
@@ -473,20 +553,24 @@ public class XMLUtilityManager {
 			if (sheetName.equalsIgnoreCase("TestScriptsDevice")) {
 				System.out.println("Device Test Scripts! in grid");
 				// Get the number of parameter to be created in XML
-				int totalnoofelementsflaggedtorun = FileUtilityManager.getFlaggedMethods(sheetName).size();
+				int totalnoofelementsflaggedtorun = FileUtilityManager
+						.getFlaggedMethods(sheetName).size();
 
 				// Get the number of parameter to be created in XML
-				int totalnoofelementsflaggednottorun = FileUtilityManager.getNotFlaggedMethods(sheetName).size();
-				
+				int totalnoofelementsflaggednottorun = FileUtilityManager
+						.getNotFlaggedMethods(sheetName).size();
+
 				// Assign attribute to the root elements
-				rootElementsuite.setAttribute("name", "actiTIME Android Device");
+				rootElementsuite
+						.setAttribute("name", "actiTIME Android Device");
 				rootElementsuite.setAttribute("preserve-order", "true");
 				rootElementsuite.setAttribute("parallel", "tests");
 
 				Element rootElementtest = document.createElement("test");
-				Element rootElementParameters = document.createElement("parameter");
+				Element rootElementParameters = document
+						.createElement("parameter");
 				Element rootElementClass = document.createElement("classes");
-				
+
 				rootElementParameters.setAttribute("name", "browser");
 				rootElementParameters.setAttribute("value", browser2);
 
@@ -495,22 +579,26 @@ public class XMLUtilityManager {
 				rootElementtest.appendChild(rootElementClass);
 
 				// Assign attribute to the root elements
-				rootElementtest.setAttribute("name", "actiTIME - Device Smoke Test");
+				rootElementtest.setAttribute("name",
+						"actiTIME - Device Smoke Test");
 				rootElementsuite.appendChild(rootElementtest);
-
-				
 
 				// Obtain the column value flag = "Y" in a loop
 				for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun; elementcounterY++) {
 					Element childElementClass = document.createElement("class");
-					ArrayList<String> flagElement1 = FileUtilityManager.getFlaggedMethods(sheetName);
-					childElementClass.setAttribute("name","com.actitime.tests.mobile."+ flagElement1.get(elementcounterY));
+					ArrayList<String> flagElement1 = FileUtilityManager
+							.getFlaggedMethods(sheetName);
+					childElementClass.setAttribute(
+							"name",
+							"com.actitime.tests.mobile."
+									+ flagElement1.get(elementcounterY));
 					rootElementClass.appendChild(childElementClass);
 				}
 
 				// Obtain the column value flag = "N" in a loop
 				for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun; elementcounterN++) {
-					ArrayList<String> flagElement2 = FileUtilityManager.getNotFlaggedMethods(sheetName);
+					// ArrayList<String> flagElement2 =
+					// FileUtilityManager.getNotFlaggedMethods(sheetName);
 				}
 
 			}
@@ -574,7 +662,8 @@ public class XMLUtilityManager {
 					fstream = new FileWriter(
 							"./src/test/resources/suites/desktop-grid.xml");
 				} else if (Driver.getType().equalsIgnoreCase("device")) {
-					fstream = new FileWriter("./src/test/resources/suites/device-grid.xml");
+					fstream = new FileWriter(
+							"./src/test/resources/suites/device-grid.xml");
 				} else if (Driver.getType().equalsIgnoreCase("app")) {
 					fstream = new FileWriter(
 							"./src/test/resources/suites/app-grid.xml");
@@ -604,7 +693,8 @@ public class XMLUtilityManager {
 		}
 
 	}
-//*****************************************************************************************************************************************************************//
+
+	// *****************************************************************************************************************************************************************//
 	public static void createXmlForStandAloneConfig(String sheetName,
 			String browser) throws Exception {
 		try {
@@ -674,8 +764,8 @@ public class XMLUtilityManager {
 
 				// Obtain the column value flag = "N" in a loop
 				for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun; elementcounterN++) {
-					ArrayList<String> flagElement2 = FileUtilityManager
-							.getNotFlaggedMethods(sheetName);
+					// ArrayList<String> flagElement2 =
+					// FileUtilityManager.getNotFlaggedMethods(sheetName);
 				}
 
 			}
@@ -699,15 +789,19 @@ public class XMLUtilityManager {
 				// Obtain the column value flag = "Y" in a loop
 				for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun; elementcounterY++) {
 					Element childElementClass = document.createElement("class");
-					ArrayList<String> flagElement1 = FileUtilityManager.getFlaggedMethods(sheetName);
-					childElementClass.setAttribute("name", "com.actitime.tests.mobile." + flagElement1.get(elementcounterY));
+					ArrayList<String> flagElement1 = FileUtilityManager
+							.getFlaggedMethods(sheetName);
+					childElementClass.setAttribute(
+							"name",
+							"com.actitime.tests.mobile."
+									+ flagElement1.get(elementcounterY));
 					rootElementClass.appendChild(childElementClass);
 				}
 
 				// Obtain the column value flag = "N" in a loop
 				for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun; elementcounterN++) {
-					ArrayList<String> flagElement2 = FileUtilityManager
-							.getNotFlaggedMethods(sheetName);
+					// ArrayList<String> flagElement2 =
+					// FileUtilityManager.getNotFlaggedMethods(sheetName);
 				}
 			}
 
@@ -729,14 +823,19 @@ public class XMLUtilityManager {
 				// Obtain the column value flag = "Y" in a loop
 				for (int elementcounterY = 0; elementcounterY < totalnoofelementsflaggedtorun; elementcounterY++) {
 					Element childElementClass = document.createElement("class");
-					ArrayList<String> flagElement1 = FileUtilityManager.getFlaggedMethods(sheetName);
-					childElementClass.setAttribute("name", "com.actitime.tests.app." + flagElement1.get(elementcounterY));
+					ArrayList<String> flagElement1 = FileUtilityManager
+							.getFlaggedMethods(sheetName);
+					childElementClass.setAttribute(
+							"name",
+							"com.actitime.tests.app."
+									+ flagElement1.get(elementcounterY));
 					rootElementClass.appendChild(childElementClass);
 				}
 
 				// Obtain the column value flag = "N" in a loop
 				for (int elementcounterN = 0; elementcounterN < totalnoofelementsflaggednottorun; elementcounterN++) {
-					ArrayList<String> flagElement2 = FileUtilityManager.getNotFlaggedMethods(sheetName);
+					// ArrayList<String> flagElement2 =
+					// FileUtilityManager.getNotFlaggedMethods(sheetName);
 				}
 
 			}

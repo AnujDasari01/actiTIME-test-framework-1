@@ -92,7 +92,7 @@ public class WebUsers extends BasePage {
 		if (duplicateUserError.isDisplayed()) {
 			ReportNGReport.captureScreenshot(driver, "UserAddition");
 			modalWindowClose.click();
-			HelperManager.normalWait(driver, 2);
+			HelperManager.normalWait(driver, 5);
 			HelperManager.handleAlert("Y", driver);
 			return "User having username: "
 					+ FileUtilityManager.getTestData().get("UserName")
